@@ -1,44 +1,69 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Database, Shield, AlertTriangle, FileText, Layers, Scale, GitMerge, ArrowRight } from "lucide-react";
+import { 
+  Database, 
+  Shield, 
+  AlertTriangle, 
+  FileText, 
+  Layers, 
+  Scale, 
+  GitMerge, 
+  ArrowRight,
+  type LucideIcon 
+} from "lucide-react";
 import { ReactLenis } from "lenis/react";
 
-const PRINCIPLES = [
+// --- TYPES ---
+interface PrincipleItem {
+  title: string;
+  icon: LucideIcon;
+  statement: string;
+  desc: string;
+}
+
+// --- DATA ---
+const PRINCIPLES: PrincipleItem[] = [
   {
     title: "Database-First Design",
     icon: Database,
     statement: "Data outlives code.",
-    desc: "I don't start with API endpoints; I start with the Entity Relationship Diagram (ERD). If the schema is normalized and constraints are strict, the application logic becomes simple and predictable."
+    desc: `I don't start with API endpoints; I start with the Entity Relationship Diagram (ERD).
+
+[Image of database entity relationship diagram]
+If the schema is normalized and constraints are strict, the application logic becomes simple and predictable. The database is the foundation; everything else follows from it.`
   },
   {
     title: "Security Before Convenience",
     icon: Shield,
     statement: "Trust nothing. Validate everything.",
-    desc: "I prioritize rigid input validation and strict Role-Based Access Control (RBAC) over development speed. A system is only as useful as it is secure."
+    desc: `I prioritize rigid input validation and strict Role-Based Access Control (RBAC) over development speed. A system is only as useful as it is secure. Every request and operation is checked before it is trusted.`
   },
   {
     title: "Failure Handling as a Feature",
     icon: AlertTriangle,
     statement: "Errors should be structured, not swallowed.",
-    desc: "I build global error handling mechanisms that sanitize feedback for users while logging distinct operational details for developers. Silent failures are the enemy of maintainability."
+    desc: `I build global error handling mechanisms that sanitize feedback for users while logging distinct operational details for developers. Silent failures are the enemy of maintainability.`
   },
   {
     title: "Separation of Concerns",
     icon: Layers,
     statement: "Decoupling logic from transport.",
-    desc: "My controllers don't know about business rules; they only handle HTTP. My services don't know about Express; they only handle logic. This modularity ensures the system can evolve without breaking."
+    desc: `My controllers don't know about business rules; they only handle HTTP. My services don't know about Express; they only handle logic.
+
+[Image of software layered architecture diagram]
+This modularity ensures the system can evolve without breaking and allows teams to work on separate layers safely.`
   },
   {
     title: "Maintainability Over Shortcuts",
     icon: Scale,
     statement: "Write for the developer who comes next.",
-    desc: "Clever one-liners are technical debt. I prefer verbose, explicit code that clearly communicates intent. Reliability scales; clever hacks don't."
+    desc: `Clever one-liners are technical debt. I prefer verbose, explicit code that clearly communicates intent. Reliability scales; clever hacks don't. Every line of code should be easy to understand for the next developer.`
   },
   {
     title: "Documentation Over Assumptions",
     icon: FileText,
     statement: "If it isn't written down, it doesn't exist.",
-    desc: "From API documentation (Postman/Swagger) to inline comments explaining 'why' (not just 'what'), I believe clarity is a core deliverable."
+    desc: `From API documentation (Postman/Swagger) to inline comments explaining 'why' (not just 'what'), I believe clarity is a core deliverable. Systems without documentation are systems that break silently.`
   }
 ];
 
@@ -46,18 +71,6 @@ export default function Process() {
   return (
     <ReactLenis root>
       <div className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden pt-24 pb-20">
-        
-        {/* --- NAVIGATION --- */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 mix-blend-multiply">
-          <div className="bg-parchment/80 backdrop-blur-md border border-camel/20 rounded-full px-6 py-3 flex items-center gap-6 shadow-sm shadow-camel/5">
-            <Link to="/" className="font-serif font-bold text-camel text-lg hover:text-camel-dark transition-colors">EO.</Link>
-            <div className="w-px h-4 bg-camel/30" />
-            <div className="flex gap-6 text-sm font-medium text-camel-dark">
-              <Link to="/experience" className="hover:text-camel transition-colors">Experience</Link>
-              <span className="text-camel">Process</span>
-            </div>
-          </div>
-        </nav>
 
         <div className="container mx-auto px-6 max-w-5xl">
           
@@ -89,12 +102,12 @@ export default function Process() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="group"
               >
-                <div className="bg-white p-8 md:p-10 rounded-2xl border border-camel/10 shadow-sm hover:shadow-xl hover:shadow-camel/10 transition-all duration-300 h-full relative overflow-hidden">
+                <div className="bg-white p-8 md:p-10 rounded-2xl border border-camel/10 shadow-sm hover:shadow-xl hover:shadow-camel/10 transition-all duration-300 h-full relative overflow-hidden flex flex-col">
                   
                   {/* Hover Accent (Background Blob) */}
                   <div className="absolute -top-10 -right-10 w-32 h-32 bg-almond-cream/40 rounded-full blur-2xl group-hover:bg-almond-silk/30 transition-colors" />
 
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex-1">
                     {/* Header */}
                     <div className="flex items-start justify-between mb-6">
                       <div className="p-3 bg-azure-mist rounded-xl text-camel">
@@ -112,7 +125,7 @@ export default function Process() {
                     <p className="text-xs font-bold text-camel uppercase tracking-wider mb-6 opacity-80">
                       "{item.statement}"
                     </p>
-                    <p className="text-camel-dark/80 leading-relaxed">
+                    <p className="text-camel-dark/80 leading-relaxed text-sm md:text-base whitespace-pre-line">
                       {item.desc}
                     </p>
                   </div>

@@ -1,15 +1,36 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Server, Database, Layout, Terminal, CheckCircle2, Cpu, Globe, GitBranch } from "lucide-react";
+import { 
+  Server, 
+  Database, 
+  Layout, 
+  Terminal, 
+  CheckCircle2, 
+  type LucideIcon 
+} from "lucide-react";
 import { ReactLenis } from "lenis/react";
 
-const SKILLS = {
+// --- TYPES ---
+interface SkillSection {
+  category: string;
+  icon: LucideIcon;
+  desc: string;
+  items: string[];
+}
+
+interface SkillData {
+  primary: SkillSection[];
+  supporting: SkillSection[];
+}
+
+// --- DATA ---
+const SKILLS: SkillData = {
   primary: [
-    {
-      category: "Backend & Systems",
-      icon: Server,
-      desc: "The core logic layer where I spend 70% of my development time.",
-      items: [
+{
+  category: "Backend & Systems",
+  icon: Server,
+  desc: "The core logic layer where I spend 70% of my development time. I design and implement backend systems that are secure, modular, and maintainable.",
+  items: [
         "Node.js Runtime Environment",
         "Express.js Framework",
         "RESTful API Architecture",
@@ -21,7 +42,7 @@ const SKILLS = {
     {
       category: "Databases & Data Modeling",
       icon: Database,
-      desc: "Designing structures that ensure data integrity and query efficiency.",
+      desc: "Designing structures that ensure data integrity and query efficiency. I build relational and NoSQL database schemas that are normalized and analytics-ready.",
       items: [
         "Relational SQL (MySQL, PostgreSQL)",
         "NoSQL Documents (MongoDB, Mongoose)",
@@ -37,13 +58,25 @@ const SKILLS = {
       category: "Frontend Interface",
       icon: Layout,
       desc: "Building clean, data-driven interfaces to consume my APIs.",
-      items: ["React.js", "JavaScript (ES6+)", "HTML5 & Semantic Markup", "CSS3 / Tailwind CSS", "Admin Dashboards"]
+      items: [
+        "React.js", 
+        "JavaScript (ES6+)", 
+        "HTML5 & Semantic Markup", 
+        "CSS3 / Tailwind CSS", 
+        "Admin Dashboards"
+      ]
     },
     {
       category: "Tools & Practices",
       icon: Terminal,
       desc: "The workflows and standards that keep code production-ready.",
-      items: ["Git Version Control & GitHub", "MVC Layered Architecture", "Environment Configuration (.env)", "SweetAlert2 UX Handling", "Debugging & Troubleshooting"]
+      items: [
+        "Git Version Control & GitHub", 
+        "MVC Layered Architecture", 
+        "Environment Configuration (.env)", 
+        "SweetAlert2 UX Handling", 
+        "Debugging & Troubleshooting"
+      ]
     }
   ]
 };
@@ -52,18 +85,6 @@ export default function Skills() {
   return (
     <ReactLenis root>
       <div className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden pt-24 pb-20">
-        
-        {/* --- NAVIGATION --- */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 mix-blend-multiply">
-          <div className="bg-parchment/80 backdrop-blur-md border border-camel/20 rounded-full px-6 py-3 flex items-center gap-6 shadow-sm shadow-camel/5">
-            <Link to="/" className="font-serif font-bold text-camel text-lg hover:text-camel-dark transition-colors">EO.</Link>
-            <div className="w-px h-4 bg-camel/30" />
-            <div className="flex gap-6 text-sm font-medium text-camel-dark">
-              <Link to="/projects" className="hover:text-camel transition-colors">Projects</Link>
-              <span className="text-camel">Skills</span>
-            </div>
-          </div>
-        </nav>
 
         <div className="container mx-auto px-6 max-w-5xl">
           
@@ -79,8 +100,8 @@ export default function Skills() {
               The Engine Room.
             </h1>
             <p className="text-camel-dark/60 max-w-2xl text-lg leading-relaxed">
-              I don't just "know" these tools; I use them to solve specific architectural problems. 
-              My expertise is weighted heavily towards the server-side and data layer.
+              I don't just "know" these tools; I use them to solve specific architectural and data problems.
+              My expertise is weighted heavily towards server-side logic, database design, and system reliability.
             </p>
           </motion.div>
 
@@ -111,7 +132,9 @@ export default function Skills() {
                     </div>
                     
                     <h3 className="font-serif text-2xl text-camel-dark mb-3">{skill.category}</h3>
-                    <p className="text-camel-dark/60 text-sm mb-8 min-h-[40px]">{skill.desc}</p>
+                    <p className="text-camel-dark/60 text-sm mb-8 min-h-[40px] leading-relaxed">
+                      {skill.desc}
+                    </p>
                     
                     <ul className="space-y-4">
                       {skill.items.map((item, i) => (

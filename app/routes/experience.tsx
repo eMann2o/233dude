@@ -1,10 +1,9 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Briefcase, Network, Monitor, Code2, Calendar, MapPin, Building2 } from "lucide-react";
+import { Briefcase, Network, Monitor, Code2, Calendar, MapPin, Building2, CheckCircle2, ArrowRight } from "lucide-react";
 import { ReactLenis } from "lenis/react";
 
 // --- DATA: EXPERIENCE TIMELINE ---
-// Ordered reverse-chronologically (assumed based on context)
 const EXPERIENCE = [
   {
     company: "AmaliTech",
@@ -14,9 +13,9 @@ const EXPERIENCE = [
     icon: Code2,
     takeaway: "Production Standards & React Workflows",
     points: [
-      "Worked with React in a structured engineering environment.",
-      "Collaborated on production-style workflows and version control patterns.",
-      "Gained exposure to professional code standards, code reviews, and agile teamwork."
+      "Worked within a professional environment emphasizing structured development, collaboration, and code quality.",
+      "Gained exposure to React-based full-stack workflows and clean interfaces between frontend and backend layers.",
+      "Reinforced engineering practices: readable code, version control, and clear technical communication."
     ]
   },
   {
@@ -25,11 +24,11 @@ const EXPERIENCE = [
     location: "Nzema, Ghana",
     type: "Corporate IT",
     icon: Building2,
-    takeaway: "Enterprise Constraints & User Support",
+    takeaway: "Reliability & Operational Continuity",
     points: [
-      "Supported internal IT systems and staff in a high-compliance mining environment.",
-      "Assisted with system setup, troubleshooting, and hardware lifecycle management.",
-      "Worked within real corporate constraints, prioritizing uptime and security."
+      "Supported internal systems in a corporate environment where stability and operational continuity were critical.",
+      "Assisted with setup, maintenance, and troubleshooting of hardware/software for non-technical staff.",
+      "Learned that systems are only successful when they work consistently for the people who rely on them."
     ]
   },
   {
@@ -38,11 +37,11 @@ const EXPERIENCE = [
     location: "Takoradi, Ghana",
     type: "Systems Support",
     icon: Monitor,
-    takeaway: "Data Workflows & Office Systems",
+    takeaway: "Data Accuracy & Institutional Process",
     points: [
-      "Maintained office IT systems and ensured reliability for daily operations.",
-      "Supported data management and document workflow digitization.",
-      "Assisted non-technical staff with system usage and troubleshooting."
+      "Supported IT infrastructure and data-related workflows in an institutional environment.",
+      "Assisted with document management processes, ensuring accuracy and consistency in digital records.",
+      "Highlighted the need for systems that are intuitive, well-structured, and resilient to user error."
     ]
   },
   {
@@ -52,11 +51,11 @@ const EXPERIENCE = [
     location: "Takoradi, Ghana",
     type: "Infrastructure",
     icon: Network,
-    takeaway: "Physical Infrastructure & Reliability",
+    takeaway: "Infrastructure Scale & Complexity",
     points: [
-      "Provided network infrastructure support, cabling, and switch configuration.",
-      "Performed hardware diagnostics and preventive system maintenance.",
-      "Improved system reliability and uptime for critical port operations."
+      "Gained hands-on experience supporting network cabling and infrastructure in a large operational environment.",
+      "Diagnosed hardware and connectivity issues where downtime had significant operational impact.",
+      "Reinforced the importance of disciplined processes, documentation, and adherence to standards."
     ]
   }
 ];
@@ -65,18 +64,6 @@ export default function Experience() {
   return (
     <ReactLenis root>
       <div className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden pt-24 pb-20">
-        
-        {/* --- NAVIGATION --- */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 mix-blend-multiply">
-          <div className="bg-parchment/80 backdrop-blur-md border border-camel/20 rounded-full px-6 py-3 flex items-center gap-6 shadow-sm shadow-camel/5">
-            <Link to="/" className="font-serif font-bold text-camel text-lg hover:text-camel-dark transition-colors">EO.</Link>
-            <div className="w-px h-4 bg-camel/30" />
-            <div className="flex gap-6 text-sm font-medium text-camel-dark">
-              <Link to="/about" className="hover:text-camel transition-colors">About</Link>
-              <span className="text-camel">History</span>
-            </div>
-          </div>
-        </nav>
 
         <div className="container mx-auto px-6 max-w-4xl">
           
@@ -92,13 +79,13 @@ export default function Experience() {
               The Path to <br />
               <span className="text-camel italic">Engineering.</span>
             </h1>
-            <p className="text-camel-dark/60 max-w-xl text-lg leading-relaxed">
-              My background in infrastructure and support provides a grounded perspective on how software actually lives in the real world.
+            <p className="text-camel-dark/60 max-w-2xl text-lg leading-relaxed">
+              My professional experience spans software engineering, backend-focused development, IT systems support, and institutional technology environments. These roles have shaped how I approach backend systems and data — with an emphasis on reliability, clarity, and real-world constraints.
             </p>
           </motion.div>
 
           {/* --- TIMELINE --- */}
-          <div className="relative border-l-2 border-camel/10 ml-4 md:ml-10 space-y-16 pb-12">
+          <div className="relative border-l-2 border-camel/10 ml-4 md:ml-10 space-y-16 pb-12 mb-24">
             
             {EXPERIENCE.map((job, index) => (
               <motion.div 
@@ -158,13 +145,46 @@ export default function Experience() {
 
           </div>
 
-          {/* --- FOOTER CTA --- */}
-          <div className="mt-20 text-center">
-            <Link to="/contact" className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-camel text-parchment hover:scale-110 transition-transform shadow-lg shadow-camel/20">
-              <Network size={24} />
+          {/* --- KEY LESSONS SECTION (New) --- */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-azure-mist/50 p-8 md:p-12 rounded-3xl border border-camel/10 mb-20"
+          >
+            <h2 className="font-serif text-3xl text-camel-dark mb-8">How These Experiences Shape My Work</h2>
+            <div className="grid md:grid-cols-1 gap-4">
+              {[
+                "Systems must be reliable before they are feature-rich.",
+                "Data accuracy and integrity are non-negotiable.",
+                "Clear access control and role separation matter.",
+                "Documentation and clarity reduce long-term maintenance cost.",
+                "Technology should support people and processes, not complicate them."
+              ].map((lesson, i) => (
+                <div key={i} className="flex gap-4 items-center bg-white/60 p-4 rounded-xl border border-camel/5">
+                  <CheckCircle2 className="text-camel shrink-0" size={20} />
+                  <span className="text-camel-dark font-medium">{lesson}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* --- CURRENT DIRECTION (New) --- */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center max-w-2xl mx-auto"
+          >
+            <span className="text-camel font-bold tracking-widest uppercase text-xs mb-3 block">Current Direction</span>
+            <p className="text-camel-dark/80 text-lg leading-relaxed mb-8">
+              I am now focused on <strong>backend engineering and backend-adjacent data roles</strong>, where system architecture, data integrity, and analytical thinking intersect.
+            </p>
+            
+            <Link to="/contact" className="inline-flex items-center gap-2 bg-camel-dark text-parchment px-8 py-4 rounded-full font-bold hover:bg-camel transition-all shadow-lg shadow-camel/20">
+              Discuss Opportunities <ArrowRight size={18} />
             </Link>
-            <p className="mt-4 text-camel-dark/50 text-sm font-medium">Ready to collaborate?</p>
-          </div>
+          </motion.div>
 
         </div>
       </div>

@@ -1,15 +1,48 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Server, Database, Shield, FileJson, Layout, Users, FileText } from "lucide-react";
+import { 
+  ArrowRight, 
+  Github, 
+  Server, 
+  Database, 
+  Shield, 
+  FileJson, 
+  Layout, 
+  Users, 
+  FileText, 
+  type LucideIcon 
+} from "lucide-react";
 import { ReactLenis } from "lenis/react";
 
+// --- TYPES ---
+interface Capability {
+  icon: LucideIcon;
+  text: string;
+}
+
+interface ProjectLinks {
+  caseStudy: string;
+  github: string;
+}
+
+interface Project {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  capabilities: Capability[];
+  stack: string[];
+  links: ProjectLinks;
+  highlight: boolean;
+}
+
 // --- DATA: CURATED PROJECTS ---
-const PROJECTS = [
+const PROJECTS: Project[] = [
   {
     id: "travel-with-kb",
     title: "Travel With KB",
     subtitle: "MERN Stack • Full-Stack Booking System",
-    description: "A decoupled travel booking platform featuring a REST API, secure JWT authentication, and a normalized MongoDB schema.",
+    description: "A decoupled travel booking platform featuring a REST API, secure JWT authentication, and a normalized MongoDB schema designed for data integrity.",
     capabilities: [
       { icon: Server, text: "API-First Architecture" },
       { icon: Shield, text: "Secure Auth (HTTP-Only cookies)" },
@@ -25,7 +58,7 @@ const PROJECTS = [
     id: "scholarship-platform",
     title: "Scholarship Application Platform",
     subtitle: "Node.js & PHP • Institutional Workflow System",
-    description: "A multi-role scholarship management system handling applications, secure document uploads, reviews, and automated status transitions.",
+    description: "A multi-role scholarship management system handling applications, secure document uploads, reviews, and automated status transitions for accurate reporting.",
     capabilities: [
       { icon: Users, text: "Applicant Onboarding & Tracking" },
       { icon: FileText, text: "Secure Document Uploads (PDF)" },
@@ -40,7 +73,7 @@ const PROJECTS = [
     id: "lms",
     title: "Learning Management System",
     subtitle: "PHP & MySQL • Educational Platform",
-    description: "A comprehensive LMS focused on structured educational workflows, module architecture, and real-time communication.",
+    description: "A comprehensive LMS focused on structured educational workflows, module architecture, and real-time communication without compromising data consistency.",
     capabilities: [
       { icon: Layout, text: "Modules & Courses Architecture" },
       { icon: Users, text: "Role-Based Access (Admin/Student)" },
@@ -57,18 +90,6 @@ export default function Projects() {
   return (
     <ReactLenis root>
       <div className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden pt-24 pb-20">
-        
-        {/* --- NAVIGATION (Internal) --- */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 mix-blend-multiply">
-          <div className="bg-parchment/80 backdrop-blur-md border border-camel/20 rounded-full px-6 py-3 flex items-center gap-6 shadow-sm shadow-camel/5">
-            <Link to="/" className="font-serif font-bold text-camel text-lg hover:text-camel-dark transition-colors">EO.</Link>
-            <div className="w-px h-4 bg-camel/30" />
-            <div className="flex gap-6 text-sm font-medium text-camel-dark">
-              <span className="text-camel">Projects</span>
-              <Link to="/about" className="hover:text-camel transition-colors">About</Link>
-            </div>
-          </div>
-        </nav>
 
         <div className="container mx-auto px-6 max-w-5xl">
           

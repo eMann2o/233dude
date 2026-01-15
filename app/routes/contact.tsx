@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Github, Linkedin, FileText, ArrowUpRight, Copy, Check } from "lucide-react";
+import { Mail, Github, Linkedin, FileText, ArrowUpRight, Copy, Check, MessageSquare } from "lucide-react";
 import { ReactLenis } from "lenis/react";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
-  const email = "emmanuel@example.com"; // Replace with real email
+  const email = "papa16annan@gmail.com"; // Replace with your actual email
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
@@ -31,8 +31,8 @@ export default function Contact() {
     },
     {
       label: "Curriculum Vitae",
-      value: "Standard PDF Resume",
-      href: "/resume.pdf", // Ensure this file is in your public folder
+      value: "Structured Overview (PDF)",
+      href: "/resume.pdf", 
       icon: FileText,
       action: "Download"
     }
@@ -41,18 +41,6 @@ export default function Contact() {
   return (
     <ReactLenis root>
       <div className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden pt-24 pb-12 flex flex-col justify-between">
-        
-        {/* --- NAVIGATION --- */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 mix-blend-multiply">
-          <div className="bg-parchment/80 backdrop-blur-md border border-camel/20 rounded-full px-6 py-3 flex items-center gap-6 shadow-sm shadow-camel/5">
-            <Link to="/" className="font-serif font-bold text-camel text-lg hover:text-camel-dark transition-colors">EO.</Link>
-            <div className="w-px h-4 bg-camel/30" />
-            <div className="flex gap-6 text-sm font-medium text-camel-dark">
-              <Link to="/projects" className="hover:text-camel transition-colors">Projects</Link>
-              <span className="text-camel">Contact</span>
-            </div>
-          </div>
-        </nav>
 
         <div className="container mx-auto px-6 max-w-2xl relative z-10">
           
@@ -61,16 +49,15 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <span className="text-camel font-bold tracking-widest uppercase text-xs mb-4 block">Final Endpoint</span>
-            <h1 className="font-serif text-5xl md:text-6xl text-camel-dark leading-tight mb-6">
-              Let's build <br />
-              <span className="text-camel italic">systems.</span>
+            <span className="text-camel font-bold tracking-widest uppercase text-xs mb-4 block">Connection</span>
+            <h1 className="font-serif text-4xl md:text-5xl text-camel-dark leading-tight mb-6">
+              Backend systems & <br />
+              <span className="text-camel italic">data opportunities.</span>
             </h1>
-            <p className="text-camel-dark/60 text-lg">
-              Currently available for backend-focused roles. <br />
-              No forms. Just direct communication.
+            <p className="text-camel-dark/70 text-lg leading-relaxed max-w-xl mx-auto">
+              I am open to conversations around backend engineering roles, internships, and collaborative technical work where <strong className="text-camel-dark font-medium">system design, data integrity, and maintainability</strong> matter.
             </p>
           </motion.div>
 
@@ -79,7 +66,7 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="mb-12"
+            className="mb-8"
           >
             <div className="bg-white rounded-2xl border border-camel/10 shadow-xl shadow-camel/5 p-2 flex flex-col sm:flex-row items-center gap-2">
               <div className="flex-1 w-full sm:w-auto px-6 py-4 flex items-center gap-4">
@@ -87,7 +74,7 @@ export default function Contact() {
                   <Mail size={24} />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-camel uppercase tracking-wider mb-1">Email Address</div>
+                  <div className="text-xs font-bold text-camel uppercase tracking-wider mb-1">Direct Email</div>
                   <div className="text-camel-dark font-medium text-lg md:text-xl truncate">{email}</div>
                 </div>
               </div>
@@ -122,13 +109,13 @@ export default function Contact() {
           </motion.div>
 
           {/* --- SECONDARY LINKS GRID --- */}
-          <div className="grid gap-4">
+          <div className="grid gap-4 mb-16">
             {CONTACT_LINKS.map((link, idx) => (
               <motion.a 
                 key={idx}
                 href={link.href}
-                target={link.label === "Curriculum Vitae" ? "_self" : "_blank"}
-                download={link.label === "Curriculum Vitae"}
+                target={link.label.includes("Curriculum") ? "_self" : "_blank"}
+                download={link.label.includes("Curriculum")}
                 rel="noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -147,19 +134,26 @@ export default function Contact() {
             ))}
           </div>
 
-        </div>
+          {/* --- COMMUNICATION STANDARDS --- */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="border-t border-camel/10 pt-12 text-center"
+          >
+             <div className="inline-flex items-center justify-center p-3 bg-almond-cream/30 text-camel rounded-full mb-6">
+                <MessageSquare size={20} />
+             </div>
+             <h3 className="text-camel-dark font-serif text-2xl mb-4">Communication Standards</h3>
+             <p className="text-camel-dark/70 text-sm leading-relaxed max-w-lg mx-auto mb-6">
+                I value clear, direct communication. If you are reaching out about a role or project, including a brief description of the problem or system you are working on is appreciated.
+             </p>
+             <p className="text-camel-dark/50 text-xs italic">
+                This portfolio is intended to provide enough context for a meaningful technical conversation.
+             </p>
+          </motion.div>
 
-        {/* --- FOOTER --- */}
-        <motion.footer 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="text-center mt-auto"
-        >
-          <p className="text-camel-dark/30 text-sm font-serif italic">
-            &copy; 2026 Emmanuel Opoku. Built with precision.
-          </p>
-        </motion.footer>
+        </div>
 
       </div>
     </ReactLenis>

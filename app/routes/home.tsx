@@ -67,7 +67,7 @@ export default function Home() {
               ))}
             </div>
             <a 
-              href="mailto:contact@email.com" 
+              href="mailto:papa16annan@gmail.com" 
               className="bg-camel text-azure-mist px-4 py-1.5 rounded-full text-sm font-medium hover:bg-camel-dark transition-colors"
             >
               Contact
@@ -268,7 +268,7 @@ export default function Home() {
               Currently available for backend engineering roles. <br/>Let's discuss your system requirements.
             </p>
             <a 
-              href="mailto:emmanuel@example.com" 
+              href="mailto:papa16annan@gmail.com" 
               className="inline-block bg-parchment text-camel-dark px-8 py-4 rounded-full font-bold hover:bg-white transition-colors"
             >
               Get in Touch

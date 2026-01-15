@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router"; 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Database, Server, Shield, Terminal, Github } from "lucide-react";
+import { ArrowRight, Database, Server, Shield, Terminal, Github, Layers, Lock, FileText, Zap, Activity, TrendingUp, FileCode } from "lucide-react";
 import { ReactLenis } from "lenis/react";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
 
@@ -9,22 +9,22 @@ import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadius
 const PROJECTS = [
   {
     title: "Travel With KB",
-    role: "Full-Stack System",
-    desc: "A decoupled REST API booking engine with strict JWT security and normalized data modeling.",
+    role: "API-First Backend",
+    desc: "An API-first backend system built with Express.js, featuring decoupled architecture and secure JWT authentication.",
     tech: ["Node.js", "Express", "MongoDB", "React"],
     link: "/projects/travel-with-kb"
   },
   {
     title: "Scholarship Platform",
-    role: "Institutional Backend",
-    desc: "Multi-role application workflow system handling document validation and automated status transitions.",
+    role: "Institutional Workflow",
+    desc: "A scholarship application and review platform with multi-role access, document validation, and automated status transitions.",
     tech: ["PHP", "MySQL", "RBAC Architecture"],
     link: "/projects/scholarship-platform"
   },
   {
     title: "Learning Management System",
-    role: "Educational Workflow",
-    desc: "Structured LMS with module architecture, group chat tracking, and auto-graded assessments.",
+    role: "Educational System",
+    desc: "A learning management system designed around structured educational workflows, module architecture, and chat tracking.",
     tech: ["PHP", "MySQL", "System Design"],
     link: "/projects/lms"
   }
@@ -47,150 +47,306 @@ export default function Home() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0px", "100px"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.5]);
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { delay: 0.2 }
+  };
 
   return (
     <ReactLenis root>
       <div ref={containerRef} className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden">
-        
-        {/* --- NAVIGATION --- */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-          <div className="bg-azure-mist/80 backdrop-blur-md border border-camel/20 rounded-full px-6 py-3 flex items-center gap-8 shadow-sm shadow-camel/5">
-            <span className="font-serif font-bold text-camel text-lg">EO.</span>
-            <div className="hidden md:flex gap-6 text-sm font-medium text-camel-dark">
-              {['Projects', 'Case Studies', 'About'].map((item) => (
-                <Link key={item} to={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-camel transition-colors relative group">
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-camel transition-all group-hover:w-full" />
-                </Link>
-              ))}
-            </div>
-            {/* No "Hire Me" button as requested - clean nav */}
-          </div>
-        </nav>
 
         {/* --- HERO SECTION --- */}
-        <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
-          {/* Animated Background Blobs */}
-          <div className="absolute inset-0 w-full h-full pointer-events-none">
-            <motion.div 
-              animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-azure-mist rounded-full blur-[100px] opacity-60"
-            />
-            <motion.div 
-              animate={{ rotate: -360, scale: [1, 1.2, 1] }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-almond-silk rounded-full blur-[120px] opacity-40"
-            />
-          </div>
+      <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
+        {/* Animated Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none">
+          <motion.div 
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.1, 1],
+              x: [0, 30, 0],
+              y: [0, -20, 0]
+            }}
+            transition={{ 
+              duration: 25, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#DEEEF7] rounded-full blur-[120px] opacity-50"
+          />
+          <motion.div 
+            animate={{ 
+              rotate: -360,
+              scale: [1, 1.2, 1],
+              x: [0, -30, 0],
+              y: [0, 30, 0]
+            }}
+            transition={{ 
+              duration: 30, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-[#E6BEAE] rounded-full blur-[140px] opacity-30"
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.15, 1],
+              opacity: [0.2, 0.3, 0.2]
+            }}
+            transition={{ 
+              duration: 20, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="absolute top-[40%] left-[30%] w-[30vw] h-[30vw] bg-[#F5E6D3] rounded-full blur-[100px]"
+          />
+        </div>
 
-          <div className="relative z-10 container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div className="space-y-8">
+        <motion.div 
+          style={{ y: heroY, opacity }}
+          className="relative z-10 container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center"
+        >
+          {/* Text Content */}
+          <div className="space-y-8">
+            <motion.div {...fadeInUp}>
+              {/* Status Badge */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.3, type: "spring" }}
+                className="inline-flex items-center gap-2 bg-[#DEEEF7] border border-[#B2967D]/20 rounded-full px-4 py-2 mb-6"
               >
-                {/* Name & Role */}
-                <h2 className="text-camel font-bold tracking-widest uppercase text-sm mb-2">Emmanuel Opoku</h2>
-                <h3 className="text-camel-dark/60 font-medium mb-6">Backend-Focused Full-Stack Developer</h3>
-
-                {/* CORE STATEMENT - Large & Impactful */}
-                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-camel-dark leading-[1.15] mb-6">
-                  I build secure, <span className="text-camel italic">API-driven systems</span> with real-world workflows, role-based access, and long-term maintainability in mind.
-                </h1>
-
-                {/* Supporting Context */}
-                <div className="border-l-2 border-camel/30 pl-4 py-1 mb-8">
-                  <p className="text-camel-dark font-medium">Express.js • REST APIs • Relational Databases</p>
-                  <p className="text-camel-dark/70 text-sm mt-1">Backend systems for institutions, platforms, and admin workflows</p>
-                </div>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B2967D] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B2967D]"></span>
+                </span>
+                <span className="text-[#6D5442] text-xs font-semibold">Available for Backend Opportunities</span>
               </motion.div>
 
-              {/* Call to Action */}
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
-              >
-                <Link to="/projects" className="group flex items-center gap-2 bg-camel-dark text-parchment px-8 py-3 rounded-lg hover:bg-camel transition-all font-medium">
-                  View Projects
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                
-                <a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 border border-camel/30 rounded-lg text-camel-dark hover:bg-camel/10 transition-colors font-medium">
-                  <Github className="w-5 h-5" />
-                  GitHub
-                </a>
-              </motion.div>
+              <h2 className="text-[#B2967D] font-bold tracking-[0.3em] uppercase text-xs mb-3 flex items-center gap-2">
+                <Terminal size={14} /> Emmanuel Opoku
+              </h2>
+              
+              <h3 className="text-[#6D5442]/70 font-semibold mb-8 flex items-center gap-2 text-base">
+                Backend Engineer • API Architecture • Data Analysis
+              </h3>
 
-              {/* Secondary Signal */}
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="text-xs text-camel-dark/40 font-mono mt-4 max-w-md"
-              >
-                Focused on backend architecture, security, and data integrity — not demo apps.
-              </motion.p>
-            </div>
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#6D5442] leading-[1.1] mb-8">
+                I build secure, 
+                <span className="text-[#B2967D] italic block mt-2">data-driven</span>
+                backend systems
+                <span className="text-[#6D5442]/50 text-4xl md:text-5xl block mt-3">
+                  that scale.
+                </span>
+              </h1>
 
-            {/* Visual Representation - Code Logic */}
-            <motion.div style={{ y }} className="hidden md:flex justify-center relative">
-              <div className="relative w-full max-w-md bg-almond-cream/20 backdrop-blur-md border border-white/50 rounded-2xl p-8 rotate-2 hover:rotate-0 transition-transform duration-700 shadow-2xl shadow-camel/10">
-                
-                {/* Header Dots */}
-                <div className="flex gap-2 mb-6 opacity-60">
-                  <div className="w-3 h-3 rounded-full bg-camel-dark" />
-                  <div className="w-3 h-3 rounded-full bg-camel" />
-                  <div className="w-3 h-3 rounded-full bg-almond-silk" />
-                </div>
-
-                {/* Code Snippet - Backend Logic */}
-                <div className="space-y-4 font-mono text-sm text-camel-dark">
-                  <div className="opacity-50">// Middleware: Protect Admin Route</div>
+              {/* Value Proposition */}
+              <div className="bg-white/50 backdrop-blur-sm border-l-4 border-[#B2967D] rounded-r-xl px-6 py-5 space-y-3 shadow-sm">
+                <div className="flex items-start gap-3">
+                  <Shield className="w-5 h-5 text-[#B2967D] mt-0.5 shrink-0" />
                   <div>
-                    <span className="text-camel font-bold">const</span> <span className="text-camel-dark">restrictTo</span> = (...roles) ={'>'} {'{'}
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-camel font-bold">return</span> (req, res, next) ={'>'} {'{'}
-                  </div>
-                  <div className="pl-8 text-camel-dark/80">
-                    <span className="text-camel">if</span> (!roles.includes(req.user.role)) {'{'}
-                  </div>
-                  <div className="pl-12 text-red-800/70">
-                    <span className="text-camel">throw</span> <span className="font-bold">AppError</span>('Permission denied', 403);
-                  </div>
-                  <div className="pl-8">{'}'}</div>
-                  <div className="pl-8 text-green-800/70">
-                    next(); <span className="opacity-40">// Access Granted</span>
-                  </div>
-                  <div className="pl-4">{'}'};</div>
-                  <div>{'}'};</div>
-                </div>
-                
-                {/* Floating "Secure" Badge */}
-                <div className="absolute -bottom-5 -right-5 bg-parchment border border-camel/10 p-4 rounded-xl shadow-lg flex items-center gap-3 animate-float">
-                  <div className="bg-azure-mist p-2 rounded-lg text-camel">
-                    <Shield size={20} />
-                  </div>
-                  <div>
-                    <div className="text-xs text-camel-dark/60 uppercase tracking-wider">Security</div>
-                    <div className="font-bold text-camel-dark">RBAC Enforced</div>
+                    <p className="text-[#6D5442] font-semibold text-lg">Node.js • Express • Relational Design</p>
+                    <p className="text-[#6D5442]/70 text-sm mt-1">
+                      Backend architecture with data integrity, access control, and analytics built-in from day one.
+                    </p>
                   </div>
                 </div>
               </div>
             </motion.div>
-          </div>
-        </header>
 
-        {/* --- APPROACH / DATA VIZ SECTION --- */}
-        {/* (Kept identical to previous version, ensuring consistency) */}
+            {/* CTAs */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            >
+              <a 
+                href="#projects" 
+                className="group flex items-center gap-3 bg-[#6D5442] text-[#F5F1ED] px-10 py-4 rounded-xl hover:bg-[#B2967D] transition-all font-semibold shadow-lg shadow-[#6D5442]/20 hover:shadow-xl hover:shadow-[#B2967D]/30 hover:scale-105 transform"
+              >
+                View Projects 
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a 
+                href="https://github.com" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="group flex items-center gap-3 px-8 py-4 border-2 border-[#B2967D]/30 rounded-xl text-[#6D5442] hover:bg-[#B2967D]/10 hover:border-[#B2967D] transition-all font-semibold"
+              >
+                <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" /> 
+                GitHub Profile
+              </a>
+            </motion.div>
+
+            {/* Anti-positioning */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="flex items-start gap-3 pt-4"
+            >
+              <Zap className="w-4 h-4 text-[#B2967D] mt-0.5 shrink-0" />
+              <p className="text-xs text-[#6D5442]/50 font-mono max-w-md leading-relaxed">
+                Focus: Backend integrity, secure APIs, workflow logic, and structured data.
+                <span className="block mt-1">Not interested in: UI-heavy prototypes or design-first roles.</span>
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Visual - Enhanced Code Editor */}
+          <motion.div 
+            style={{ y: heroY }}
+            initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:block relative"
+          >
+            <div className="relative w-full bg-white/40 backdrop-blur-xl border border-white/60 rounded-2xl overflow-hidden rotate-1 hover:rotate-0 transition-all duration-700 shadow-2xl shadow-[#B2967D]/20">
+              {/* Window Controls */}
+              <div className="flex items-center justify-between bg-[#6D5442]/5 backdrop-blur-sm px-6 py-4 border-b border-[#B2967D]/10">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
+                  <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+                  <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
+                </div>
+                <div className="flex items-center gap-2 text-[#6D5442]/50 text-xs font-mono">
+                  <FileCode size={14} />
+                  <span>api/auth/middleware.js</span>
+                </div>
+              </div>
+
+              <div className="p-8 space-y-6">
+                {/* Code Block 1 */}
+                <div className="space-y-2 font-mono text-sm">
+                  <div className="text-[#6D5442]/40 text-xs">// Secure Authentication Middleware</div>
+                  <div className="text-[#6D5442]">
+                    <span className="text-[#B2967D] font-bold">const</span> <span className="text-[#6D5442]">verifyToken</span> = <span className="text-[#B2967D]">async</span> (req, res, next) {'=>'} {'{'}
+                  </div>
+                  <div className="pl-6 text-[#6D5442]">
+                    <span className="text-[#B2967D]">const</span> token = req.headers.authorization;
+                  </div>
+                  <div className="pl-6 text-[#6D5442]">
+                    <span className="text-[#B2967D]">if</span> (!token) <span className="text-[#B2967D]">return</span> res.status(<span className="text-green-700">401</span>);
+                  </div>
+                  <div className="pl-6 text-[#6D5442]">
+                    <span className="text-[#B2967D]">const</span> user = <span className="text-[#B2967D]">await</span> <span className="text-[#6D5442]">jwt.verify</span>(token);
+                  </div>
+                  <div className="pl-6 text-[#6D5442]">
+                    req.user = user; <span className="text-[#6D5442]/40">// Attach to request</span>
+                  </div>
+                  <div className="pl-6 text-[#6D5442]">
+                    <span className="text-[#B2967D]">await</span> <span className="text-[#6D5442]">auditLog.create</span>({'{'}user, action{'}'});
+                  </div>
+                  <div className="pl-6 text-[#6D5442]">
+                    next();
+                  </div>
+                  <div className="text-[#6D5442]">{'}'}</div>
+                </div>
+
+                {/* Divider */}
+                <div className="border-t border-[#B2967D]/10"></div>
+
+                {/* Code Block 2 */}
+                <div className="space-y-2 font-mono text-sm">
+                  <div className="text-[#6D5442]/40 text-xs">// Data Analysis Query</div>
+                  <div className="text-[#6D5442]">
+                    <span className="text-[#B2967D] font-bold">SELECT</span>
+                  </div>
+                  <div className="pl-6 text-[#6D5442]">
+                    endpoint, <span className="text-[#B2967D]">AVG</span>(latency) <span className="text-[#B2967D]">as</span> avg_latency,
+                  </div>
+                  <div className="pl-6 text-[#6D5442]">
+                    <span className="text-[#B2967D]">COUNT</span>(*) <span className="text-[#B2967D]">as</span> total_requests
+                  </div>
+                  <div className="text-[#6D5442]">
+                    <span className="text-[#B2967D] font-bold">FROM</span> api_performance_logs
+                  </div>
+                  <div className="text-[#6D5442]">
+                    <span className="text-[#B2967D] font-bold">WHERE</span> timestamp {'>'} <span className="text-green-700">NOW()</span> - <span className="text-[#B2967D]">INTERVAL</span> <span className="text-green-700">'7 days'</span>
+                  </div>
+                  <div className="text-[#6D5442]">
+                    <span className="text-[#B2967D] font-bold">GROUP BY</span> endpoint;
+                  </div>
+                </div>
+
+                {/* Result Badge */}
+                <motion.div 
+                  initial={{ scale: 0, rotate: -10 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 1, type: "spring" }}
+                  className="absolute -bottom-4 -right-4 bg-[#F5F1ED] border-2 border-[#B2967D]/20 rounded-2xl px-6 py-4 shadow-xl flex items-center gap-4"
+                >
+                  <div className="bg-[#DEEEF7] p-3 rounded-xl">
+                    <TrendingUp size={24} className="text-[#B2967D]" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-[#6D5442]/60 uppercase tracking-wider font-bold">System Output</div>
+                    <div className="font-bold text-[#6D5442] text-lg">Trusted Data</div>
+                    <div className="text-xs text-[#6D5442]/50 font-mono">99.8% reliability</div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Floating Metrics */}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -left-8 top-1/4 bg-white/90 backdrop-blur-sm border border-[#B2967D]/20 rounded-xl px-4 py-3 shadow-lg"
+            >
+              <div className="flex items-center gap-2">
+                <Activity size={16} className="text-green-600" />
+                <div>
+                  <div className="text-[10px] text-[#6D5442]/60 uppercase font-bold">Uptime</div>
+                  <div className="text-lg font-bold text-[#6D5442]">99.8%</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -right-8 bottom-1/4 bg-white/90 backdrop-blur-sm border border-[#B2967D]/20 rounded-xl px-4 py-3 shadow-lg"
+            >
+              <div className="flex items-center gap-2">
+                <Zap size={16} className="text-[#B2967D]" />
+                <div>
+                  <div className="text-[10px] text-[#6D5442]/60 uppercase font-bold">Avg Response</div>
+                  <div className="text-lg font-bold text-[#6D5442]">120ms</div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#6D5442]/40"
+        >
+          <span className="text-xs font-mono">Scroll to explore</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowRight size={20} className="rotate-90" />
+          </motion.div>
+        </motion.div>
+      </header>
+
+        {/* --- TECHNICAL FOCUS SECTION (70/30 SIGNAL) --- */}
         <section className="py-24 bg-azure-mist relative border-t border-camel/5">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-center">
+              
+              {/* Left: Radar Chart */}
               <div className="h-[400px] w-full flex items-center justify-center order-2 md:order-1">
                 <ResponsiveContainer width="100%" height="100%">
                   <RadarChart cx="50%" cy="50%" outerRadius="80%" data={SKILL_DATA}>
@@ -202,29 +358,84 @@ export default function Home() {
                 </ResponsiveContainer>
               </div>
 
+              {/* Right: Technical Focus Text */}
               <div className="order-1 md:order-2">
-                <h2 className="font-serif text-4xl text-camel-dark mb-6">Process & Principles</h2>
-                <p className="text-camel-dark/80 mb-8 leading-relaxed text-lg">
-                  I approach software development with a <strong>system-first mindset</strong>. 
-                  My work prioritizes database integrity, clear separation of concerns, and security before convenience.
+                <span className="text-camel font-bold tracking-widest uppercase text-xs mb-3 block">Technical Focus</span>
+                <h2 className="font-serif text-4xl text-camel-dark mb-6">Backend Architecture & System Design</h2>
+                
+                <p className="text-camel-dark/80 mb-6 leading-relaxed text-lg">
+                  My current development work is centered on <strong className="text-camel-dark">Express.js</strong>, designing RESTful APIs with structured authentication, middleware-level authorization, and predictable error handling.
                 </p>
-                <div className="grid grid-cols-1 gap-6">
+                <p className="text-camel-dark/70 mb-8 leading-relaxed text-sm border-l-2 border-camel/20 pl-4">
+                  Earlier large-scale systems built with <strong className="text-camel-dark">PHP</strong> strengthened my understanding of long-form backend design, relational workflows, and institutional software needs. That experience now informs how I architect modern Node.js systems.
+                </p>
+
+                {/* HOW YOU THINK List */}
+                <div className="grid grid-cols-1 gap-4">
                   {[
-                    { icon: Database, title: "Database-First Design", desc: "Normalization and integrity checks define the logic." },
-                    { icon: Shield, title: "Security as a Feature", desc: "Failure handling and validation are never afterthoughts." },
-                    { icon: Terminal, title: "Clean Systems Scale", desc: "Documentation and maintainability over clever hacks." }
+                    { icon: Database, title: "Database design before endpoints" },
+                    { icon: Lock, title: "Authorization before features" },
+                    { icon: Terminal, title: "Maintainability over clever shortcuts" },
+                    { icon: FileText, title: "Documentation as a core deliverable" }
                   ].map((item, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="mt-1 text-camel"><item.icon size={24} /></div>
-                      <div>
-                        <h3 className="font-bold text-camel-dark">{item.title}</h3>
-                        <p className="text-sm text-camel-dark/60">{item.desc}</p>
-                      </div>
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="text-camel"><item.icon size={18} /></div>
+                      <h3 className="font-medium text-camel-dark">{item.title}</h3>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* --- PROJECTS SECTION --- */}
+        <section id="work" className="py-32 container mx-auto px-6">
+          <div className="flex flex-col items-center mb-16 text-center">
+            <span className="text-camel text-sm font-bold tracking-widest uppercase mb-2">Project Signal</span>
+            <h2 className="font-serif text-4xl text-camel-dark">Workflow-Driven Platforms.</h2>
+            <p className="mt-4 text-camel-dark/60 max-w-lg">
+              Each project is documented as a case study, focusing on architecture, decisions, and tradeoffs rather than surface-level features.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {PROJECTS.map((project, index) => (
+              <motion.div 
+                key={index}
+                whileHover={{ y: -8 }}
+                className="group relative bg-white rounded-2xl overflow-hidden border border-parchment shadow-sm hover:shadow-xl hover:shadow-camel/10 transition-all duration-300"
+              >
+                <div className="h-48 bg-almond-cream/50 relative overflow-hidden group-hover:bg-almond-silk/30 transition-colors">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#B2967D_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                  <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-camel-dark border border-camel/10">
+                    {project.role}
+                  </div>
+                </div>
+                
+                <div className="p-8">
+                  <h3 className="font-serif text-2xl text-camel-dark mb-3 group-hover:text-camel transition-colors">{project.title}</h3>
+                  <p className="text-camel-dark/70 text-sm mb-6 line-clamp-3 leading-relaxed">
+                    {project.desc}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map(t => (
+                      <span key={t} className="text-[10px] uppercase tracking-wider font-semibold text-camel-dark/50 bg-parchment px-2 py-1 rounded">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link 
+                    to={project.link} 
+                    className="inline-flex items-center gap-2 text-sm font-bold text-camel hover:gap-3 transition-all"
+                  >
+                    View Case Study <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 
