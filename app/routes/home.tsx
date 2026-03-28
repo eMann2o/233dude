@@ -1,293 +1,292 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router"; // React Router v7
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Database, Server, Shield, Code, Terminal, ExternalLink, Github } from "lucide-react";
-import { ReactLenis } from "lenis/react"; // Smooth scroll wrapper
+import { Link } from "react-router";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { 
+  ArrowRight, 
+  Database, 
+  Server, 
+  Shield, 
+  Terminal, 
+  Cpu, 
+  Workflow, 
+  Layers, 
+  Code2, 
+  Globe, 
+  Zap,
+  CheckCircle2,
+  ExternalLink,
+  Github,
+  Linkedin
+} from "lucide-react";
+import { ReactLenis } from "lenis/react";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
-import { cn } from "~/src/lib/utils"; // Adjust path to your utils
 
 // --- DATA ---
 const PROJECTS = [
   {
-    title: "Travel With KB",
-    role: "Full-Stack System",
-    desc: "A decoupled REST API booking engine with strict JWT security and normalized data modeling.",
-    tech: ["Node.js", "Express", "MongoDB", "React"],
-    link: "#"
+    title: "CareerFlow",
+    category: "AI & System Design",
+    desc: "AI-powered hiring platform using Computer Vision & NLP pipelines.",
+    tech: ["Node.js", "Express", "MediaPipe"],
+    color: "blue-bell",
+    link: "/projects"
   },
   {
-    title: "Scholarship Platform",
-    role: "Institutional Backend",
-    desc: "Multi-role application workflow system handling document validation and automated status transitions.",
-    tech: ["PHP", "MySQL", "RBAC Architecture"],
-    link: "#"
+    title: "Scholarship MIS",
+    category: "Backend Architecture",
+    desc: "Multi-role institutional engine with complex relational data modeling.",
+    tech: ["PostgreSQL", "RBAC", "TypeScript"],
+    color: "dusty-mauve",
+    link: "/projects"
   },
   {
-    title: "WESCCU MIS",
-    role: "Legacy Integration",
-    desc: "Financial management interface integrated with existing legacy databases for credit union operations.",
-    tech: ["System Architecture", "Data Migration"],
-    link: "#"
+    title: "Real-Time Systems",
+    category: "Low Latency Logic",
+    desc: "High-frequency messaging engine with optimized persistence layers.",
+    tech: ["WebSockets", "MySQL", "Redis"],
+    color: "lavender",
+    link: "/projects"
   }
 ];
 
-// Backend-focused stats for Recharts
 const SKILL_DATA = [
-  { subject: 'Backend Arch', A: 95, fullMark: 100 },
-  { subject: 'Database Design', A: 90, fullMark: 100 },
-  { subject: 'API Security', A: 85, fullMark: 100 },
-  { subject: 'Frontend UI', A: 60, fullMark: 100 }, // Shows honesty/focus
-  { subject: 'DevOps', A: 75, fullMark: 100 },
-  { subject: 'System Logic', A: 95, fullMark: 100 },
+  { subject: 'Architecture', A: 95, fullMark: 100 },
+  { subject: 'Data Engineering', A: 90, fullMark: 100 },
+  { subject: 'Security', A: 85, fullMark: 100 },
+  { subject: 'Performance', A: 80, fullMark: 100 },
+  { subject: 'Algorithms', A: 95, fullMark: 100 },
+  { subject: 'API Design', A: 92, fullMark: 100 },
 ];
 
 export default function Home() {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-
+  
   return (
     <ReactLenis root>
-      <div ref={containerRef} className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden">
+      <div ref={containerRef} className="bg-white min-h-screen font-sans selection:bg-blue-bell/20 selection:text-iron-grey overflow-hidden">
         
-        {/* --- NAVIGATION --- */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-          <div className="bg-azure-mist/80 backdrop-blur-md border border-camel/20 rounded-full px-6 py-3 flex items-center gap-8 shadow-sm shadow-camel/5">
-            <span className="font-serif font-bold text-camel text-lg">EO.</span>
-            <div className="hidden md:flex gap-6 text-sm font-medium text-camel-dark">
-              {['Work', 'Approach', 'About'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-camel transition-colors relative group">
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-camel transition-all group-hover:w-full" />
-                </a>
-              ))}
-            </div>
-            <a 
-              href="mailto:papa16annan@gmail.com" 
-              className="bg-camel text-azure-mist px-4 py-1.5 rounded-full text-sm font-medium hover:bg-camel-dark transition-colors"
-            >
-              Contact
-            </a>
-          </div>
-        </nav>
-
         {/* --- HERO SECTION --- */}
-        <header className="relative h-screen flex items-center justify-center overflow-hidden">
-          {/* Animated Background Blobs */}
-          <div className="absolute inset-0 w-full h-full pointer-events-none">
-            <motion.div 
-              animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-azure-mist rounded-full blur-[100px] opacity-60"
-            />
-            <motion.div 
-              animate={{ rotate: -360, scale: [1, 1.2, 1] }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-almond-silk rounded-full blur-[120px] opacity-40"
-            />
+        <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 px-6">
+          {/* Mockup-style Background Glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none opacity-40">
+            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-bell opacity-20 blur-[120px] rounded-full animate-pulse-slow" />
+            <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-lavender opacity-30 blur-[100px] rounded-full animate-pulse-slow" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-1/3 right-1/2 w-[500px] h-[500px] bg-dusty-mauve opacity-10 blur-[150px] rounded-full animate-float" />
           </div>
 
-          <div className="relative z-10 container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div className="space-y-6">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/40 border border-camel/20 text-camel-dark text-xs font-semibold tracking-wider mb-6">
-                  <div className="w-2 h-2 rounded-full bg-camel animate-pulse" />
-                  SYSTEMS & BACKEND ARCHITECTURE
-                </div>
-                <h1 className="font-serif text-5xl md:text-7xl text-camel-dark leading-[1.1]">
-                  Building logic <br />
-                  <span className="text-camel italic">behind the pixels.</span>
-                </h1>
-                <p className="mt-6 text-lg text-camel-dark/80 max-w-md leading-relaxed">
-                  I design secure, data-driven backends that prioritize integrity, roles, and workflows over flashy demos.
-                </p>
-              </motion.div>
+          <div className="relative z-10 max-w-5xl mx-auto text-center space-y-10">
+            {/* Status Badge */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-iron-grey/5 shadow-xl shadow-iron-grey/5 text-iron-grey text-[13px] font-modern-bold tracking-tight"
+            >
+              <div className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" /> {/* Lime green accent for "Available" */}
+              Available for new opportunities
+            </motion.div>
 
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="flex items-center gap-4 pt-4"
-              >
-                <Link to="/projects" className="group flex items-center gap-2 bg-camel-dark text-parchment px-6 py-3 rounded-lg hover:bg-camel transition-all">
-                  View Architecture
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="https://github.com" className="p-3 border border-camel/30 rounded-lg text-camel-dark hover:bg-camel/10 transition-colors">
-                  <Github className="w-5 h-5" />
-                </a>
-              </motion.div>
-            </div>
+            {/* Main Headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.8 }}
+            >
+              <h1 className="font-plus text-6xl md:text-[5.5rem] text-iron-grey leading-[0.9] tracking-[-0.04em] font-extrabold">
+                Backend Systems <br />
+                <span className="gradient-text italic">Designed to Scale.</span>
+              </h1>
+            </motion.div>
 
-            {/* Visual / Abstract Representation */}
-            <motion.div style={{ y }} className="hidden md:flex justify-center relative">
-              <div className="relative w-80 h-96 bg-almond-cream/30 backdrop-blur-sm border border-white/50 rounded-2xl p-6 rotate-3 hover:rotate-0 transition-transform duration-500 shadow-xl shadow-camel/10">
-                {/* Code Snippet visual */}
-                <div className="flex gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-almond-silk" />
-                  <div className="w-3 h-3 rounded-full bg-camel/40" />
-                </div>
-                <div className="space-y-3 font-mono text-xs text-camel-dark opacity-80">
-                  <div className="flex gap-2"><span className="text-camel">const</span> <span>system</span> = <span className="text-camel">require</span>('reliability');</div>
-                  <div className="pl-4 text-camel-dark/60">// Enforcing data integrity</div>
-                  <div className="flex gap-2"><span className="text-camel">await</span> <span>database.connect</span>();</div>
-                  <div className="flex gap-2"><span className="text-camel">if</span> (!secure) <span className="text-camel">throw</span> Error;</div>
-                </div>
-                
-                {/* Floating Badge */}
-                <div className="absolute -bottom-6 -left-6 bg-parchment border border-camel/10 p-4 rounded-xl shadow-lg flex items-center gap-3 animate-float">
-                  <div className="bg-azure-mist p-2 rounded-lg text-camel">
-                    <Database size={20} />
-                  </div>
-                  <div>
-                    <div className="text-xs text-camel-dark/60 uppercase tracking-wider">Uptime</div>
-                    <div className="font-bold text-camel-dark">99.9%</div>
-                  </div>
-                </div>
+            {/* Sub-headline */}
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-lg md:text-xl text-iron-grey/60 max-w-2xl mx-auto leading-relaxed"
+            >
+              Passionate about building intuitive data infrastructure and scalable backends that connect users with high-integrity systems.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap justify-center gap-4 pt-6"
+            >
+              <Link to="/contact" className="bg-iron-grey text-white px-8 py-4 rounded-full font-bold hover:shadow-2xl hover:shadow-blue-bell/30 transition-all flex items-center gap-2">
+                Get in Touch
+                <ArrowRight size={18} />
+              </Link>
+              <Link to="/projects" className="bg-white border border-iron-grey/5 px-8 py-4 rounded-full font-bold text-iron-grey hover:bg-card-bg transition-all">
+                View Selected Works
+              </Link>
+            </motion.div>
+
+            {/* Social Socials & Logos */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="pt-20 flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700"
+            >
+              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
+                <Cpu size={24} /> ADAPTABLE
+              </div>
+              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
+                <Shield size={24} /> SECURE
+              </div>
+              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
+                <Workflow size={24} /> EFFICIENT
+              </div>
+              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
+                <Database size={24} /> INTEGRITY
               </div>
             </motion.div>
           </div>
-        </header>
+        </section>
 
-        {/* --- APPROACH / DATA VIZ SECTION --- */}
-        <section className="py-24 bg-azure-mist relative">
-          <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              
-              {/* Radar Chart (Recharts) */}
-              <div className="h-[400px] w-full flex items-center justify-center">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RadarChart cx="50%" cy="50%" outerRadius="80%" data={SKILL_DATA}>
-                    <PolarGrid stroke="#B2967D" strokeOpacity={0.2} />
-                    <PolarAngleAxis dataKey="subject" tick={{ fill: '#6D5442', fontSize: 12, fontFamily: 'var(--font-sans)' }} />
-                    <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                    <Radar
-                      name="Skills"
-                      dataKey="A"
-                      stroke="#B2967D"
-                      strokeWidth={2}
-                      fill="#E6BEAE"
-                      fillOpacity={0.6}
-                    />
-                  </RadarChart>
-                </ResponsiveContainer>
-              </div>
+        {/* --- "HOW IT WORKS" / CAPABILITIES SECTION (Bento Style) --- */}
+        <section className="py-24 px-6 max-w-7xl mx-auto">
+          <div className="mb-16 text-center space-y-4">
+            <span className="text-blue-bell font-bold text-xs uppercase tracking-widest">Our Engineering DNA</span>
+            <h2 className="text-4xl md:text-5xl font-plus font-bold text-iron-grey tracking-tight">Here's how it works</h2>
+          </div>
 
-              {/* Approach Text */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Bento Card 1: Discover */}
+            <div className="bento-card col-span-1 md:col-span-1 flex flex-col justify-between">
               <div>
-                <h2 className="font-serif text-4xl text-camel-dark mb-6">Focused Depth Over <br/>Broad Chaos.</h2>
-                <p className="text-camel-dark/70 mb-8 leading-relaxed">
-                  While many focus on making pixels move, I focus on how data flows. 
-                  My capability profile leans heavily into <strong>backend architecture, schema design, and system security</strong>.
-                </p>
-                
-                <div className="grid grid-cols-1 gap-6">
-                  {[
-                    { icon: Server, title: "API First", desc: "Decoupled architectures ready for any frontend." },
-                    { icon: Shield, title: "Security by Default", desc: "RBAC, JWT, and input validation baked in." },
-                    { icon: Terminal, title: "Maintainability", desc: "Clean code that survives team rotation." }
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="mt-1 text-camel">
-                        <item.icon size={24} />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-camel-dark">{item.title}</h3>
-                        <p className="text-sm text-camel-dark/60">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
+                <span className="text-5xl font-plus font-extrabold text-iron-grey/10 mb-8 block">01</span>
+                <div className="w-12 h-12 bg-blue-bell/10 rounded-2xl flex items-center justify-center text-blue-bell mb-6">
+                  <Globe size={24} />
                 </div>
+                <h3 className="text-2xl font-bold mb-4">Discover</h3>
+                <p className="text-iron-grey/60 text-sm leading-relaxed">
+                  Understanding user goals, system constraints, and data flows through thorough research and strategy.
+                </p>
               </div>
+            </div>
+
+            {/* Bento Card 2: Design (Center focus) */}
+            <div className="bento-card col-span-1 md:col-span-1 border-blue-bell/20 bg-white shadow-2xl shadow-blue-bell/5">
+              <span className="text-5xl font-plus font-extrabold text-blue-bell/10 mb-8 block">02</span>
+              <div className="w-14 h-14 bg-blue-bell rounded-2xl flex items-center justify-center text-white mb-6 animate-pulse-slow">
+                <Layers size={28} />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Design</h3>
+              <p className="text-iron-grey/60 text-sm leading-relaxed">
+                Transforming insights into intuitive, beautiful, and functional product architectures with precision.
+              </p>
+            </div>
+
+            {/* Bento Card 3: Deliver */}
+            <div className="bento-card col-span-1 md:col-span-1">
+              <span className="text-5xl font-plus font-extrabold text-iron-grey/10 mb-8 block">03</span>
+              <div className="w-12 h-12 bg-lavender/40 rounded-2xl flex items-center justify-center text-iron-grey mb-6">
+                <Zap size={24} />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Deliver</h3>
+              <p className="text-iron-grey/60 text-sm leading-relaxed">
+                Testing, refining, and launching the final system with clarity and high-performance engineering.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* --- PROJECTS SECTION --- */}
-        <section id="work" className="py-32 container mx-auto px-6">
-          <div className="flex flex-col items-center mb-16 text-center">
-            <span className="text-camel text-sm font-bold tracking-widest uppercase mb-2">Selected Works</span>
-            <h2 className="font-serif text-4xl text-camel-dark">Systems built for production.</h2>
+        {/* --- SELECTED WORKS (Mockup style cards) --- */}
+        <section className="py-32 px-6 max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="space-y-4">
+              <span className="text-dusty-mauve font-bold text-xs uppercase tracking-widest">Case Studies</span>
+              <h2 className="text-4xl md:text-5xl font-plus font-bold text-iron-grey tracking-tight">Selected Works</h2>
+            </div>
+            <Link to="/projects" className="group flex items-center gap-2 text-iron-grey font-bold hover:text-blue-bell transition-colors">
+              View all projects
+              <div className="p-2 border border-iron-grey/10 rounded-full group-hover:bg-blue-bell group-hover:text-white transition-all">
+                <ArrowRight size={16} />
+              </div>
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {PROJECTS.map((project, index) => (
+          <div className="grid md:grid-cols-2 gap-12">
+            {PROJECTS.map((project, i) => (
               <motion.div 
-                key={index}
+                key={i}
                 whileHover={{ y: -8 }}
-                className="group relative bg-white rounded-2xl overflow-hidden border border-parchment shadow-sm hover:shadow-xl hover:shadow-camel/10 transition-all duration-300"
+                className="group cursor-pointer"
               >
-                <div className="h-48 bg-almond-cream/50 relative overflow-hidden group-hover:bg-almond-silk/30 transition-colors">
-                  {/* Decorative Project Pattern */}
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#B2967D_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                  <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-camel-dark border border-camel/10">
-                    {project.role}
+                <div className={`relative h-[400px] rounded-[2.5rem] p-10 flex flex-col justify-end overflow-hidden transition-all duration-500 shadow-xl shadow-iron-grey/5 group-hover:shadow-3xl
+                    ${project.color === 'blue-bell' ? 'bg-blue-bell/5 hover:bg-blue-bell/10' : 
+                      project.color === 'dusty-mauve' ? 'bg-dusty-mauve/5 hover:bg-dusty-mauve/10' : 'bg-lavender/10 hover:bg-lavender/20'}`}
+                >
+                  {/* Decorative Background Pattern */}
+                  <div className="absolute top-0 right-0 p-12 opacity-5 text-iron-grey group-hover:scale-110 transition-transform duration-700">
+                    <Code2 size={240} strokeWidth={1} />
                   </div>
-                </div>
-                
-                <div className="p-8">
-                  <h3 className="font-serif text-2xl text-camel-dark mb-3 group-hover:text-camel transition-colors">{project.title}</h3>
-                  <p className="text-camel-dark/70 text-sm mb-6 line-clamp-3">
-                    {project.desc}
-                  </p>
                   
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map(t => (
-                      <span key={t} className="text-[10px] uppercase tracking-wider font-semibold text-camel-dark/50 bg-parchment px-2 py-1 rounded">
-                        {t}
-                      </span>
-                    ))}
+                  <div className="relative z-10 space-y-4">
+                    <span className="text-xs font-bold uppercase tracking-widest opacity-40">{project.category}</span>
+                    <h3 className="text-4xl font-plus font-bold text-iron-grey tracking-tight">{project.title}</h3>
+                    <p className="text-iron-grey/60 text-lg max-w-sm line-clamp-2">{project.desc}</p>
+                    <div className="flex flex-wrap gap-2 pt-4">
+                      {project.tech.map(t => (
+                        <span key={t} className="px-3 py-1 bg-white/50 backdrop-blur-sm rounded-lg text-xs font-bold text-iron-grey/70">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-
-                  <Link 
-                    to={project.link} 
-                    className="inline-flex items-center gap-2 text-sm font-bold text-camel hover:gap-3 transition-all"
-                  >
-                    View Case Study <ArrowRight size={14} />
-                  </Link>
                 </div>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* --- FOOTER --- */}
-        <footer className="bg-camel text-parchment py-24 relative overflow-hidden">
-          <div className="container mx-auto px-6 relative z-10 text-center">
-            <h2 className="font-serif text-5xl md:text-6xl mb-8">Ready to build logic?</h2>
-            <p className="mb-12 opacity-80 max-w-lg mx-auto">
-              Currently available for backend engineering roles. <br/>Let's discuss your system requirements.
-            </p>
-            <a 
-              href="mailto:papa16annan@gmail.com" 
-              className="inline-block bg-parchment text-camel-dark px-8 py-4 rounded-full font-bold hover:bg-white transition-colors"
-            >
-              Get in Touch
-            </a>
-            
-            <div className="mt-24 pt-8 border-t border-parchment/20 flex justify-between items-center text-sm opacity-60">
-              <span>© 2026 Emmanuel Opoku</span>
-              <div className="flex gap-6">
-                <a href="#" className="hover:opacity-100">GitHub</a>
-                <a href="#" className="hover:opacity-100">LinkedIn</a>
+        {/* --- PERSPECTIVE / RADAR SECTION --- */}
+        <section className="py-24 bg-card-bg relative">
+          <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div className="relative h-[400px] glass-card rounded-[3rem] p-8 flex items-center justify-center">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={SKILL_DATA}>
+                  <PolarGrid stroke="#444545" strokeOpacity={0.1} />
+                  <PolarAngleAxis dataKey="subject" tick={{ fill: '#444545', fontSize: 12, fontWeight: 700, fontFamily: 'var(--font-plus)' }} />
+                  <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                  <Radar
+                    name="Skills"
+                    dataKey="A"
+                    stroke="#39A0ED"
+                    strokeWidth={3}
+                    fill="#39A0ED"
+                    fillOpacity={0.1}
+                  />
+                </RadarChart>
+              </ResponsiveContainer>
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-bell/5 via-transparent to-lavender/5 pointer-events-none rounded-[3rem]" />
+            </div>
+
+            <div className="space-y-8">
+              <span className="text-lavender font-bold text-sm uppercase tracking-widest bg-iron-grey/5 px-4 py-2 rounded-full">Architecture First</span>
+              <h2 className="text-4xl md:text-5xl font-plus font-bold text-iron-grey leading-[1.1] tracking-tight">
+                Focus on blending strategy, thoughtful logic, and systemic empathy.
+              </h2>
+              <p className="text-iron-grey/60 text-lg leading-relaxed">
+                I solve real problems by engineering infrastructures that are not only high-performing but also deeply aligned with product vision.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <h4 className="font-bold text-blue-bell">99.9% Uptime</h4>
+                  <p className="text-xs text-iron-grey/40 uppercase font-bold tracking-widest">Reliability Target</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-bold text-dusty-mauve">30+ Systems</h4>
+                  <p className="text-xs text-iron-grey/40 uppercase font-bold tracking-widest">Architected & Deployed</p>
+                </div>
               </div>
             </div>
           </div>
-          
-          {/* Subtle watermark logo */}
-          <div className="absolute -bottom-24 -right-24 text-[20rem] font-serif font-bold text-white opacity-5 select-none pointer-events-none">
-            EO.
-          </div>
-        </footer>
+        </section>
 
       </div>
     </ReactLenis>

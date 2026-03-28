@@ -15,7 +15,7 @@ export default function Footer() {
   const currentYear = 2026; // Fixed as per requirements, or use new Date().getFullYear()
 
   return (
-    <footer className="bg-camel-dark text-parchment relative overflow-hidden pt-24 pb-12">
+    <footer className="bg-iron-grey text-white relative overflow-hidden pt-24 pb-12">
       
       <div className="container mx-auto px-6 relative z-10">
         
@@ -25,22 +25,22 @@ export default function Footer() {
           {/* Brand Identity */}
           <div className="md:col-span-5 space-y-4">
             <Link to="/" className="inline-block group">
-              <h2 className="font-serif text-2xl font-bold tracking-tight text-parchment group-hover:text-camel transition-colors">
+              <h2 className="font-plus text-2xl font-bold tracking-tight text-white group-hover:text-blue-bell transition-colors">
                 Emmanuel Opoku
               </h2>
-              <p className="text-sm font-mono text-camel uppercase tracking-widest mt-1">
+              <p className="text-sm font-plus font-bold text-blue-bell uppercase tracking-widest mt-1">
                 Backend & Data Engineer
               </p>
             </Link>
-            <p className="text-parchment/60 text-lg max-w-sm leading-relaxed">
-              Building reliable systems, data-first.
+            <p className="text-white/60 text-lg max-w-sm leading-relaxed">
+              Building scalable infrastructure that powers reliable analytical and AI systems.
             </p>
           </div>
 
           {/* Soft CTA Callout */}
           <div className="md:col-span-7 flex md:justify-end items-center">
-            <Link to="/contact" className="group text-3xl md:text-4xl font-serif text-parchment/80 hover:text-camel transition-colors flex items-center gap-4">
-              Let’s build something reliable together.
+            <Link to="/contact" className="group text-3xl md:text-4xl font-plus font-bold text-white/80 hover:text-blue-bell transition-colors flex items-center gap-4">
+              Let’s build something durable together.
               <ArrowUpRight className="opacity-0 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-300" size={32} />
             </Link>
           </div>
@@ -51,13 +51,13 @@ export default function Footer() {
           
           {/* Quick Links (2 Column Grid) */}
           <div className="md:col-span-8">
-            <h4 className="font-bold text-xs uppercase tracking-widest text-camel mb-8">Navigation</h4>
+            <h4 className="font-plus font-bold text-xs uppercase tracking-widest text-blue-bell mb-8">Navigation</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-12">
               {LINKS.map((link) => (
                 <Link 
                   key={link.name} 
                   to={link.path} 
-                  className="text-parchment/70 hover:text-white hover:translate-x-1 transition-all text-sm font-medium"
+                  className="text-white/70 hover:text-blue-bell hover:translate-x-1 transition-all text-sm font-medium"
                 >
                   {link.name}
                 </Link>
@@ -67,11 +67,11 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div className="md:col-span-4 md:text-right">
-            <h4 className="font-bold text-xs uppercase tracking-widest text-camel mb-8">Connect</h4>
+            <h4 className="font-plus font-bold text-xs uppercase tracking-widest text-blue-bell mb-8">Connect</h4>
             <div className="space-y-4 flex flex-col md:items-end">
               <a 
                 href="mailto:papa16annan@gmail.com" 
-                className="text-lg font-serif hover:text-camel transition-colors flex items-center gap-2"
+                className="text-lg font-plus font-medium hover:text-blue-bell transition-colors flex items-center gap-2"
               >
                 <Mail size={18} className="md:hidden" />
                 papa16annan@gmail.com
@@ -108,7 +108,7 @@ export default function Footer() {
       </div>
 
       {/* Decorative Watermark */}
-      <div className="absolute -bottom-16 -left-10 text-[12rem] font-serif font-bold text-white/[0.02] pointer-events-none select-none">
+      <div className="absolute -bottom-16 -left-10 text-[12rem] font-plus font-bold text-white/[0.02] pointer-events-none select-none">
         EO.
       </div>
     </footer>

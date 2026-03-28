@@ -1,7 +1,22 @@
 import { useRef } from "react";
-import { Link } from "react-router"; 
+import { Link } from "react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Database, Server, Shield, Terminal, Github, Layers, Lock, FileText, Zap, Activity, TrendingUp, FileCode } from "lucide-react";
+import { 
+  ArrowRight, 
+  Database, 
+  Server, 
+  Shield, 
+  Cpu, 
+  Workflow, 
+  Layers, 
+  Code2, 
+  Globe, 
+  Zap,
+  TrendingUp,
+  Activity,
+  FileCode,
+  BarChart3
+} from "lucide-react";
 import { ReactLenis } from "lenis/react";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
 
@@ -9,34 +24,37 @@ import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadius
 const PROJECTS = [
   {
     title: "Travel With KB",
-    role: "API-First Backend",
-    desc: "An API-first backend system built with Express.js, featuring decoupled architecture and secure JWT authentication.",
-    tech: ["Node.js", "Express", "MongoDB", "React"],
+    role: "Full-Stack System Architecture",
+    desc: "MERN stack booking engine with a data-modeled schema (parent referencing, aggregation pipelines for analytics) and a secure, role-gated Express API.",
+    tech: ["Node.js", "MongoDB", "Express", "System Design"],
+    color: "blue-bell",
     link: "/projects/travel-with-kb"
   },
   {
     title: "Scholarship Platform",
-    role: "Institutional Workflow",
-    desc: "A scholarship application and review platform with multi-role access, document validation, and automated status transitions.",
-    tech: ["PHP", "MySQL", "RBAC Architecture"],
+    role: "Institutional Backend + Data Workflows",
+    desc: "Multi-role workflow engine with a normalized MySQL schema, state-machine status transitions, and audit logging for structured data reporting.",
+    tech: ["PostgreSQL", "Relational Design", "RBAC", "TypeScript"],
+    color: "dusty-mauve",
     link: "/projects/scholarship-platform"
   },
   {
     title: "Learning Management System",
-    role: "Educational System",
-    desc: "A learning management system designed around structured educational workflows, module architecture, and chat tracking.",
-    tech: ["PHP", "MySQL", "System Design"],
+    role: "Analytics-Ready Educational System",
+    desc: "Full LMS with modular architecture, auto-graded quiz pipelines, and a behavioral analytics tracking layer for aggregated event reporting.",
+    tech: ["MySQL", "Analytics", "System Design", "Node.js"],
+    color: "lavender",
     link: "/projects/lms"
   }
 ];
 
 const SKILL_DATA = [
-  { subject: 'Backend Arch', A: 95, fullMark: 100 },
-  { subject: 'Database Design', A: 90, fullMark: 100 },
-  { subject: 'API Security', A: 85, fullMark: 100 },
-  { subject: 'Frontend UI', A: 60, fullMark: 100 },
-  { subject: 'DevOps', A: 75, fullMark: 100 },
-  { subject: 'System Logic', A: 95, fullMark: 100 },
+  { subject: 'Architecture', A: 95, fullMark: 100 },
+  { subject: 'Data Engineering', A: 90, fullMark: 100 },
+  { subject: 'Security', A: 85, fullMark: 100 },
+  { subject: 'Performance', A: 80, fullMark: 100 },
+  { subject: 'Algorithms', A: 95, fullMark: 100 },
+  { subject: 'API Design', A: 92, fullMark: 100 },
 ];
 
 export default function Home() {
@@ -46,397 +64,272 @@ export default function Home() {
     offset: ["start start", "end end"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const heroY = useTransform(scrollYProgress, [0, 1], ["0px", "100px"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.5]);
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { delay: 0.2 }
-  };
-
+  
   return (
     <ReactLenis root>
-      <div ref={containerRef} className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden">
-
+      <div ref={containerRef} className="bg-white min-h-screen font-sans selection:bg-blue-bell/20 selection:text-iron-grey overflow-hidden">
+        
         {/* --- HERO SECTION --- */}
-      <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
-        {/* Animated Background */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 px-6">
+          {/* Mockup-style Background Glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none opacity-40">
+            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-bell opacity-20 blur-[120px] rounded-full" />
+            <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-lavender opacity-30 blur-[100px] rounded-full" />
+            <div className="absolute top-1/3 right-1/2 w-[500px] h-[500px] bg-dusty-mauve opacity-10 blur-[150px] rounded-full" />
+          </div>
+
           <motion.div 
-            animate={{ 
-              rotate: 360,
-              scale: [1, 1.1, 1],
-              x: [0, 30, 0],
-              y: [0, -20, 0]
-            }}
-            transition={{ 
-              duration: 25, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#DEEEF7] rounded-full blur-[120px] opacity-50"
-          />
-          <motion.div 
-            animate={{ 
-              rotate: -360,
-              scale: [1, 1.2, 1],
-              x: [0, -30, 0],
-              y: [0, 30, 0]
-            }}
-            transition={{ 
-              duration: 30, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-[#E6BEAE] rounded-full blur-[140px] opacity-30"
-          />
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.15, 1],
-              opacity: [0.2, 0.3, 0.2]
-            }}
-            transition={{ 
-              duration: 20, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            className="absolute top-[40%] left-[30%] w-[30vw] h-[30vw] bg-[#F5E6D3] rounded-full blur-[100px]"
-          />
-        </div>
-
-        <motion.div 
-          style={{ y: heroY, opacity }}
-          className="relative z-10 container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center"
-        >
-          {/* Text Content */}
-          <div className="space-y-8">
-            <motion.div {...fadeInUp}>
-              {/* Status Badge */}
-              <motion.div 
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.3, type: "spring" }}
-                className="inline-flex items-center gap-2 bg-[#DEEEF7] border border-[#B2967D]/20 rounded-full px-4 py-2 mb-6"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B2967D] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B2967D]"></span>
-                </span>
-                <span className="text-[#6D5442] text-xs font-semibold">Available for Backend Opportunities</span>
-              </motion.div>
-
-              <h2 className="text-[#B2967D] font-bold tracking-[0.3em] uppercase text-xs mb-3 flex items-center gap-2">
-                <Terminal size={14} /> Emmanuel Opoku
-              </h2>
-              
-              <h3 className="text-[#6D5442]/70 font-semibold mb-8 flex items-center gap-2 text-base">
-                Backend Engineer • API Architecture • Data Analysis
-              </h3>
-
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#6D5442] leading-[1.1] mb-8">
-                I build secure, 
-                <span className="text-[#B2967D] italic block mt-2">data-driven</span>
-                backend systems
-                <span className="text-[#6D5442]/50 text-4xl md:text-5xl block mt-3">
-                  that scale.
-                </span>
-              </h1>
-
-              {/* Value Proposition */}
-              <div className="bg-white/50 backdrop-blur-sm border-l-4 border-[#B2967D] rounded-r-xl px-6 py-5 space-y-3 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <Shield className="w-5 h-5 text-[#B2967D] mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-[#6D5442] font-semibold text-lg">Node.js • Express • Relational Design</p>
-                    <p className="text-[#6D5442]/70 text-sm mt-1">
-                      Backend architecture with data integrity, access control, and analytics built-in from day one.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* CTAs */}
+            style={{ y: heroY, opacity }}
+            className="relative z-10 max-w-5xl mx-auto text-center space-y-10"
+          >
+            {/* Status Badge */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-iron-grey/5 shadow-xl shadow-iron-grey/5 text-iron-grey text-[13px] font-bold tracking-tight"
             >
-              <a 
-                href="#projects" 
-                className="group flex items-center gap-3 bg-[#6D5442] text-[#F5F1ED] px-10 py-4 rounded-xl hover:bg-[#B2967D] transition-all font-semibold shadow-lg shadow-[#6D5442]/20 hover:shadow-xl hover:shadow-[#B2967D]/30 hover:scale-105 transform"
-              >
-                View Projects 
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="group flex items-center gap-3 px-8 py-4 border-2 border-[#B2967D]/30 rounded-xl text-[#6D5442] hover:bg-[#B2967D]/10 hover:border-[#B2967D] transition-all font-semibold"
-              >
-                <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" /> 
-                GitHub Profile
-              </a>
+              <div className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" /> 
+              Open to Backend, Data & ML Engineering Roles
             </motion.div>
 
-            {/* Anti-positioning */}
+            {/* Main Headline */}
             <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.8 }}
+            >
+              <h1 className="font-plus text-6xl md:text-[5.5rem] text-iron-grey leading-[0.9] tracking-[-0.04em] font-extrabold text-balance">
+                I build systems <br />
+                <span className="gradient-text italic">that power intelligence.</span>
+              </h1>
+            </motion.div>
+
+            {/* Sub-headline */}
+            <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="flex items-start gap-3 pt-4"
+              transition={{ delay: 0.4 }}
+              className="text-lg md:text-xl text-iron-grey/60 max-w-2xl mx-auto leading-relaxed font-medium"
             >
-              <Zap className="w-4 h-4 text-[#B2967D] mt-0.5 shrink-0" />
-              <p className="text-xs text-[#6D5442]/50 font-mono max-w-md leading-relaxed">
-                Focus: Backend integrity, secure APIs, workflow logic, and structured data.
-                <span className="block mt-1">Not interested in: UI-heavy prototypes or design-first roles.</span>
-              </p>
+              Engineering robust data infrastructure and scalable backends that bridge the gap between complex logic and seamless user experiences.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap justify-center gap-4 pt-6"
+            >
+              <Link to="/projects" className="bg-iron-grey text-white px-8 py-4 rounded-full font-bold hover:bg-blue-bell hover:shadow-2xl hover:shadow-blue-bell/30 transition-all flex items-center gap-2">
+                View Engineering Projects
+                <ArrowRight size={18} />
+              </Link>
+              <Link to="/about" className="bg-white border border-iron-grey/5 px-8 py-4 rounded-full font-bold text-iron-grey hover:bg-card-bg transition-all">
+                The Persona
+              </Link>
             </motion.div>
+
+            {/* Social Signal / Logos */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="pt-20 flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700"
+            >
+              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
+                <Workflow size={24} /> PIPELINES
+              </div>
+              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
+                <Shield size={24} /> RELIABILITY
+              </div>
+              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
+                <Database size={24} /> SCHEMA-FIRST
+              </div>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* --- TECHNICAL FOCUS SECTION (Bento) --- */}
+        <section className="py-24 px-6 max-w-7xl mx-auto">
+          <div className="mb-16 text-center space-y-4">
+            <span className="text-blue-bell font-bold text-xs uppercase tracking-widest">Engineering DNA</span>
+            <h2 className="text-4xl md:text-5xl font-plus font-bold text-iron-grey tracking-tight">The Systems Mindset</h2>
           </div>
 
-          {/* Visual - Enhanced Code Editor */}
-          <motion.div 
-            style={{ y: heroY }}
-            initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block relative"
-          >
-            <div className="relative w-full bg-white/40 backdrop-blur-xl border border-white/60 rounded-2xl overflow-hidden rotate-1 hover:rotate-0 transition-all duration-700 shadow-2xl shadow-[#B2967D]/20">
-              {/* Window Controls */}
-              <div className="flex items-center justify-between bg-[#6D5442]/5 backdrop-blur-sm px-6 py-4 border-b border-[#B2967D]/10">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
-                  <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-                  <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bento-card col-span-1 md:col-span-1 flex flex-col justify-between hover:border-blue-bell/10 transition-all">
+              <div>
+                <span className="text-5xl font-plus font-extrabold text-iron-grey/5 mb-8 block">01</span>
+                <div className="w-12 h-12 bg-blue-bell/10 rounded-2xl flex items-center justify-center text-blue-bell mb-6">
+                  <Server size={24} />
                 </div>
-                <div className="flex items-center gap-2 text-[#6D5442]/50 text-xs font-mono">
-                  <FileCode size={14} />
-                  <span>api/auth/middleware.js</span>
-                </div>
-              </div>
-
-              <div className="p-8 space-y-6">
-                {/* Code Block 1 */}
-                <div className="space-y-2 font-mono text-sm">
-                  <div className="text-[#6D5442]/40 text-xs">// Secure Authentication Middleware</div>
-                  <div className="text-[#6D5442]">
-                    <span className="text-[#B2967D] font-bold">const</span> <span className="text-[#6D5442]">verifyToken</span> = <span className="text-[#B2967D]">async</span> (req, res, next) {'=>'} {'{'}
-                  </div>
-                  <div className="pl-6 text-[#6D5442]">
-                    <span className="text-[#B2967D]">const</span> token = req.headers.authorization;
-                  </div>
-                  <div className="pl-6 text-[#6D5442]">
-                    <span className="text-[#B2967D]">if</span> (!token) <span className="text-[#B2967D]">return</span> res.status(<span className="text-green-700">401</span>);
-                  </div>
-                  <div className="pl-6 text-[#6D5442]">
-                    <span className="text-[#B2967D]">const</span> user = <span className="text-[#B2967D]">await</span> <span className="text-[#6D5442]">jwt.verify</span>(token);
-                  </div>
-                  <div className="pl-6 text-[#6D5442]">
-                    req.user = user; <span className="text-[#6D5442]/40">// Attach to request</span>
-                  </div>
-                  <div className="pl-6 text-[#6D5442]">
-                    <span className="text-[#B2967D]">await</span> <span className="text-[#6D5442]">auditLog.create</span>({'{'}user, action{'}'});
-                  </div>
-                  <div className="pl-6 text-[#6D5442]">
-                    next();
-                  </div>
-                  <div className="text-[#6D5442]">{'}'}</div>
-                </div>
-
-                {/* Divider */}
-                <div className="border-t border-[#B2967D]/10"></div>
-
-                {/* Code Block 2 */}
-                <div className="space-y-2 font-mono text-sm">
-                  <div className="text-[#6D5442]/40 text-xs">// Data Analysis Query</div>
-                  <div className="text-[#6D5442]">
-                    <span className="text-[#B2967D] font-bold">SELECT</span>
-                  </div>
-                  <div className="pl-6 text-[#6D5442]">
-                    endpoint, <span className="text-[#B2967D]">AVG</span>(latency) <span className="text-[#B2967D]">as</span> avg_latency,
-                  </div>
-                  <div className="pl-6 text-[#6D5442]">
-                    <span className="text-[#B2967D]">COUNT</span>(*) <span className="text-[#B2967D]">as</span> total_requests
-                  </div>
-                  <div className="text-[#6D5442]">
-                    <span className="text-[#B2967D] font-bold">FROM</span> api_performance_logs
-                  </div>
-                  <div className="text-[#6D5442]">
-                    <span className="text-[#B2967D] font-bold">WHERE</span> timestamp {'>'} <span className="text-green-700">NOW()</span> - <span className="text-[#B2967D]">INTERVAL</span> <span className="text-green-700">'7 days'</span>
-                  </div>
-                  <div className="text-[#6D5442]">
-                    <span className="text-[#B2967D] font-bold">GROUP BY</span> endpoint;
-                  </div>
-                </div>
-
-                {/* Result Badge */}
-                <motion.div 
-                  initial={{ scale: 0, rotate: -10 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 1, type: "spring" }}
-                  className="absolute -bottom-4 -right-4 bg-[#F5F1ED] border-2 border-[#B2967D]/20 rounded-2xl px-6 py-4 shadow-xl flex items-center gap-4"
-                >
-                  <div className="bg-[#DEEEF7] p-3 rounded-xl">
-                    <TrendingUp size={24} className="text-[#B2967D]" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] text-[#6D5442]/60 uppercase tracking-wider font-bold">System Output</div>
-                    <div className="font-bold text-[#6D5442] text-lg">Trusted Data</div>
-                    <div className="text-xs text-[#6D5442]/50 font-mono">99.8% reliability</div>
-                  </div>
-                </motion.div>
+                <h3 className="text-2xl font-bold mb-4">Backend Arch</h3>
+                <p className="text-iron-grey/60 text-sm leading-relaxed font-medium">
+                  Designing secure, role-gated APIs and distributed service architectures that prioritize uptime and modularity.
+                </p>
               </div>
             </div>
 
-            {/* Floating Metrics */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-8 top-1/4 bg-white/90 backdrop-blur-sm border border-[#B2967D]/20 rounded-xl px-4 py-3 shadow-lg"
-            >
-              <div className="flex items-center gap-2">
-                <Activity size={16} className="text-green-600" />
-                <div>
-                  <div className="text-[10px] text-[#6D5442]/60 uppercase font-bold">Uptime</div>
-                  <div className="text-lg font-bold text-[#6D5442]">99.8%</div>
-                </div>
+            <div className="bento-card col-span-1 md:col-span-1 border-blue-bell/20 bg-white shadow-2xl shadow-blue-bell/5">
+              <span className="text-5xl font-plus font-extrabold text-blue-bell/5 mb-8 block">02</span>
+              <div className="w-14 h-14 bg-blue-bell rounded-2xl flex items-center justify-center text-white mb-6 animate-pulse-slow shadow-lg shadow-blue-bell/30">
+                <Layers size={28} />
               </div>
-            </motion.div>
+              <h3 className="text-2xl font-bold mb-4">Relational Logic</h3>
+              <p className="text-iron-grey/60 text-sm leading-relaxed font-medium">
+                Schema-first development with normalized models, efficient indexing, and integrity-driven data flows.
+              </p>
+            </div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -right-8 bottom-1/4 bg-white/90 backdrop-blur-sm border border-[#B2967D]/20 rounded-xl px-4 py-3 shadow-lg"
-            >
-              <div className="flex items-center gap-2">
-                <Zap size={16} className="text-[#B2967D]" />
-                <div>
-                  <div className="text-[10px] text-[#6D5442]/60 uppercase font-bold">Avg Response</div>
-                  <div className="text-lg font-bold text-[#6D5442]">120ms</div>
-                </div>
+            <div className="bento-card col-span-1 md:col-span-1 hover:border-lavender/20">
+              <span className="text-5xl font-plus font-extrabold text-iron-grey/5 mb-8 block">03</span>
+              <div className="w-12 h-12 bg-lavender/40 rounded-2xl flex items-center justify-center text-iron-grey mb-6">
+                <BarChart3 size={24} />
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#6D5442]/40"
-        >
-          <span className="text-xs font-mono">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowRight size={20} className="rotate-90" />
-          </motion.div>
-        </motion.div>
-      </header>
-
-        {/* --- TECHNICAL FOCUS SECTION (70/30 SIGNAL) --- */}
-        <section className="py-24 bg-azure-mist relative border-t border-camel/5">
-          <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              
-              {/* Left: Radar Chart */}
-              <div className="h-[400px] w-full flex items-center justify-center order-2 md:order-1">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RadarChart cx="50%" cy="50%" outerRadius="80%" data={SKILL_DATA}>
-                    <PolarGrid stroke="#B2967D" strokeOpacity={0.2} />
-                    <PolarAngleAxis dataKey="subject" tick={{ fill: '#6D5442', fontSize: 12, fontFamily: 'var(--font-sans)' }} />
-                    <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                    <Radar name="Skills" dataKey="A" stroke="#B2967D" strokeWidth={2} fill="#E6BEAE" fillOpacity={0.6} />
-                  </RadarChart>
-                </ResponsiveContainer>
-              </div>
-
-              {/* Right: Technical Focus Text */}
-              <div className="order-1 md:order-2">
-                <span className="text-camel font-bold tracking-widest uppercase text-xs mb-3 block">Technical Focus</span>
-                <h2 className="font-serif text-4xl text-camel-dark mb-6">Backend Architecture & System Design</h2>
-                
-                <p className="text-camel-dark/80 mb-6 leading-relaxed text-lg">
-                  My current development work is centered on <strong className="text-camel-dark">Express.js</strong>, designing RESTful APIs with structured authentication, middleware-level authorization, and predictable error handling.
-                </p>
-                <p className="text-camel-dark/70 mb-8 leading-relaxed text-sm border-l-2 border-camel/20 pl-4">
-                  Earlier large-scale systems built with <strong className="text-camel-dark">PHP</strong> strengthened my understanding of long-form backend design, relational workflows, and institutional software needs. That experience now informs how I architect modern Node.js systems.
-                </p>
-
-                {/* HOW YOU THINK List */}
-                <div className="grid grid-cols-1 gap-4">
-                  {[
-                    { icon: Database, title: "Database design before endpoints" },
-                    { icon: Lock, title: "Authorization before features" },
-                    { icon: Terminal, title: "Maintainability over clever shortcuts" },
-                    { icon: FileText, title: "Documentation as a core deliverable" }
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="text-camel"><item.icon size={18} /></div>
-                      <h3 className="font-medium text-camel-dark">{item.title}</h3>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <h3 className="text-2xl font-bold mb-4">Data Pipelines</h3>
+              <p className="text-iron-grey/60 text-sm leading-relaxed font-medium">
+                Engineering ETL workflows that transform raw events into ML-ready datasets with absolute lineage.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* --- PROJECTS SECTION --- */}
-        <section id="work" className="py-32 container mx-auto px-6">
-          <div className="flex flex-col items-center mb-16 text-center">
-            <span className="text-camel text-sm font-bold tracking-widest uppercase mb-2">Project Signal</span>
-            <h2 className="font-serif text-4xl text-camel-dark">Workflow-Driven Platforms.</h2>
-            <p className="mt-4 text-camel-dark/60 max-w-lg">
-              Each project is documented as a case study, focusing on architecture, decisions, and tradeoffs rather than surface-level features.
-            </p>
+        {/* --- RADAR / CAPABILITIES --- */}
+        <section className="py-24 bg-card-bg relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative h-[450px] bg-white rounded-[3rem] p-8 flex items-center justify-center shadow-2xl shadow-iron-grey/5 border border-iron-grey/5"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={SKILL_DATA}>
+                  <PolarGrid stroke="#444545" strokeOpacity={0.1} />
+                  <PolarAngleAxis dataKey="subject" tick={{ fill: '#444545', fontSize: 11, fontWeight: 700, fontFamily: 'Plus Jakarta Sans' }} />
+                  <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                  <Radar
+                    name="Skills"
+                    dataKey="A"
+                    stroke="#39A0ED"
+                    strokeWidth={3}
+                    fill="#39A0ED"
+                    fillOpacity={0.1}
+                  />
+                </RadarChart>
+              </ResponsiveContainer>
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-bell/5 via-transparent to-lavender/5 pointer-events-none rounded-[3rem]" />
+              
+              {/* Floating Metric */}
+              <div className="absolute -bottom-4 -right-4 bg-white border border-iron-grey/5 rounded-2xl p-6 shadow-xl flex items-center gap-4">
+                 <div className="w-12 h-12 bg-blue-bell text-white rounded-xl flex items-center justify-center">
+                    <TrendingUp size={24} />
+                 </div>
+                 <div>
+                    <p className="text-[10px] font-bold text-iron-grey/30 uppercase tracking-widest">Efficiency</p>
+                    <p className="text-xl font-bold text-iron-grey">Scalable Systems</p>
+                 </div>
+              </div>
+            </motion.div>
+
+            <div className="space-y-10">
+              <span className="text-blue-bell font-bold text-xs uppercase tracking-widest bg-blue-bell/5 px-4 py-2 rounded-full border border-blue-bell/10">Architecture First</span>
+              <h2 className="text-4xl md:text-6xl font-plus font-bold text-iron-grey leading-[0.9] tracking-tight">
+                Designed for <br />
+                <span className="gradient-text italic">performance & trust.</span>
+              </h2>
+              <p className="text-iron-grey/60 text-xl leading-relaxed font-medium">
+                I operate across the full stack of intelligent systems — from designing secure backend APIs, to engineering clean data pipelines.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-8 pt-6 border-t border-iron-grey/5">
+                <div className="space-y-2">
+                  <h4 className="text-2xl font-bold text-blue-bell font-plus">99.9%</h4>
+                  <p className="text-[10px] text-iron-grey/40 uppercase font-bold tracking-[0.2em]">Uptime Target</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-2xl font-bold text-dusty-mauve font-plus">Schema-Ready</h4>
+                  <p className="text-[10px] text-iron-grey/40 uppercase font-bold tracking-[0.2em]">Data Excellence</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Decorative Backdrops */}
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-bell/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-lavender/5 rounded-full blur-3xl" />
+        </section>
+
+        {/* --- FEATURED PROJECTS --- */}
+        <section className="py-32 px-6 max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div className="space-y-4">
+              <span className="text-dusty-mauve font-bold text-xs uppercase tracking-widest">Technical Deep-Dives</span>
+              <h2 className="text-4xl md:text-5xl font-plus font-bold text-iron-grey tracking-tight">Selected Engineering Works</h2>
+            </div>
+            <Link to="/projects" className="group flex items-center gap-3 text-iron-grey font-bold hover:text-blue-bell transition-all duration-300">
+              Explore All Systems
+              <div className="p-3 border border-iron-grey/10 rounded-full group-hover:bg-blue-bell group-hover:text-white group-hover:border-blue-bell transition-all">
+                <ArrowRight size={18} />
+              </div>
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {PROJECTS.map((project, index) => (
+            {PROJECTS.map((project, i) => (
               <motion.div 
-                key={index}
-                whileHover={{ y: -8 }}
-                className="group relative bg-white rounded-2xl overflow-hidden border border-parchment shadow-sm hover:shadow-xl hover:shadow-camel/10 transition-all duration-300"
+                key={i}
+                whileHover={{ y: -10 }}
+                className="group relative"
               >
-                <div className="h-48 bg-almond-cream/50 relative overflow-hidden group-hover:bg-almond-silk/30 transition-colors">
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#B2967D_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                  <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-camel-dark border border-camel/10">
-                    {project.role}
+                <Link to={project.link} className="block bento-card h-full transition-all duration-500 hover:shadow-2xl hover:shadow-blue-bell/5">
+                  <div className={`p-4 w-fit rounded-xl bg-white shadow-sm text-iron-grey mb-12 opacity-40 group-hover:opacity-100 group-hover:text-blue-bell transition-all`}>
+                     <Code2 size={24} />
                   </div>
-                </div>
-                
-                <div className="p-8">
-                  <h3 className="font-serif text-2xl text-camel-dark mb-3 group-hover:text-camel transition-colors">{project.title}</h3>
-                  <p className="text-camel-dark/70 text-sm mb-6 line-clamp-3 leading-relaxed">
-                    {project.desc}
-                  </p>
                   
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map(t => (
-                      <span key={t} className="text-[10px] uppercase tracking-wider font-semibold text-camel-dark/50 bg-parchment px-2 py-1 rounded">
-                        {t}
-                      </span>
-                    ))}
+                  <div className="space-y-4">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-iron-grey/30">{project.role}</span>
+                    <h3 className="text-3xl font-plus font-bold text-iron-grey tracking-tight group-hover:text-blue-bell transition-colors">{project.title}</h3>
+                    <p className="text-iron-grey/60 text-sm leading-relaxed font-medium line-clamp-3">{project.desc}</p>
+                    
+                    <div className="flex flex-wrap gap-2 pt-6 opacity-40 group-hover:opacity-100 transition-opacity">
+                      {project.tech.map(t => (
+                        <span key={t} className="px-3 py-1 bg-card-bg rounded-lg text-[9px] font-bold uppercase tracking-widest text-iron-grey/60 border border-iron-grey/5">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-
-                  <Link 
-                    to={project.link} 
-                    className="inline-flex items-center gap-2 text-sm font-bold text-camel hover:gap-3 transition-all"
-                  >
-                    View Case Study <ArrowRight size={14} />
-                  </Link>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
+        </section>
+
+        {/* --- CALL TO ACTION --- */}
+        <section className="py-24 px-6 max-w-5xl mx-auto text-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="bg-iron-grey rounded-[3rem] p-12 md:p-24 relative overflow-hidden"
+            >
+               <div className="absolute inset-0 bg-gradient-to-br from-blue-bell/20 to-transparent opacity-50" />
+               <div className="relative z-10 space-y-10">
+                  <h2 className="text-4xl md:text-6xl font-plus font-extrabold text-white leading-tight">Ready to build <br />the backends of tomorrow?</h2>
+                  <div className="flex flex-wrap justify-center gap-6">
+                     <Link to="/contact" className="bg-white text-iron-grey px-10 py-5 rounded-full font-bold hover:bg-blue-bell hover:text-white transition-all text-lg shadow-xl shadow-white/5">
+                        Initiate Connection
+                     </Link>
+                     <a href="/resume.pdf" className="px-10 py-5 border border-white/20 rounded-full font-bold text-white hover:bg-white/10 transition-all text-lg">
+                        Download CV
+                     </a>
+                  </div>
+               </div>
+            </motion.div>
         </section>
 
       </div>

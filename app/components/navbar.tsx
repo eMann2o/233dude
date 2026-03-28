@@ -38,14 +38,14 @@ export default function Navbar() {
         transition={TRANSITION}
         className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-6 transition-all duration-500 ${
           scrolled 
-            ? 'bg-parchment/80 backdrop-blur-md shadow-sm shadow-camel/5 py-4' 
+            ? 'bg-white/80 backdrop-blur-md shadow-sm shadow-iron-grey/5 py-4' 
             : 'bg-transparent py-6'
         }`}
       >
         {/* --- 1. BRAND & LOGO --- */}
         <Link to="/" className="flex items-center gap-2 z-50 group">
           <div className="flex flex-col">
-            <span className={`font-serif text-2xl font-bold tracking-tight leading-none transition-colors duration-300 ${isOpen ? 'text-parchment' : 'text-camel'}`}>
+            <span className={`font-plus text-2xl font-bold tracking-tight leading-none transition-colors duration-300 ${isOpen ? 'text-white' : 'text-iron-grey'}`}>
               EO.
             </span>
           </div>
@@ -53,21 +53,28 @@ export default function Navbar() {
 
         {/* --- 2. DESKTOP NAVIGATION (The "Reveal" Effect) --- */}
         <div className="hidden md:flex gap-8 items-center z-50">
-          {NAV_ITEMS.map((item) => (
-            <Link key={item.name} to={item.path} className="group relative overflow-hidden">
-              <div className="relative overflow-hidden p-1">
-                {/* 1. Normal Text (Slides Up) */}
-                <span className="block font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-camel-dark transition-transform duration-500 group-hover:-translate-y-full">
-                  {item.name}
-                </span>
-                
-                {/* 2. Hover Text (Slides In from bottom, colored Camel) */}
-                <span className="absolute top-1 left-1 block font-sans text-[11px] font-bold uppercase tracking-[0.15em] translate-y-full transition-transform duration-500 group-hover:translate-y-0 text-camel">
-                  {item.name}
-                </span>
-              </div>
-            </Link>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link key={item.name} to={item.path} className="group relative overflow-hidden">
+                <div className="relative overflow-hidden p-1">
+                  {/* 1. Normal Text (Slides Up) */}
+                  <span className={`block font-plus text-[11px] font-bold uppercase tracking-[0.15em] transition-transform duration-500 group-hover:-translate-y-full ${isActive ? 'text-blue-bell' : 'text-iron-grey/60'}`}>
+                    {item.name}
+                  </span>
+                  
+                  {/* 2. Hover Text (Slides In from bottom, colored Blue Bell) */}
+                  <span className="absolute top-1 left-1 block font-plus text-[11px] font-bold uppercase tracking-[0.15em] translate-y-full transition-transform duration-500 group-hover:translate-y-0 text-blue-bell">
+                    {item.name}
+                  </span>
+                </div>
+                {/* Active underline indicator */}
+                {isActive && (
+                  <span className="absolute bottom-0 left-1 right-1 h-0.5 bg-blue-bell rounded-full" />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
         {/* --- 3. MOBILE MENU TOGGLE --- */}
@@ -82,14 +89,14 @@ export default function Navbar() {
       {/* --- 4. FULL SCREEN MOBILE MENU --- */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+            <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-camel-dark text-parchment flex flex-col justify-center items-center"
+            className="fixed inset-0 z-40 bg-iron-grey text-pearl-beige flex flex-col justify-center items-center"
           >
             <div className="flex flex-col gap-6 text-center">
-              <Link to="/" className="font-serif text-3xl mb-4 text-camel italic">Home</Link>
+              <Link to="/" className="font-plus text-3xl mb-4 text-blue-bell italic">Home</Link>
               {NAV_ITEMS.map((item, i) => (
                 <motion.div
                   key={item.name}
@@ -99,7 +106,7 @@ export default function Navbar() {
                 >
                   <Link 
                     to={item.path} 
-                    className="font-serif text-4xl hover:text-camel transition-colors"
+                    className="font-plus text-4xl hover:text-lavender transition-colors"
                   >
                     {item.name}
                   </Link>

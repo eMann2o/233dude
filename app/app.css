@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  /* The User's Palette */
-  --color-azure-mist: #ECF8F8;
-  --color-parchment: #EEE4E1;
-  --color-almond-cream: #E7D8C9;
-  --color-almond-silk: #E6BEAE;
-  --color-camel: #B2967D;
+  /* The User's Image 1 Palette */
+  --color-iron-grey: #444545;
+  --color-blue-bell: #39A0ED;
+  --color-dusty-mauve: #9A7AA0;
+  --color-pearl-beige: #E8DDB5;
+  --color-lavender: #E3DFFF;
   
-  /* Generated Accessible Text Variant (Darker Camel) */
-  --color-camel-dark: #6D5442; 
+  /* Layout Colors */
+  --color-page-bg: #FFFFFF;
+  --color-card-bg: #F8F9FA;
 
   /* Fonts */
-  --font-serif: "Playfair Display", serif;
+  --font-plus: "Plus Jakarta Sans", sans-serif;
   --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
   
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   
   @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
     100% { transform: translateY(0px); }
   }
+}
+
+@layer base {
+  body {
+    @apply bg-page-bg text-iron-grey font-sans antialiased;
+  }
+  h1, h2, h3, h4, .font-modern-bold {
+    @apply font-plus font-bold tracking-tight;
+  }
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl shadow-iron-grey/5;
+}
+
+.bento-card {
+  @apply bg-card-bg rounded-[2rem] p-8 border border-iron-grey/5 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-bell/10 hover:-translate-y-1;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-bell via-dusty-mauve to-lavender;
 }

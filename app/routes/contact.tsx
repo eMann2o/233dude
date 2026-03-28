@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Github, Linkedin, FileText, ArrowUpRight, Copy, Check, MessageSquare } from "lucide-react";
+import { Mail, Github, Linkedin, FileText, ArrowUpRight, Copy, Check, MessageSquare, Send, Globe, ShieldCheck } from "lucide-react";
 import { ReactLenis } from "lenis/react";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
-  const email = "papa16annan@gmail.com"; // Replace with your actual email
+  const email = "papa16annan@gmail.com"; 
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
@@ -18,71 +18,71 @@ export default function Contact() {
     {
       label: "GitHub",
       value: "github.com/emmanuelopoku",
-      href: "https://github.com",
+      href: "https://github.com/emmanuelopoku",
       icon: Github,
-      action: "View Code"
+      color: "blue-bell"
     },
     {
       label: "LinkedIn",
       value: "in/emmanuel-opoku",
       href: "https://linkedin.com",
       icon: Linkedin,
-      action: "Connect"
+      color: "dusty-mauve"
     },
     {
-      label: "Curriculum Vitae",
-      value: "Structured Overview (PDF)",
+      label: "Engineering CV",
+      value: "Architectural Overview (PDF)",
       href: "/resume.pdf", 
       icon: FileText,
-      action: "Download"
+      color: "lavender"
     }
   ];
 
   return (
     <ReactLenis root>
-      <div className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden pt-24 pb-12 flex flex-col justify-between">
+      <div className="bg-white min-h-screen font-sans selection:bg-blue-bell/20 selection:text-iron-grey overflow-hidden pt-32 pb-20 flex flex-col justify-between">
 
-        <div className="container mx-auto px-6 max-w-2xl relative z-10">
+        <div className="container mx-auto px-6 max-w-4xl relative z-10">
           
           {/* --- HEADER --- */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20 space-y-6"
           >
-            <span className="text-camel font-bold tracking-widest uppercase text-xs mb-4 block">Connection</span>
-            <h1 className="font-serif text-4xl md:text-5xl text-camel-dark leading-tight mb-6">
-              Backend systems & <br />
-              <span className="text-camel italic">data opportunities.</span>
+            <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">Connection Protocols</span>
+            <h1 className="font-plus text-5xl md:text-7xl text-iron-grey leading-[0.9] tracking-tight font-extrabold max-w-3xl mx-auto">
+              Ready for the next <br />
+              <span className="gradient-text italic">engineering challenge.</span>
             </h1>
-            <p className="text-camel-dark/70 text-lg leading-relaxed max-w-xl mx-auto">
-              I am open to conversations around backend engineering roles, internships, and collaborative technical work where <strong className="text-camel-dark font-medium">system design, data integrity, and maintainability</strong> matter.
+            <p className="text-iron-grey/60 text-xl leading-relaxed max-w-2xl mx-auto font-medium">
+              I am focused on roles in <strong>Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.
             </p>
           </motion.div>
 
           {/* --- PRIMARY ACTION: EMAIL --- */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="mb-8"
+            className="mb-12"
           >
-            <div className="bg-white rounded-2xl border border-camel/10 shadow-xl shadow-camel/5 p-2 flex flex-col sm:flex-row items-center gap-2">
-              <div className="flex-1 w-full sm:w-auto px-6 py-4 flex items-center gap-4">
-                <div className="p-3 bg-azure-mist rounded-full text-camel">
-                  <Mail size={24} />
+            <div className="bg-card-bg border border-iron-grey/5 rounded-[2.5rem] p-4 flex flex-col md:flex-row items-center gap-4 hover:border-blue-bell/10 transition-all shadow-xl shadow-iron-grey/5">
+              <div className="flex-1 w-full md:w-auto px-8 py-6 flex items-center gap-6">
+                <div className="p-4 bg-white rounded-2xl text-blue-bell shadow-sm">
+                  <Mail size={28} />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-camel uppercase tracking-wider mb-1">Direct Email</div>
-                  <div className="text-camel-dark font-medium text-lg md:text-xl truncate">{email}</div>
+                  <div className="text-[10px] font-bold text-iron-grey/30 uppercase tracking-[0.2em] mb-1">Inbound Channel</div>
+                  <div className="text-iron-grey font-plus font-bold text-xl md:text-2xl truncate">{email}</div>
                 </div>
               </div>
               
-              <div className="flex w-full sm:w-auto gap-2">
+              <div className="flex w-full md:w-auto gap-4 p-2">
                 <button 
                   onClick={handleCopy}
-                  className="flex-1 sm:flex-none p-4 rounded-xl hover:bg-parchment text-camel-dark/60 hover:text-camel transition-colors relative"
+                  className="flex-1 md:flex-none p-5 rounded-2xl bg-white border border-iron-grey/5 text-iron-grey/40 hover:text-blue-bell hover:border-blue-bell/20 transition-all relative group"
                   title="Copy to clipboard"
                 >
                   <AnimatePresence mode="wait">
@@ -100,57 +100,64 @@ export default function Contact() {
                 
                 <a 
                   href={`mailto:${email}`}
-                  className="flex-1 sm:flex-none px-8 py-4 bg-camel text-parchment rounded-xl font-bold hover:bg-camel-dark transition-colors flex items-center justify-center gap-2"
+                  className="flex-[2] md:flex-none px-10 py-5 bg-iron-grey text-white rounded-2xl font-bold hover:bg-blue-bell transition-all flex items-center justify-center gap-3 shadow-lg shadow-iron-grey/20 group"
                 >
-                  Write Me <ArrowUpRight size={18} />
+                  Channel Outbound <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
               </div>
             </div>
           </motion.div>
 
           {/* --- SECONDARY LINKS GRID --- */}
-          <div className="grid gap-4 mb-16">
+          <div className="grid md:grid-cols-3 gap-6 mb-24">
             {CONTACT_LINKS.map((link, idx) => (
               <motion.a 
                 key={idx}
                 href={link.href}
-                target={link.label.includes("Curriculum") ? "_self" : "_blank"}
-                download={link.label.includes("Curriculum")}
+                target={link.label.includes("CV") ? "_self" : "_blank"}
+                download={link.label.includes("CV")}
                 rel="noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + (idx * 0.1) }}
-                className="group flex items-center justify-between p-6 bg-white/50 border border-camel/10 rounded-xl hover:bg-white hover:border-camel/30 hover:shadow-md hover:shadow-camel/5 transition-all"
+                className="bento-card group flex flex-col justify-between hover:border-blue-bell/10"
               >
-                <div className="flex items-center gap-4">
-                  <link.icon className="text-camel-dark/40 group-hover:text-camel transition-colors" size={24} />
-                  <div>
-                    <h3 className="font-bold text-camel-dark group-hover:text-camel transition-colors">{link.label}</h3>
-                    <p className="text-sm text-camel-dark/50">{link.value}</p>
-                  </div>
+                <div className={`p-4 w-fit rounded-2xl bg-white shadow-sm text-${link.color} mb-12`}>
+                   <link.icon size={24} />
                 </div>
-                <ArrowUpRight className="text-camel-dark/20 group-hover:text-camel group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" size={20} />
+                <div className="space-y-2">
+                   <h3 className="text-xl font-plus font-bold text-iron-grey group-hover:text-blue-bell transition-colors">{link.label}</h3>
+                   <div className="flex items-center justify-between text-iron-grey/40">
+                      <span className="text-xs font-medium truncate max-w-[150px]">{link.value}</span>
+                      <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                   </div>
+                </div>
               </motion.a>
             ))}
           </div>
 
-          {/* --- COMMUNICATION STANDARDS --- */}
+          {/* --- STANDARDS --- */}
           <motion.div 
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="border-t border-camel/10 pt-12 text-center"
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="border-t border-iron-grey/5 pt-20 grid md:grid-cols-2 gap-12 items-center"
           >
-             <div className="inline-flex items-center justify-center p-3 bg-almond-cream/30 text-camel rounded-full mb-6">
-                <MessageSquare size={20} />
+             <div className="space-y-6">
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-card-bg rounded-full border border-iron-grey/5 text-iron-grey/60 text-[10px] font-bold uppercase tracking-widest">
+                   <ShieldCheck size={14} className="text-blue-bell" />
+                   <span>Security & Reliability First</span>
+                </div>
+                <h3 className="text-3xl font-plus font-extrabold text-iron-grey leading-tight">Professional <br />Response Standards.</h3>
              </div>
-             <h3 className="text-camel-dark font-serif text-2xl mb-4">Communication Standards</h3>
-             <p className="text-camel-dark/70 text-sm leading-relaxed max-w-lg mx-auto mb-6">
-                I value clear, direct communication. If you are reaching out about a role or project, including a brief description of the problem or system you are working on is appreciated.
-             </p>
-             <p className="text-camel-dark/50 text-xs italic">
-                This portfolio is intended to provide enough context for a meaningful technical conversation.
-             </p>
+             <div className="space-y-6">
+                <p className="text-iron-grey/60 text-lg leading-relaxed font-medium">
+                  I prioritize technical clarity and direct communication. For architectural inquiries or engineering opportunities, please include the core problem domain or system constraints.
+                </p>
+                <div className="flex items-center gap-4 text-xs font-bold text-iron-grey/20 uppercase tracking-[0.2em]">
+                   <Globe size={14} /> Global Availability
+                </div>
+             </div>
           </motion.div>
 
         </div>

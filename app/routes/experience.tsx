@@ -1,9 +1,8 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Briefcase, Network, Monitor, Code2, Calendar, MapPin, Building2, CheckCircle2, ArrowRight } from "lucide-react";
+import { Briefcase, Network, Monitor, Code2, Calendar, MapPin, Building2, CheckCircle2, ArrowRight, Database, BarChart3, ShieldCheck } from "lucide-react";
 import { ReactLenis } from "lenis/react";
 
-// --- DATA: EXPERIENCE TIMELINE ---
 const EXPERIENCE = [
   {
     company: "AmaliTech",
@@ -11,51 +10,54 @@ const EXPERIENCE = [
     location: "Takoradi, Ghana",
     type: "Engineering",
     icon: Code2,
-    takeaway: "Production Standards & React Workflows",
+    takeaway: "Code Quality Standards",
+    color: "blue-bell",
     points: [
-      "Worked within a professional environment emphasizing structured development, collaboration, and code quality.",
-      "Gained exposure to React-based full-stack workflows and clean interfaces between frontend and backend layers.",
-      "Reinforced engineering practices: readable code, version control, and clear technical communication."
+      "Built backend data workflows within a professional software engineering environment, focusing on how application logic impacts data persistence.",
+      "Identified and resolved data production bottlenecks by implementing clean API design and more efficient server-side validation logic.",
+      "Worked within an agile team, participating in code reviews that enforced high standards for maintainable, production-ready code."
     ]
   },
   {
-    company: "Adamus Resources Limited",
+    company: "Adamus Resources",
     role: "IT / Technical Intern",
     location: "Nzema, Ghana",
     type: "Corporate IT",
     icon: Building2,
-    takeaway: "Reliability & Operational Continuity",
+    takeaway: "High-Stakes Reliability",
+    color: "dusty-mauve",
     points: [
-      "Supported internal systems in a corporate environment where stability and operational continuity were critical.",
-      "Assisted with setup, maintenance, and troubleshooting of hardware/software for non-technical staff.",
-      "Learned that systems are only successful when they work consistently for the people who rely on them."
+      "Supported iron-clad internal systems in a corporate mining environment where downtime resulted in significant operational costs.",
+      "Gained firsthand exposure to the real cost of system failure, reinforcing a data engineering philosophy built on trust and consistency.",
+      "Managed critical data flows between non-technical departments, ensuring cross-functional accuracy across the enterprise."
     ]
   },
   {
-    company: "Sekondi Takoradi Chamber of Commerce and Industry",
-    role: "IT / Systems Support Intern",
+    company: "STCCI",
+    role: "IT / Systems Support",
     location: "Takoradi, Ghana",
-    type: "Systems Support",
+    type: "Systems",
     icon: Monitor,
-    takeaway: "Data Accuracy & Institutional Process",
+    takeaway: "Institutional Integrity",
+    color: "lavender",
     points: [
-      "Supported IT infrastructure and data-related workflows in an institutional environment.",
-      "Assisted with document management processes, ensuring accuracy and consistency in digital records.",
-      "Highlighted the need for systems that are intuitive, well-structured, and resilient to user error."
+      "Assisted with digital records management and the cleanup of inaccurately formatted institutional data sets.",
+      "Experienced how a lack of schema discipline leads to reporting failures — directly informing my commitment to schema-first thinking.",
+      "Automated recurrent data-related workflows to reduce manual entry errors and ensure traceable document lineage."
     ]
   },
   {
-    company: "Ghana Ports and Harbours Authority",
-    role: "IT Support & Networking Intern",
-    date: "Sept 11 – Nov 24, 2023",
+    company: "GPHA",
+    role: "Infrastructure Intern",
     location: "Takoradi, Ghana",
     type: "Infrastructure",
     icon: Network,
-    takeaway: "Infrastructure Scale & Complexity",
+    takeaway: "Infrastructure Scale",
+    color: "iron-grey",
     points: [
-      "Gained hands-on experience supporting network cabling and infrastructure in a large operational environment.",
-      "Diagnosed hardware and connectivity issues where downtime had significant operational impact.",
-      "Reinforced the importance of disciplined processes, documentation, and adherence to standards."
+      "Supported network infrastructure in a high-throughput operational environment for national-scale maritime operations.",
+      "Observed the relationship between physical reliability and data system availability at extreme volumes.",
+      "Reinforced the importance of structured documentation and standards in environments with high technical debt potential."
     ]
   }
 ];
@@ -63,127 +65,122 @@ const EXPERIENCE = [
 export default function Experience() {
   return (
     <ReactLenis root>
-      <div className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark overflow-hidden pt-24 pb-20">
+      <div className="bg-white min-h-screen font-sans selection:bg-blue-bell/20 selection:text-iron-grey overflow-hidden pt-32 pb-20">
 
-        <div className="container mx-auto px-6 max-w-4xl">
-          
+        <div className="container mx-auto px-6 max-w-5xl">
+
           {/* --- HEADER --- */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-20 text-center md:text-left"
+            transition={{ duration: 0.8 }}
+            className="mb-24 space-y-6"
           >
-            <span className="text-camel font-bold tracking-widest uppercase text-xs mb-3 block">Professional History</span>
-            <h1 className="font-serif text-5xl md:text-6xl text-camel-dark leading-tight mb-6">
-              The Path to <br />
-              <span className="text-camel italic">Engineering.</span>
+            <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">Professional Journey</span>
+            <h1 className="font-plus text-5xl md:text-7xl text-iron-grey leading-[0.9] tracking-tight font-extrabold max-w-4xl">
+              From internships to <br />
+              <span className="gradient-text italic">engineered impact.</span>
             </h1>
-            <p className="text-camel-dark/60 max-w-2xl text-lg leading-relaxed">
-              My professional experience spans software engineering, backend-focused development, IT systems support, and institutional technology environments. These roles have shaped how I approach backend systems and data — with an emphasis on reliability, clarity, and real-world constraints.
+            <p className="text-iron-grey/60 max-w-2xl text-lg leading-relaxed">
+              My path has been shaped by diverse environments — from high-stakes corporate mining to large-scale national infrastructure — resulting in a deeply pragmatic approach to system design.
             </p>
           </motion.div>
 
           {/* --- TIMELINE --- */}
-          <div className="relative border-l-2 border-camel/10 ml-4 md:ml-10 space-y-16 pb-12 mb-24">
+          <div className="relative space-y-12 mb-32">
+            <div className="absolute left-[20px] md:left-[50%] top-0 bottom-0 w-px bg-iron-grey/5 hidden md:block" />
             
             {EXPERIENCE.map((job, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative pl-8 md:pl-16"
+                className={`relative flex flex-col md:flex-row gap-8 items-start 
+                  ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
-                {/* Timeline Dot */}
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-parchment border-4 border-camel z-10" />
+                {/* Timeline dot */}
+                <div className="absolute left-[14px] md:left-[50%] md:ml-[-6px] top-6 w-3 h-3 rounded-full bg-white border-2 border-blue-bell z-20" />
 
-                <div className="group bg-white p-8 rounded-2xl border border-camel/10 shadow-sm hover:shadow-lg hover:shadow-camel/5 transition-all duration-300">
-                  
-                  {/* Job Header */}
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                    <div>
-                      <h2 className="font-serif text-2xl text-camel-dark mb-1">{job.role}</h2>
-                      <h3 className="text-camel font-bold text-sm uppercase tracking-wide flex items-center gap-2">
-                        <Briefcase size={14} /> {job.company}
-                      </h3>
+                <div className="flex-1 w-full pl-12 md:pl-0">
+                  <div className="bento-card group hover:border-blue-bell/10">
+                    <div className="flex items-center justify-between mb-8">
+                       <div className={`p-4 rounded-2xl bg-white shadow-sm text-${job.color}`}>
+                        <job.icon size={24} />
+                      </div>
+                      <span className="text-[10px] font-bold text-iron-grey/20 uppercase tracking-[0.2em]">{job.type}</span>
                     </div>
-                    
-                    {/* Metadata Badge */}
-                    <div className="flex flex-col items-start md:items-end text-xs font-medium text-camel-dark/50 gap-1">
-                      {job.date && (
-                        <span className="flex items-center gap-1 bg-azure-mist px-2 py-1 rounded">
-                          <Calendar size={12} /> {job.date}
-                        </span>
-                      )}
-                      <span className="flex items-center gap-1">
+
+                    <h2 className="text-2xl font-plus font-bold text-iron-grey mb-1 group-hover:text-blue-bell transition-colors">{job.role}</h2>
+                    <div className="flex flex-wrap items-center gap-4 mb-6">
+                      <span className="text-blue-bell/60 font-bold text-xs uppercase tracking-widest">{job.company}</span>
+                      <span className="text-iron-grey/30 text-xs font-medium flex items-center gap-1">
                         <MapPin size={12} /> {job.location}
                       </span>
                     </div>
+
+                    <div className="mb-8 p-3 rounded-xl bg-card-bg border border-iron-grey/5 inline-flex items-center gap-2">
+                       <ShieldCheck size={14} className="text-blue-bell" />
+                       <span className="text-[10px] font-bold text-iron-grey/60 uppercase tracking-widest">Key Takeaway: {job.takeaway}</span>
+                    </div>
+
+                    <ul className="space-y-4">
+                      {job.points.map((point, i) => (
+                        <li key={i} className="flex items-start gap-4">
+                          <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-bell/20 shrink-0" />
+                          <p className="text-sm text-iron-grey/60 leading-relaxed font-medium">{point}</p>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  {/* Key Takeaway Badge */}
-                  <div className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-almond-cream/30 border border-camel/10 text-camel-dark text-xs font-bold">
-                    <job.icon size={14} className="text-camel" />
-                    <span>Focus: {job.takeaway}</span>
-                  </div>
-
-                  {/* Bullet Points */}
-                  <ul className="space-y-3">
-                    {job.points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3 text-camel-dark/80 leading-relaxed text-sm md:text-base">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-camel/40 shrink-0" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-
                 </div>
+
+                <div className="hidden md:block flex-1" />
               </motion.div>
             ))}
-
           </div>
 
-          {/* --- KEY LESSONS SECTION (New) --- */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+          {/* --- LESSONS --- */}
+          <section className="mb-32">
+             <h2 className="text-4xl font-plus font-extrabold text-iron-grey mb-12">Universal <span className="gradient-text">Lessons.</span></h2>
+             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+               {[
+                 "Data quality issues are exponentially more expensive to fix downstream than at the source.",
+                 "End-users depend on data being correct — silent failures in pipelines are the most dangerous.",
+                 "Schema decisions made during the first 10% of a project determine 90% of its future maintenance cost.",
+                 "Infrastructure reliability is a hard prerequisite for every analytical or ML workload.",
+                 "In high-stakes environments, 'it works' is secondary to 'it is audit-ready and traceable.'",
+               ].map((lesson, i) => (
+                 <div key={i} className="bg-card-bg border border-iron-grey/5 p-8 rounded-[2rem] hover:bg-white hover:border-blue-bell/10 transition-all">
+                    <CheckCircle2 size={24} className="text-blue-bell mb-6 opacity-30" />
+                    <p className="text-iron-grey/70 font-bold leading-tight">{lesson}</p>
+                 </div>
+               ))}
+             </div>
+          </section>
+
+          {/* --- CTA --- */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-azure-mist/50 p-8 md:p-12 rounded-3xl border border-camel/10 mb-20"
+            className="bg-iron-grey text-white rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden"
           >
-            <h2 className="font-serif text-3xl text-camel-dark mb-8">How These Experiences Shape My Work</h2>
-            <div className="grid md:grid-cols-1 gap-4">
-              {[
-                "Systems must be reliable before they are feature-rich.",
-                "Data accuracy and integrity are non-negotiable.",
-                "Clear access control and role separation matter.",
-                "Documentation and clarity reduce long-term maintenance cost.",
-                "Technology should support people and processes, not complicate them."
-              ].map((lesson, i) => (
-                <div key={i} className="flex gap-4 items-center bg-white/60 p-4 rounded-xl border border-camel/5">
-                  <CheckCircle2 className="text-camel shrink-0" size={20} />
-                  <span className="text-camel-dark font-medium">{lesson}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+             <div className="absolute top-0 right-0 p-12 opacity-5 text-white">
+                <Building2 size={300} strokeWidth={1} />
+              </div>
 
-          {/* --- CURRENT DIRECTION (New) --- */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center max-w-2xl mx-auto"
-          >
-            <span className="text-camel font-bold tracking-widest uppercase text-xs mb-3 block">Current Direction</span>
-            <p className="text-camel-dark/80 text-lg leading-relaxed mb-8">
-              I am now focused on <strong>backend engineering and backend-adjacent data roles</strong>, where system architecture, data integrity, and analytical thinking intersect.
-            </p>
-            
-            <Link to="/contact" className="inline-flex items-center gap-2 bg-camel-dark text-parchment px-8 py-4 rounded-full font-bold hover:bg-camel transition-all shadow-lg shadow-camel/20">
-              Discuss Opportunities <ArrowRight size={18} />
-            </Link>
+            <div className="relative z-10 max-w-2xl mx-auto space-y-8">
+              <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">Ready to Build</span>
+              <h2 className="text-4xl md:text-5xl font-plus font-extrabold leading-tight">Focusing on high-stakes <br />backend challenges.</h2>
+              <p className="text-white/60 text-lg leading-relaxed">
+                I am looking for roles where I can contribute to core infrastructure, distributed systems, and the data foundations of high-growth engineering teams.
+              </p>
+              <Link to="/contact" className="inline-flex items-center gap-3 bg-white text-iron-grey px-10 py-5 rounded-full font-bold hover:bg-blue-bell hover:text-white transition-all group">
+                Discuss Opportunities <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
           </motion.div>
 
         </div>
