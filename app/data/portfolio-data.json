@@ -1,0 +1,572 @@
+{
+  "personal": {
+    "name": "Emmanuel Opoku",
+    "initials": "EO.",
+    "title": "Backend & Data Engineer",
+    "email": "papa16annan@gmail.com",
+    "location": "Takoradi, Ghana",
+    "university": "Takoradi Technical University",
+    "graduationYear": "2026",
+    "profileImage": "/profile.jpg",
+    "resumePath": "/resume.pdf",
+    "statusBadge": "Open to Backend, Data & ML Engineering Roles",
+    "socialLinks": {
+      "github": {
+        "label": "GitHub",
+        "value": "github.com/emmanuelopoku",
+        "href": "https://github.com/emmanuelopoku",
+        "icon": "Github"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "in/emmanuel-opoku",
+        "href": "https://linkedin.com/in/emmanuel-opoku",
+        "icon": "Linkedin"
+      },
+      "cv": {
+        "label": "Engineering CV",
+        "value": "Architectural Overview (PDF)",
+        "href": "/resume.pdf",
+        "icon": "FileText"
+      }
+    }
+  },
+
+  "hero": {
+    "headline": "I build systems",
+    "headlineAccent": "that power intelligence.",
+    "subheadline": "Engineering robust data infrastructure and scalable backends that bridge the gap between complex logic and seamless user experiences.",
+    "signals": [
+      { "icon": "Workflow", "label": "PIPELINES" },
+      { "icon": "Shield", "label": "RELIABILITY" },
+      { "icon": "Database", "label": "SCHEMA-FIRST" }
+    ]
+  },
+
+  "homeSections": {
+    "bentoCards": [
+      {
+        "number": "01",
+        "icon": "Server",
+        "title": "Backend Arch",
+        "description": "Designing secure, role-gated APIs and distributed service architectures that prioritize uptime and modularity.",
+        "color": "blue-bell",
+        "highlight": false
+      },
+      {
+        "number": "02",
+        "icon": "Layers",
+        "title": "Relational Logic",
+        "description": "Schema-first development with normalized models, efficient indexing, and integrity-driven data flows.",
+        "color": "blue-bell",
+        "highlight": true
+      },
+      {
+        "number": "03",
+        "icon": "BarChart3",
+        "title": "Data Pipelines",
+        "description": "Engineering ETL workflows that transform raw events into ML-ready datasets with absolute lineage.",
+        "color": "lavender",
+        "highlight": false
+      }
+    ],
+    "radarSection": {
+      "badge": "Architecture First",
+      "headline": "Designed for",
+      "headlineAccent": "performance & trust.",
+      "description": "I operate across the full stack of intelligent systems — from designing secure backend APIs, to engineering clean data pipelines.",
+      "stats": [
+        { "value": "99.9%", "label": "Uptime Target", "color": "blue-bell" },
+        { "value": "Schema-Ready", "label": "Data Excellence", "color": "dusty-mauve" }
+      ]
+    },
+    "cta": {
+      "headline": "Ready to build\nthe backends of tomorrow?"
+    }
+  },
+
+  "skills": {
+    "radarChart": [
+      { "subject": "Architecture", "A": 95, "fullMark": 100 },
+      { "subject": "Data Engineering", "A": 90, "fullMark": 100 },
+      { "subject": "Security", "A": 85, "fullMark": 100 },
+      { "subject": "Performance", "A": 80, "fullMark": 100 },
+      { "subject": "Algorithms", "A": 95, "fullMark": 100 },
+      { "subject": "API Design", "A": 92, "fullMark": 100 }
+    ],
+    "primary": [
+      {
+        "category": "Backend Architecture",
+        "icon": "Terminal",
+        "desc": "Designing secure, scalable, and maintainable server-side logic. Focused on high-performance APIs and distributed systems.",
+        "items": [
+          "Node.js & Express.js Mastery",
+          "RESTful API Design & Security",
+          "Authentication (JWT) & RBAC",
+          "Real-Time Systems (WebSockets)",
+          "Logic Layer Separation",
+          "Performance Optimization"
+        ],
+        "color": "blue-bell"
+      },
+      {
+        "category": "Data Engineering",
+        "icon": "Database",
+        "desc": "Architecting schemas that produce trusted data. Building pipelines that ensure integrity and downstream reliability.",
+        "items": [
+          "Relational Modeling (PostgreSQL)",
+          "Advanced SQL & CTEs",
+          "Data Normalization (3NF)",
+          "NoSQL Patterns (MongoDB)",
+          "ACID Transactions",
+          "ETL/ELT Logic Design"
+        ],
+        "color": "dusty-mauve"
+      }
+    ],
+    "supporting": [
+      {
+        "category": "Engineering Concepts",
+        "icon": "GitMerge",
+        "desc": "Guided by architectural principles that ensure systems are audit-ready and scalable.",
+        "items": [
+          "System Design & Scale",
+          "Clean Architecture",
+          "OOP & SOLID Principles",
+          "Data Flow Mapping"
+        ],
+        "color": "lavender"
+      },
+      {
+        "category": "Frontend & Tools",
+        "icon": "BarChart3",
+        "desc": "Supporting technologies for building end-to-end, production-grade engineers solutions.",
+        "items": [
+          "React & TypeScript",
+          "Modern CSS / Tailwind",
+          "Git & CI/CD Tooling",
+          "Vite Ecosystem"
+        ],
+        "color": "iron-grey"
+      }
+    ],
+    "learning": [
+      "dbt (data build tool)",
+      "Apache Airflow",
+      "Apache Spark",
+      "Snowflake Patterns",
+      "Data Observability"
+    ]
+  },
+
+  "projects": {
+    "featured": [
+      {
+        "title": "Travel With KB",
+        "role": "Full-Stack System Architecture",
+        "desc": "MERN stack booking engine with a data-modeled schema (parent referencing, aggregation pipelines for analytics) and a secure, role-gated Express API.",
+        "tech": ["Node.js", "MongoDB", "Express", "System Design"],
+        "color": "blue-bell",
+        "link": "/projects/travel-with-kb"
+      },
+      {
+        "title": "Scholarship Platform",
+        "role": "Institutional Backend + Data Workflows",
+        "desc": "Multi-role workflow engine with a normalized MySQL schema, state-machine status transitions, and audit logging for structured data reporting.",
+        "tech": ["PostgreSQL", "Relational Design", "RBAC", "TypeScript"],
+        "color": "dusty-mauve",
+        "link": "/projects/scholarship-platform"
+      },
+      {
+        "title": "Learning Management System",
+        "role": "Analytics-Ready Educational System",
+        "desc": "Full LMS with modular architecture, auto-graded quiz pipelines, and a behavioral analytics tracking layer for aggregated event reporting.",
+        "tech": ["MySQL", "Analytics", "System Design", "Node.js"],
+        "color": "lavender",
+        "link": "/projects/lms"
+      }
+    ],
+    "detailed": [
+      {
+        "id": "travel-with-kb",
+        "title": "Travel With KB",
+        "subtitle": "MERN Architecture • Secure Booking Data Flow",
+        "description": "A comprehensive booking engine with a data-modeled schema (parent referencing, aggregation pipelines) and a secure, role-gated Express API.",
+        "dataAngle": "Parent referencing, aggregation pipelines, secure API design.",
+        "capabilities": [
+          { "icon": "GitMerge", "text": "Parent Referencing Schema Design" },
+          { "icon": "BarChart3", "text": "Aggregation Pipelines for Analytics" },
+          { "icon": "Server", "text": "Role-Gated Express API Security" },
+          { "icon": "Database", "text": "Document-Based Data Modeling" }
+        ],
+        "stack": ["Node.js", "MongoDB", "Express", "JWT"],
+        "links": { "caseStudy": "/case-studies/travel-with-kb", "github": "#" },
+        "highlight": true,
+        "color": "blue-bell"
+      },
+      {
+        "id": "scholarship-platform",
+        "title": "Scholarship MIS",
+        "subtitle": "Relational Architecture • Secure Workflows",
+        "description": "A multi-role workflow engine with a normalized MySQL schema, managing thousands of applicant records with secure state-machine status transitions.",
+        "dataAngle": "normalized SQL modeling, RBAC, state machine transitions.",
+        "capabilities": [
+          { "icon": "Database", "text": "Normalized 3NF Relational Design" },
+          { "icon": "Users", "text": "Complex RBAC (Admin/Applicant)" },
+          { "icon": "FileText", "text": "Audit Logging & Action History" },
+          { "icon": "Shield", "text": "SQL Injection Prevention & Validation" }
+        ],
+        "stack": ["PostgreSQL", "Express", "TypeScript", "Node.js"],
+        "links": { "caseStudy": "/case-studies/scholarship-platform", "github": "#" },
+        "highlight": false,
+        "color": "dusty-mauve"
+      },
+      {
+        "id": "lms",
+        "title": "Learning Management System",
+        "subtitle": "Event Tracking • Modular System Design",
+        "description": "Full LMS with modular architecture, auto-graded quiz pipelines, and a behavioral analytics tracking layer for aggregated reporting.",
+        "dataAngle": "Event tracking schema, analytics pipelines, modular logic.",
+        "capabilities": [
+          { "icon": "Server", "text": "Modular Service Architecture" },
+          { "icon": "Database", "text": "Behavioral Event Tracking Layer" },
+          { "icon": "Cpu", "text": "Auto-Grading Pipeline Logic" },
+          { "icon": "GitMerge", "text": "Scalable Educational Infrastructure" }
+        ],
+        "stack": ["Node.js", "Express", "MySQL", "Analytics"],
+        "links": { "caseStudy": "/case-studies/lms", "github": "#" },
+        "highlight": false,
+        "color": "lavender"
+      }
+    ]
+  },
+
+  "caseStudies": {
+    "travel-with-kb": {
+      "title": "Travel With KB",
+      "role": "Data Modeling & Backend Architecture",
+      "timeline": "Dec 2025 - Present",
+      "stack": ["Node.js", "MongoDB", "Aggregation Pipelines", "Data Modeling", "Express"],
+      "color": "blue-bell",
+      "content": {
+        "problem": {
+          "text": "The core data challenge was modeling relational-style entities — Users, Tours, Reviews, and Bookings — inside MongoDB without losing the integrity guarantees that relational databases provide by default. The data needed to support analytics without duplicating state.",
+          "constraints": [
+            "Enforce referential integrity between Users ↔ Reviews ↔ Tours in NoSQL.",
+            "Design aggregation pipelines to compute derived metrics on reads.",
+            "Ensure every data write goes through server-side validation logic."
+          ]
+        },
+        "solution": {
+          "overview": "I designed a document schema using Parent Referencing to preserve entity boundaries, then built Mongoose-level validation and virtual computed fields to keep derived metrics accurate without data duplication.",
+          "roles": ["User (Browse/Book)", "Admin (Analytics Dashboard)", "Guide (Assigned to Tours)"],
+          "workflow": [
+            "Schema designed with referential integrity constraints",
+            "Mongoose pre-save hooks enforce validation before writes",
+            "Aggregation pipeline computes avg ratings at query time",
+            "APIFeatures class applies filtering and pagination"
+          ]
+        },
+        "architecture": {
+          "backend": [
+            "Mongoose Schemas: Strict typing",
+            "Virtual Fields: Computed averages",
+            "Aggregation Layer: Logic on metrics",
+            "APIFeatures: Reusable query builder"
+          ],
+          "schemaDetails": "Tours are the primary entity. Reviews use Parent Referencing rather than embedding — keeping review documents queryable independently and avoiding unbounded array growth. A Mongoose virtual computes ratings on demand.",
+          "diagramPlaceholder": ""
+        },
+        "auth": {
+          "strategy": "JWT via HTTP-Only Cookies",
+          "rbac": "Role-gated middleware: restrictTo('admin', 'lead-guide')",
+          "reasoning": "Access control is a data integrity concern. Using HTTP-Only cookies prevents XSS-based token theft and ensures only authorized roles can modify records."
+        },
+        "decisions": [
+          {
+            "decision": "Parent Referencing Over Embedding",
+            "why": "Embedding reviews would create unbounded array growth and make pagination impossible.",
+            "tradeoff": "Requires .populate() calls which add minor latency — mitigated by selective populating."
+          },
+          {
+            "decision": "Validation in the Model Layer",
+            "why": "Ensures data is validated before persistence regardless of the specific route trigger.",
+            "tradeoff": "Schema complexity increases, but data integrity is guaranteed at the source."
+          }
+        ],
+        "challenges": [
+          {
+            "challenge": "Computing Aggregate Metrics Without Duplication",
+            "solution": "Built a Mongoose post-save hook that recalculates the average rating on the Tour document after any review is created."
+          },
+          {
+            "challenge": "Preventing Invalid Writes from Any Source",
+            "solution": "All paths go through Mongoose model validation. The HTTP layer is treated as untrusted input."
+          }
+        ],
+        "outcome": {
+          "result": "A clean, analytics-ready data model where every entity boundary is enforced and aggregate metrics are computed correctly.",
+          "future": ["Migrate metrics to dedicated analytics collection", "Add data lineage tracking for audit reporting"]
+        }
+      }
+    },
+    "careerflow": {
+      "title": "CareerFlow Platform",
+      "role": "Lead Backend Developer",
+      "timeline": "2024 - 2025",
+      "stack": ["PHP", "MySQL", "RBAC Architecture", "MVC"],
+      "color": "dusty-mauve",
+      "content": {
+        "problem": {
+          "text": "The institution required a centralized system to replace paper-based scholarship reviews. The system had to support multiple roles with strict access control and produce auditable data trails.",
+          "constraints": [
+            "Multiple user roles with non-overlapping permissions.",
+            "Document uploads must be validated server-side (size/type).",
+            "Automated status transitions must be traceable and logs unmutable."
+          ]
+        },
+        "solution": {
+          "overview": "I designed a PHP-based workflow system where each application moves through defined states (Draft → Submitted → Under Review → Approved), with role-gated access at every transition.",
+          "roles": ["Applicant (Apply/Track)", "Reviewer (Evaluate/Score)", "Admin (Manager Cycles)"],
+          "workflow": [
+            "Applicant Creates Profile & Application",
+            "Uploads Required Documents (PDF validation)",
+            "Submits for Review (state locked)",
+            "Reviewer Scores & Decisions",
+            "Admin Finalizes & Reports"
+          ]
+        },
+        "architecture": {
+          "backend": [
+            "Session Auth with Role Flags",
+            "RBAC Middleware: Gated methods",
+            "File Handler: Server-side validation",
+            "Audit Log: Immutable history"
+          ],
+          "schemaDetails": "The core schema uses a normalized relational design: Applications link to Users, Documents, and Reviews. Status transitions are stored in a dedicated AuditLog table for compliance.",
+          "diagramPlaceholder": ""
+        },
+        "auth": {
+          "strategy": "PHP Session Authentication",
+          "rbac": "Action-level role checks before every data mutation",
+          "reasoning": "Session-based auth was appropriate for a server-rendered institutional app. Each controller method validates the user role."
+        },
+        "decisions": [
+          {
+            "decision": "Explicit Status State Machine",
+            "why": "Each application's lifecycle is modeled as discrete states with defined valid transitions.",
+            "tradeoff": "Upfront design cost, but prevents invalid states and simplifies reporting."
+          },
+          {
+            "decision": "Server-side Doc Validation",
+            "why": "Client-side validation is trivial to bypass; integrity requires server verification.",
+            "tradeoff": "Slight latency increase during uploads, but ensures system security."
+          }
+        ],
+        "challenges": [
+          {
+            "challenge": "Preventing Concurrent Review Conflicts",
+            "solution": "Implemented optimistic locking on review records so reviewers cannot overwrite each other's scores."
+          },
+          {
+            "challenge": "Generating Accurate Cycle Reports",
+            "solution": "Designed the AuditLog table as the source of truth for all status history transitions."
+          }
+        ],
+        "outcome": {
+          "result": "The platform successfully digitalized the workflow, reducing processing time and providing auditable data for compliance.",
+          "future": ["Email notifications on state changes", "PDF generation for approval letters"]
+        }
+      }
+    }
+  },
+
+  "experience": {
+    "jobs": [
+      {
+        "company": "AmaliTech",
+        "role": "Software Engineering Intern",
+        "location": "Takoradi, Ghana",
+        "type": "Engineering",
+        "icon": "Code2",
+        "takeaway": "Code Quality Standards",
+        "color": "blue-bell",
+        "points": [
+          "Built backend data workflows within a professional software engineering environment, focusing on how application logic impacts data persistence.",
+          "Identified and resolved data production bottlenecks by implementing clean API design and more efficient server-side validation logic.",
+          "Worked within an agile team, participating in code reviews that enforced high standards for maintainable, production-ready code."
+        ]
+      },
+      {
+        "company": "Adamus Resources",
+        "role": "IT / Technical Intern",
+        "location": "Nzema, Ghana",
+        "type": "Corporate IT",
+        "icon": "Building2",
+        "takeaway": "High-Stakes Reliability",
+        "color": "dusty-mauve",
+        "points": [
+          "Supported iron-clad internal systems in a corporate mining environment where downtime resulted in significant operational costs.",
+          "Gained firsthand exposure to the real cost of system failure, reinforcing a data engineering philosophy built on trust and consistency.",
+          "Managed critical data flows between non-technical departments, ensuring cross-functional accuracy across the enterprise."
+        ]
+      },
+      {
+        "company": "STCCI",
+        "role": "IT / Systems Support",
+        "location": "Takoradi, Ghana",
+        "type": "Systems",
+        "icon": "Monitor",
+        "takeaway": "Institutional Integrity",
+        "color": "lavender",
+        "points": [
+          "Assisted with digital records management and the cleanup of inaccurately formatted institutional data sets.",
+          "Experienced how a lack of schema discipline leads to reporting failures — directly informing my commitment to schema-first thinking.",
+          "Automated recurrent data-related workflows to reduce manual entry errors and ensure traceable document lineage."
+        ]
+      },
+      {
+        "company": "GPHA",
+        "role": "Infrastructure Intern",
+        "location": "Takoradi, Ghana",
+        "type": "Infrastructure",
+        "icon": "Network",
+        "takeaway": "Infrastructure Scale",
+        "color": "iron-grey",
+        "points": [
+          "Supported network infrastructure in a high-throughput operational environment for national-scale maritime operations.",
+          "Observed the relationship between physical reliability and data system availability at extreme volumes.",
+          "Reinforced the importance of structured documentation and standards in environments with high technical debt potential."
+        ]
+      }
+    ],
+    "lessons": [
+      "Data quality issues are exponentially more expensive to fix downstream than at the source.",
+      "End-users depend on data being correct — silent failures in pipelines are the most dangerous.",
+      "Schema decisions made during the first 10% of a project determine 90% of its future maintenance cost.",
+      "Infrastructure reliability is a hard prerequisite for every analytical or ML workload.",
+      "In high-stakes environments, 'it works' is secondary to 'it is audit-ready and traceable.'"
+    ]
+  },
+
+  "about": {
+    "mission": {
+      "university": "Takoradi Technical University",
+      "universityYear": "2026",
+      "intro": "Undergraduate IT student at <university> (<year>), obsessed with the bridge between raw data and system intelligence.",
+      "description": "I specialize in Backend Development and Data Engineering. My work is dedicated to building the infrastructure that makes complex systems reliable, scalable, and audit-ready. I believe that engineering excellence starts with a deep understanding of the data schema."
+    },
+    "focuses": [
+      {
+        "icon": "Database",
+        "title": "Architecture First",
+        "description": "I focus on the full lifecycle of a system: from initial 3NF schema design to high-performance RESTful APIs. I build systems where security and modularity are baked into the foundation.",
+        "color": "blue-bell"
+      },
+      {
+        "icon": "BarChart3",
+        "title": "Data-Centric AI",
+        "description": "I am building toward large-scale data infrastructure inspired by leaders like Anthropic. My goal is to build robust pipelines for the massive datasets required for modern ML.",
+        "color": "dusty-mauve"
+      }
+    ],
+    "dnaCards": [
+      { "icon": "GraduationCap", "text": "2026 Expected Graduation", "sub": "B.Tech. IT @ TTU", "color": "blue-bell" },
+      { "icon": "Database", "text": "System Design Depth", "sub": "Scalability & RBAC Specialist", "color": "dusty-mauve" },
+      { "icon": "Server", "text": "Production Logic", "sub": "Node.js (Express), PHP, SQL", "color": "lavender" }
+    ],
+    "exposure": [
+      { "title": "Data Quality", "org": "AmaliTech", "desc": "Witnessed how code quality determines the reliability of data produced by enterprise systems." },
+      { "title": "High-Stakes Logic", "org": "Adamus Resources", "desc": "Learned that in corporate environments, data reliability and system stability are non-negotiable." },
+      { "title": "Institutional Flow", "org": "STCCI", "desc": "Observed how poor schema design creates downstream confusion — reinforcing schema-first thinking." }
+    ],
+    "principles": [
+      { "icon": "Database", "title": "Schema Before Pipelines", "desc": "Entity relationships and constraints come before a single line of transformation." },
+      { "icon": "FlaskConical", "title": "Quality is a Feature", "desc": "Null handling and integrity are the core deliverables, not an afterthought." },
+      { "icon": "BarChart3", "title": "Downstream Focus", "desc": "Designing for the analysts and scientists who consume the logic I build." },
+      { "icon": "FileText", "title": "Absolute Lineage", "desc": "Every transformation must be explainable. Documentation is as vital as the code." }
+    ],
+    "quote": "Good engineering is invisible. Bad engineering is everywhere."
+  },
+
+  "process": {
+    "principles": [
+      {
+        "title": "Schema First",
+        "icon": "Database",
+        "statement": "Data outlives the code that writes it.",
+        "desc": "I start with the data model — defining entities, relationships, and constraints before writing a single line of logic. A well-designed schema simplifies the backend and secures the pipeline.",
+        "color": "blue-bell"
+      },
+      {
+        "title": "Quality as Output",
+        "icon": "FlaskConical",
+        "statement": "The deliverable is trust, not just data.",
+        "desc": "Null handling, type coercion, and referential integrity are not edge cases. I treat data quality validation as a first-class citizen in every system I build.",
+        "color": "dusty-mauve"
+      },
+      {
+        "title": "Fail Loudly",
+        "icon": "AlertTriangle",
+        "statement": "Silent failures are technical debt accumulating.",
+        "desc": "Every pipeline should fail with structured, actionable errors. I build observability and threshold checks into transformations to prevent corrupted data from reaching downstream tables.",
+        "color": "lavender"
+      },
+      {
+        "title": "Medallion Layers",
+        "icon": "Layers",
+        "statement": "Raw, staging, and mart are not suggestions.",
+        "desc": "I follow strict architectural layering: preserving raw source data, cleaning in staging, and producing aggregated, consumer-ready models in the mart layer.",
+        "color": "iron-grey"
+      },
+      {
+        "title": "Consumer Focus",
+        "icon": "BarChart3",
+        "statement": "Architecture exists to serve analytics.",
+        "desc": "I design with the end-user in mind — documenting grain, semantics, and update frequency to ensure tables are as usable as they are technically sound.",
+        "color": "blue-bell"
+      },
+      {
+        "title": "Absolute Lineage",
+        "icon": "FileText",
+        "statement": "Documentation is as vital as the logic.",
+        "desc": "Code alone isn't enough. I document the 'why' behind every join and filter, ensuring the business context for every pipeline is traceable and reviewable.",
+        "color": "dusty-mauve"
+      }
+    ]
+  },
+
+  "contact": {
+    "headerLabel": "Connection Protocols",
+    "headline": "Ready for the next",
+    "headlineAccent": "engineering challenge.",
+    "description": "I am focused on roles in <strong>Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.",
+    "responseStandards": {
+      "title": "Professional Response Standards.",
+      "description": "I prioritize technical clarity and direct communication. For architectural inquiries or engineering opportunities, please include the core problem domain or system constraints.",
+      "availability": "Global Availability"
+    }
+  },
+
+  "navigation": {
+    "items": [
+      { "name": "Projects", "path": "/projects" },
+      { "name": "Skills", "path": "/skills" },
+      { "name": "Experience", "path": "/experience" },
+      { "name": "Process", "path": "/process" },
+      { "name": "About", "path": "/about" },
+      { "name": "Contact", "path": "/contact" }
+    ],
+    "footerLinks": [
+      { "name": "Home", "path": "/" },
+      { "name": "About", "path": "/about" },
+      { "name": "Experience", "path": "/experience" },
+      { "name": "Process / Philosophy", "path": "/process" },
+      { "name": "Projects", "path": "/projects" },
+      { "name": "Skills", "path": "/skills" },
+      { "name": "Contact", "path": "/contact" }
+    ],
+    "footerTagline": "Building scalable infrastructure that powers reliable analytical and AI systems.",
+    "footerCta": "Let's build something durable together."
+  }
+}

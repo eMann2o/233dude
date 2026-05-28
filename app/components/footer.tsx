@@ -1,18 +1,13 @@
 import { Link } from "react-router";
 import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { getPersonal, getNavigation } from "~/data/data";
 
-const LINKS = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Experience", path: "/experience" },
-  { name: "Process / Philosophy", path: "/process" },
-  { name: "Projects", path: "/projects" },
-  { name: "Skills", path: "/skills" },
-  { name: "Contact", path: "/contact" },
-];
+const personal = getPersonal();
+const navigation = getNavigation();
+const LINKS = navigation.footerLinks;
 
 export default function Footer() {
-  const currentYear = 2026; // Fixed as per requirements, or use new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-iron-grey text-white relative overflow-hidden pt-24 pb-12">
@@ -26,21 +21,21 @@ export default function Footer() {
           <div className="md:col-span-5 space-y-4">
             <Link to="/" className="inline-block group">
               <h2 className="font-plus text-2xl font-bold tracking-tight text-white group-hover:text-blue-bell transition-colors">
-                Emmanuel Opoku
+                {personal.name}
               </h2>
               <p className="text-sm font-plus font-bold text-blue-bell uppercase tracking-widest mt-1">
-                Backend & Data Engineer
+                {personal.title}
               </p>
             </Link>
             <p className="text-white/60 text-lg max-w-sm leading-relaxed">
-              Building scalable infrastructure that powers reliable analytical and AI systems.
+              {navigation.footerTagline}
             </p>
           </div>
 
           {/* Soft CTA Callout */}
           <div className="md:col-span-7 flex md:justify-end items-center">
             <Link to="/contact" className="group text-3xl md:text-4xl font-plus font-bold text-white/80 hover:text-blue-bell transition-colors flex items-center gap-4">
-              Let’s build something durable together.
+              {navigation.footerCta}
               <ArrowUpRight className="opacity-0 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-300" size={32} />
             </Link>
           </div>
@@ -70,16 +65,16 @@ export default function Footer() {
             <h4 className="font-plus font-bold text-xs uppercase tracking-widest text-blue-bell mb-8">Connect</h4>
             <div className="space-y-4 flex flex-col md:items-end">
               <a 
-                href="mailto:papa16annan@gmail.com" 
+                href={`mailto:${personal.email}`} 
                 className="text-lg font-plus font-medium hover:text-blue-bell transition-colors flex items-center gap-2"
               >
                 <Mail size={18} className="md:hidden" />
-                papa16annan@gmail.com
+                {personal.email}
               </a>
               
               <div className="flex gap-4 mt-2">
                 <a 
-                  href="https://linkedin.com/in/emmanuel-opoku" 
+                  href={personal.socialLinks.linkedin.href} 
                   target="_blank" 
                   rel="noreferrer"
                   className="flex items-center gap-2 text-sm text-parchment/60 hover:text-white transition-colors"
@@ -87,7 +82,7 @@ export default function Footer() {
                   <Linkedin size={16} /> LinkedIn
                 </a>
                 <a 
-                  href="https://github.com/emmanuelopoku" 
+                  href={personal.socialLinks.github.href} 
                   target="_blank" 
                   rel="noreferrer"
                   className="flex items-center gap-2 text-sm text-parchment/60 hover:text-white transition-colors"
@@ -101,15 +96,15 @@ export default function Footer() {
 
         {/* --- Bottom Section: Copyright --- */}
         <div className="pt-8 border-t border-parchment/5 flex flex-col md:flex-row justify-between items-center text-xs text-parchment/30 font-mono">
-          <p>© {currentYear} Emmanuel Opoku. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Takoradi, Ghana</p>
+          <p>© {currentYear} {personal.name}. All rights reserved.</p>
+          <p className="mt-2 md:mt-0">{personal.location}</p>
         </div>
 
       </div>
 
       {/* Decorative Watermark */}
       <div className="absolute -bottom-16 -left-10 text-[12rem] font-plus font-bold text-white/[0.02] pointer-events-none select-none">
-        EO.
+        {personal.initials}
       </div>
     </footer>
   );

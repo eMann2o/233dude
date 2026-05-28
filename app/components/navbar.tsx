@@ -2,18 +2,14 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { getPersonal, getNavigation } from '~/data/data';
 
 // --- CONFIGURATION ---
 const TRANSITION = { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const };
 
-const NAV_ITEMS = [
-  { name: 'Projects', path: '/projects' },
-  { name: 'Skills', path: '/skills' },
-  { name: 'Experience', path: '/experience' },
-  { name: 'Process', path: '/process' },
-  { name: 'About', path: '/about' },
-  { name: 'Contact', path: '/contact' },
-];
+const personal = getPersonal();
+const navigation = getNavigation();
+const NAV_ITEMS = navigation.items;
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +42,7 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-2 z-50 group">
           <div className="flex flex-col">
             <span className={`font-plus text-2xl font-bold tracking-tight leading-none transition-colors duration-300 ${isOpen ? 'text-white' : 'text-iron-grey'}`}>
-              EO.
+              {personal.initials}
             </span>
           </div>
         </Link>
@@ -121,7 +117,7 @@ export default function Navbar() {
                transition={{ delay: 0.5 }}
                className="absolute bottom-12 text-[10px] uppercase tracking-[0.2em] opacity-40 font-sans"
             >
-              Emmanuel Opoku — 2026
+              {personal.name} — {personal.graduationYear}
             </motion.div>
           </motion.div>
         )}

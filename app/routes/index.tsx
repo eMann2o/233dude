@@ -3,59 +3,27 @@ import { Link } from "react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   ArrowRight, 
-  Database, 
-  Server, 
-  Shield, 
-  Cpu, 
-  Workflow, 
-  Layers, 
   Code2, 
-  Globe, 
-  Zap,
   TrendingUp,
-  Activity,
-  FileCode,
-  BarChart3
 } from "lucide-react";
 import { ReactLenis } from "lenis/react";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
+import {
+  getPersonal,
+  getHero,
+  getHomeSections,
+  getSkills,
+  getFeaturedProjects,
+  resolveIcon,
+} from "~/data/data";
 
-// --- DATA ---
-const PROJECTS = [
-  {
-    title: "Travel With KB",
-    role: "Full-Stack System Architecture",
-    desc: "MERN stack booking engine with a data-modeled schema (parent referencing, aggregation pipelines for analytics) and a secure, role-gated Express API.",
-    tech: ["Node.js", "MongoDB", "Express", "System Design"],
-    color: "blue-bell",
-    link: "/projects/travel-with-kb"
-  },
-  {
-    title: "Scholarship Platform",
-    role: "Institutional Backend + Data Workflows",
-    desc: "Multi-role workflow engine with a normalized MySQL schema, state-machine status transitions, and audit logging for structured data reporting.",
-    tech: ["PostgreSQL", "Relational Design", "RBAC", "TypeScript"],
-    color: "dusty-mauve",
-    link: "/projects/scholarship-platform"
-  },
-  {
-    title: "Learning Management System",
-    role: "Analytics-Ready Educational System",
-    desc: "Full LMS with modular architecture, auto-graded quiz pipelines, and a behavioral analytics tracking layer for aggregated event reporting.",
-    tech: ["MySQL", "Analytics", "System Design", "Node.js"],
-    color: "lavender",
-    link: "/projects/lms"
-  }
-];
-
-const SKILL_DATA = [
-  { subject: 'Architecture', A: 95, fullMark: 100 },
-  { subject: 'Data Engineering', A: 90, fullMark: 100 },
-  { subject: 'Security', A: 85, fullMark: 100 },
-  { subject: 'Performance', A: 80, fullMark: 100 },
-  { subject: 'Algorithms', A: 95, fullMark: 100 },
-  { subject: 'API Design', A: 92, fullMark: 100 },
-];
+// --- DATA FROM CENTRAL SOURCE ---
+const personal = getPersonal();
+const hero = getHero();
+const home = getHomeSections();
+const skills = getSkills();
+const PROJECTS = getFeaturedProjects();
+const SKILL_DATA = skills.radarChart;
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -91,7 +59,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-iron-grey/5 shadow-xl shadow-iron-grey/5 text-iron-grey text-[13px] font-bold tracking-tight"
             >
               <div className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" /> 
-              Open to Backend, Data & ML Engineering Roles
+              {personal.statusBadge}
             </motion.div>
 
             {/* Main Headline */}
@@ -101,8 +69,8 @@ export default function Home() {
               transition={{ delay: 0.1, duration: 0.8 }}
             >
               <h1 className="font-plus text-6xl md:text-[5.5rem] text-iron-grey leading-[0.9] tracking-[-0.04em] font-extrabold text-balance">
-                I build systems <br />
-                <span className="gradient-text italic">that power intelligence.</span>
+                {hero.headline} <br />
+                <span className="gradient-text italic">{hero.headlineAccent}</span>
               </h1>
             </motion.div>
 
@@ -113,7 +81,7 @@ export default function Home() {
               transition={{ delay: 0.4 }}
               className="text-lg md:text-xl text-iron-grey/60 max-w-2xl mx-auto leading-relaxed font-medium"
             >
-              Engineering robust data infrastructure and scalable backends that bridge the gap between complex logic and seamless user experiences.
+              {hero.subheadline}
             </motion.p>
 
             {/* CTAs */}
@@ -139,15 +107,14 @@ export default function Home() {
               transition={{ delay: 1 }}
               className="pt-20 flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700"
             >
-              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
-                <Workflow size={24} /> PIPELINES
-              </div>
-              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
-                <Shield size={24} /> RELIABILITY
-              </div>
-              <div className="flex items-center gap-2 font-bold tracking-tighter text-xl">
-                <Database size={24} /> SCHEMA-FIRST
-              </div>
+              {hero.signals.map((signal) => {
+                const Icon = resolveIcon(signal.icon);
+                return (
+                  <div key={signal.label} className="flex items-center gap-2 font-bold tracking-tighter text-xl">
+                    <Icon size={24} /> {signal.label}
+                  </div>
+                );
+              })}
             </motion.div>
           </motion.div>
         </section>
@@ -160,40 +127,32 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bento-card col-span-1 md:col-span-1 flex flex-col justify-between hover:border-blue-bell/10 transition-all">
-              <div>
-                <span className="text-5xl font-plus font-extrabold text-iron-grey/5 mb-8 block">01</span>
-                <div className="w-12 h-12 bg-blue-bell/10 rounded-2xl flex items-center justify-center text-blue-bell mb-6">
-                  <Server size={24} />
+            {home.bentoCards.map((card) => {
+              const Icon = resolveIcon(card.icon);
+              return (
+                <div
+                  key={card.title}
+                  className={`bento-card col-span-1 md:col-span-1 flex flex-col justify-between ${
+                    card.highlight
+                      ? "border-blue-bell/20 bg-white shadow-2xl shadow-blue-bell/5"
+                      : card.color === "lavender"
+                      ? "hover:border-lavender/20"
+                      : "hover:border-blue-bell/10 transition-all"
+                  }`}
+                >
+                  <div>
+                    <span className={`text-5xl font-plus font-extrabold ${card.highlight ? "text-blue-bell/5" : "text-iron-grey/5"} mb-8 block`}>{card.number}</span>
+                    <div className={`${card.highlight ? "w-14 h-14 bg-blue-bell rounded-2xl flex items-center justify-center text-white mb-6 animate-pulse-slow shadow-lg shadow-blue-bell/30" : `w-12 h-12 ${card.color === "lavender" ? "bg-lavender/40" : "bg-blue-bell/10"} rounded-2xl flex items-center justify-center ${card.color === "lavender" ? "text-iron-grey" : "text-blue-bell"} mb-6`}`}>
+                      <Icon size={card.highlight ? 28 : 24} />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">{card.title}</h3>
+                    <p className="text-iron-grey/60 text-sm leading-relaxed font-medium">
+                      {card.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Backend Arch</h3>
-                <p className="text-iron-grey/60 text-sm leading-relaxed font-medium">
-                  Designing secure, role-gated APIs and distributed service architectures that prioritize uptime and modularity.
-                </p>
-              </div>
-            </div>
-
-            <div className="bento-card col-span-1 md:col-span-1 border-blue-bell/20 bg-white shadow-2xl shadow-blue-bell/5">
-              <span className="text-5xl font-plus font-extrabold text-blue-bell/5 mb-8 block">02</span>
-              <div className="w-14 h-14 bg-blue-bell rounded-2xl flex items-center justify-center text-white mb-6 animate-pulse-slow shadow-lg shadow-blue-bell/30">
-                <Layers size={28} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Relational Logic</h3>
-              <p className="text-iron-grey/60 text-sm leading-relaxed font-medium">
-                Schema-first development with normalized models, efficient indexing, and integrity-driven data flows.
-              </p>
-            </div>
-
-            <div className="bento-card col-span-1 md:col-span-1 hover:border-lavender/20">
-              <span className="text-5xl font-plus font-extrabold text-iron-grey/5 mb-8 block">03</span>
-              <div className="w-12 h-12 bg-lavender/40 rounded-2xl flex items-center justify-center text-iron-grey mb-6">
-                <BarChart3 size={24} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Data Pipelines</h3>
-              <p className="text-iron-grey/60 text-sm leading-relaxed font-medium">
-                Engineering ETL workflows that transform raw events into ML-ready datasets with absolute lineage.
-              </p>
-            </div>
+              );
+            })}
           </div>
         </section>
 
@@ -236,24 +195,22 @@ export default function Home() {
             </motion.div>
 
             <div className="space-y-10">
-              <span className="text-blue-bell font-bold text-xs uppercase tracking-widest bg-blue-bell/5 px-4 py-2 rounded-full border border-blue-bell/10">Architecture First</span>
+              <span className="text-blue-bell font-bold text-xs uppercase tracking-widest bg-blue-bell/5 px-4 py-2 rounded-full border border-blue-bell/10">{home.radarSection.badge}</span>
               <h2 className="text-4xl md:text-6xl font-plus font-bold text-iron-grey leading-[0.9] tracking-tight">
-                Designed for <br />
-                <span className="gradient-text italic">performance & trust.</span>
+                {home.radarSection.headline} <br />
+                <span className="gradient-text italic">{home.radarSection.headlineAccent}</span>
               </h2>
               <p className="text-iron-grey/60 text-xl leading-relaxed font-medium">
-                I operate across the full stack of intelligent systems — from designing secure backend APIs, to engineering clean data pipelines.
+                {home.radarSection.description}
               </p>
               
               <div className="grid grid-cols-2 gap-8 pt-6 border-t border-iron-grey/5">
-                <div className="space-y-2">
-                  <h4 className="text-2xl font-bold text-blue-bell font-plus">99.9%</h4>
-                  <p className="text-[10px] text-iron-grey/40 uppercase font-bold tracking-[0.2em]">Uptime Target</p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-2xl font-bold text-dusty-mauve font-plus">Schema-Ready</h4>
-                  <p className="text-[10px] text-iron-grey/40 uppercase font-bold tracking-[0.2em]">Data Excellence</p>
-                </div>
+                {home.radarSection.stats.map((stat) => (
+                  <div key={stat.label} className="space-y-2">
+                    <h4 className={`text-2xl font-bold text-${stat.color} font-plus`}>{stat.value}</h4>
+                    <p className="text-[10px] text-iron-grey/40 uppercase font-bold tracking-[0.2em]">{stat.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -319,12 +276,12 @@ export default function Home() {
             >
                <div className="absolute inset-0 bg-gradient-to-br from-blue-bell/20 to-transparent opacity-50" />
                <div className="relative z-10 space-y-10">
-                  <h2 className="text-4xl md:text-6xl font-plus font-extrabold text-white leading-tight">Ready to build <br />the backends of tomorrow?</h2>
+                  <h2 className="text-4xl md:text-6xl font-plus font-extrabold text-white leading-tight">{home.cta.headline.split('\n').map((line, i) => <span key={i}>{line}<br /></span>)}</h2>
                   <div className="flex flex-wrap justify-center gap-6">
                      <Link to="/contact" className="bg-white text-iron-grey px-10 py-5 rounded-full font-bold hover:bg-blue-bell hover:text-white transition-all text-lg shadow-xl shadow-white/5">
                         Initiate Connection
                      </Link>
-                     <a href="/resume.pdf" className="px-10 py-5 border border-white/20 rounded-full font-bold text-white hover:bg-white/10 transition-all text-lg">
+                     <a href={personal.resumePath} className="px-10 py-5 border border-white/20 rounded-full font-bold text-white hover:bg-white/10 transition-all text-lg">
                         Download CV
                      </a>
                   </div>

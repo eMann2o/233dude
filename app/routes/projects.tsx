@@ -2,96 +2,13 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Server,
-  Database,
-  BarChart3,
-  FileText,
-  GitMerge,
-  Users,
-  Layout,
   Code2,
-  Cpu,
-  Shield,
-  type LucideIcon
+  Database,
 } from "lucide-react";
 import { ReactLenis } from "lenis/react";
+import { getDetailedProjects, resolveIcon } from "~/data/data";
 
-interface Capability {
-  icon: LucideIcon;
-  text: string;
-}
-
-interface ProjectLinks {
-  caseStudy: string;
-  github: string;
-}
-
-interface Project {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  dataAngle: string;
-  capabilities: Capability[];
-  stack: string[];
-  links: ProjectLinks;
-  highlight: boolean;
-  color: string;
-}
-
-const PROJECTS: Project[] = [
-  {
-    id: "travel-with-kb",
-    title: "Travel With KB",
-    subtitle: "MERN Architecture • Secure Booking Data Flow",
-    description: "A comprehensive booking engine with a data-modeled schema (parent referencing, aggregation pipelines) and a secure, role-gated Express API.",
-    dataAngle: "Parent referencing, aggregation pipelines, secure API design.",
-    capabilities: [
-      { icon: GitMerge, text: "Parent Referencing Schema Design" },
-      { icon: BarChart3, text: "Aggregation Pipelines for Analytics" },
-      { icon: Server, text: "Role-Gated Express API Security" },
-      { icon: Database, text: "Document-Based Data Modeling" }
-    ],
-    stack: ["Node.js", "MongoDB", "Express", "JWT"],
-    links: { caseStudy: "/projects/travel-with-kb", github: "#" },
-    highlight: true,
-    color: "blue-bell"
-  },
-  {
-    id: "scholarship-platform",
-    title: "Scholarship MIS",
-    subtitle: "Relational Architecture • Secure Workflows",
-    description: "A multi-role workflow engine with a normalized MySQL schema, managing thousands of applicant records with secure state-machine status transitions.",
-    dataAngle: "normalized SQL modeling, RBAC, state machine transitions.",
-    capabilities: [
-      { icon: Database, text: "Normalized 3NF Relational Design" },
-      { icon: Users, text: "Complex RBAC (Admin/Applicant)" },
-      { icon: FileText, text: "Audit Logging & Action History" },
-      { icon: Shield, text: "SQL Injection Prevention & Validation" }
-    ],
-    stack: ["PostgreSQL", "Express", "TypeScript", "Node.js"],
-    links: { caseStudy: "/projects/scholarship-platform", github: "#" },
-    highlight: false,
-    color: "dusty-mauve"
-  },
-  {
-    id: "lms",
-    title: "Learning Management System",
-    subtitle: "Event Tracking • Modular System Design",
-    description: "Full LMS with modular architecture, auto-graded quiz pipelines, and a behavioral analytics tracking layer for aggregated reporting.",
-    dataAngle: "Event tracking schema, analytics pipelines, modular logic.",
-    capabilities: [
-      { icon: Server, text: "Modular Service Architecture" },
-      { icon: Database, text: "Behavioral Event Tracking Layer" },
-      { icon: Cpu, text: "Auto-Grading Pipeline Logic" },
-      { icon: GitMerge, text: "Scalable Educational Infrastructure" }
-    ],
-    stack: ["Node.js", "Express", "MySQL", "Analytics"],
-    links: { caseStudy: "/projects/lms", github: "#" },
-    highlight: false,
-    color: "lavender"
-  }
-];
+const PROJECTS = getDetailedProjects();
 
 export default function Projects() {
   return (
@@ -177,21 +94,24 @@ export default function Projects() {
                   </h3>
 
                   <div className="space-y-6">
-                    {project.capabilities.map((cap, i) => (
-                      <div key={i} className="flex items-start gap-4">
-                        <div className="p-3 bg-white rounded-xl shadow-sm text-blue-bell">
-                          <cap.icon size={18} />
+                    {project.capabilities.map((cap, i) => {
+                      const CapIcon = resolveIcon(cap.icon);
+                      return (
+                        <div key={i} className="flex items-start gap-4">
+                          <div className="p-3 bg-white rounded-xl shadow-sm text-blue-bell">
+                            <CapIcon size={18} />
+                          </div>
+                          <div>
+                            <p className="text-sm font-bold text-iron-grey">
+                              {cap.text.split(' ')[0]}
+                            </p>
+                            <p className="text-xs text-iron-grey/50 leading-relaxed">
+                              {cap.text.split(' ').slice(1).join(' ')}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-sm font-bold text-iron-grey">
-                            {cap.text.split(' ')[0]}
-                          </p>
-                          <p className="text-xs text-iron-grey/50 leading-relaxed">
-                            {cap.text.split(' ').slice(1).join(' ')}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
 
                   {/* Decorative Accents */}

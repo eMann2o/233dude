@@ -1,72 +1,16 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import {
-  Database,
-  FlaskConical,
-  AlertTriangle,
-  FileText,
-  Layers,
-  GitMerge,
   ArrowRight,
-  BarChart3,
   Cpu,
   Fingerprint,
-  type LucideIcon
+  GitMerge,
+  Layers,
 } from "lucide-react";
 import { ReactLenis } from "lenis/react";
+import { getProcess, resolveIcon } from "~/data/data";
 
-interface PrincipleItem {
-  title: string;
-  icon: LucideIcon;
-  statement: string;
-  desc: string;
-  color: string;
-}
-
-const PRINCIPLES: PrincipleItem[] = [
-  {
-    title: "Schema First",
-    icon: Database,
-    statement: "Data outlives the code that writes it.",
-    desc: "I start with the data model — defining entities, relationships, and constraints before writing a single line of logic. A well-designed schema simplifies the backend and secures the pipeline.",
-    color: "blue-bell"
-  },
-  {
-    title: "Quality as Output",
-    icon: FlaskConical,
-    statement: "The deliverable is trust, not just data.",
-    desc: "Null handling, type coercion, and referential integrity are not edge cases. I treat data quality validation as a first-class citizen in every system I build.",
-    color: "dusty-mauve"
-  },
-  {
-    title: "Fail Loudly",
-    icon: AlertTriangle,
-    statement: "Silent failures are technical debt accumulating.",
-    desc: "Every pipeline should fail with structured, actionable errors. I build observability and threshold checks into transformations to prevent corrupted data from reaching downstream tables.",
-    color: "lavender"
-  },
-  {
-    title: "Medallion Layers",
-    icon: Layers,
-    statement: "Raw, staging, and mart are not suggestions.",
-    desc: "I follow strict architectural layering: preserving raw source data, cleaning in staging, and producing aggregated, consumer-ready models in the mart layer.",
-    color: "iron-grey"
-  },
-  {
-    title: "Consumer Focus",
-    icon: BarChart3,
-    statement: "Architecture exists to serve analytics.",
-    desc: "I design with the end-user in mind — documenting grain, semantics, and update frequency to ensure tables are as usable as they are technically sound.",
-    color: "blue-bell"
-  },
-  {
-    title: "Absolute Lineage",
-    icon: FileText,
-    statement: "Documentation is as vital as the logic.",
-    desc: "Code alone isn't enough. I document the 'why' behind every join and filter, ensuring the business context for every pipeline is traceable and reviewable.",
-    color: "dusty-mauve"
-  }
-];
+const PRINCIPLES = getProcess();
 
 export default function Process() {
   return (
@@ -94,35 +38,38 @@ export default function Process() {
 
           {/* --- PRINCIPLES GRID --- */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PRINCIPLES.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bento-card group flex flex-col hover:border-blue-bell/10"
-              >
-                <div className="flex items-start justify-between mb-8">
-                  <div className={`p-4 rounded-2xl bg-white shadow-sm text-${item.color}`}>
-                    <item.icon size={26} />
+            {PRINCIPLES.map((item, idx) => {
+              const ItemIcon = resolveIcon(item.icon);
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="bento-card group flex flex-col hover:border-blue-bell/10"
+                >
+                  <div className="flex items-start justify-between mb-8">
+                    <div className={`p-4 rounded-2xl bg-white shadow-sm text-${item.color}`}>
+                      <ItemIcon size={26} />
+                    </div>
+                    <span className="text-[10px] font-bold text-iron-grey/20 uppercase tracking-[0.2em]">Principle 0{idx + 1}</span>
                   </div>
-                  <span className="text-[10px] font-bold text-iron-grey/20 uppercase tracking-[0.2em]">Principle 0{idx + 1}</span>
-                </div>
 
-                <div className="flex-1">
-                  <h2 className="text-2xl font-plus font-bold text-iron-grey mb-2 group-hover:text-blue-bell transition-colors">
-                    {item.title}
-                  </h2>
-                  <p className="text-[10px] font-bold text-blue-bell/60 uppercase tracking-widest mb-6 leading-relaxed">
-                    "{item.statement}"
-                  </p>
-                  <p className="text-sm text-iron-grey/60 leading-relaxed font-medium">
-                    {item.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-plus font-bold text-iron-grey mb-2 group-hover:text-blue-bell transition-colors">
+                      {item.title}
+                    </h2>
+                    <p className="text-[10px] font-bold text-blue-bell/60 uppercase tracking-widest mb-6 leading-relaxed">
+                      "{item.statement}"
+                    </p>
+                    <p className="text-sm text-iron-grey/60 leading-relaxed font-medium">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* --- ARCHITECTURAL DNA --- */}

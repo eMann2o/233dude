@@ -1,97 +1,14 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import {
-  Database,
-  BarChart3,
-  Terminal,
-  GitMerge,
   CheckCircle2,
   Cpu,
-  Shield,
   Zap,
-  type LucideIcon
 } from "lucide-react";
 import { ReactLenis } from "lenis/react";
+import { getSkills, resolveIcon } from "~/data/data";
 
-interface SkillSection {
-  category: string;
-  icon: LucideIcon;
-  desc: string;
-  items: string[];
-  color: string;
-}
-
-interface SkillData {
-  primary: SkillSection[];
-  supporting: SkillSection[];
-}
-
-const SKILLS: SkillData = {
-  primary: [
-    {
-      category: "Backend Architecture",
-      icon: Terminal,
-      desc: "Designing secure, scalable, and maintainable server-side logic. Focused on high-performance APIs and distributed systems.",
-      items: [
-        "Node.js & Express.js Mastery",
-        "RESTful API Design & Security",
-        "Authentication (JWT) & RBAC",
-        "Real-Time Systems (WebSockets)",
-        "Logic Layer Separation",
-        "Performance Optimization"
-      ],
-      color: "blue-bell"
-    },
-    {
-      category: "Data Engineering",
-      icon: Database,
-      desc: "Architecting schemas that produce trusted data. Building pipelines that ensure integrity and downstream reliability.",
-      items: [
-        "Relational Modeling (PostgreSQL)",
-        "Advanced SQL & CTEs",
-        "Data Normalization (3NF)",
-        "NoSQL Patterns (MongoDB)",
-        "ACID Transactions",
-        "ETL/ELT Logic Design"
-      ],
-      color: "dusty-mauve"
-    }
-  ],
-  supporting: [
-    {
-      category: "Engineering Concepts",
-      icon: GitMerge,
-      desc: "Guided by architectural principles that ensure systems are audit-ready and scalable.",
-      items: [
-        "System Design & Scale",
-        "Clean Architecture",
-        "OOP & SOLID Principles",
-        "Data Flow Mapping"
-      ],
-      color: "lavender"
-    },
-    {
-      category: "Frontend & Tools",
-      icon: BarChart3,
-      desc: "Supporting technologies for building end-to-end, production-grade engineers solutions.",
-      items: [
-        "React & TypeScript",
-        "Modern CSS / Tailwind",
-        "Git & CI/CD Tooling",
-        "Vite Ecosystem"
-      ],
-      color: "iron-grey"
-    }
-  ]
-};
-
-const LEARNING: string[] = [
-  "dbt (data build tool)",
-  "Apache Airflow",
-  "Apache Spark",
-  "Snowflake Patterns",
-  "Data Observability"
-];
+const skillsData = getSkills();
 
 export default function Skills() {
   return (
@@ -125,37 +42,40 @@ export default function Skills() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {SKILLS.primary.map((skill, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bento-card group flex flex-col"
-                >
-                  <div className="flex items-start justify-between mb-8">
-                    <div className={`p-4 rounded-2xl bg-${skill.color}/10 text-${skill.color}`}>
-                      <skill.icon size={28} />
-                    </div>
-                    <span className="text-[10px] font-bold text-iron-grey/20 uppercase tracking-[0.2em]">Primary 0{idx + 1}</span>
-                  </div>
-
-                  <h3 className="text-3xl font-plus font-bold text-iron-grey mb-4 group-hover:text-blue-bell transition-colors">{skill.category}</h3>
-                  <p className="text-iron-grey/60 text-base mb-8 leading-relaxed">
-                    {skill.desc}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-4 mt-auto">
-                    {skill.items.map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <CheckCircle2 size={16} className={`text-blue-bell opacity-40`} />
-                        <span className="text-sm font-bold text-iron-grey/80 tracking-tight">{item}</span>
+              {skillsData.primary.map((skill, idx) => {
+                const SkillIcon = resolveIcon(skill.icon);
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="bento-card group flex flex-col"
+                  >
+                    <div className="flex items-start justify-between mb-8">
+                      <div className={`p-4 rounded-2xl bg-${skill.color}/10 text-${skill.color}`}>
+                        <SkillIcon size={28} />
                       </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+                      <span className="text-[10px] font-bold text-iron-grey/20 uppercase tracking-[0.2em]">Primary 0{idx + 1}</span>
+                    </div>
+
+                    <h3 className="text-3xl font-plus font-bold text-iron-grey mb-4 group-hover:text-blue-bell transition-colors">{skill.category}</h3>
+                    <p className="text-iron-grey/60 text-base mb-8 leading-relaxed">
+                      {skill.desc}
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-4 mt-auto">
+                      {skill.items.map((item, i) => (
+                        <div key={i} className="flex items-center gap-3">
+                          <CheckCircle2 size={16} className={`text-blue-bell opacity-40`} />
+                          <span className="text-sm font-bold text-iron-grey/80 tracking-tight">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
@@ -164,30 +84,33 @@ export default function Skills() {
             <h2 className="text-2xl font-plus font-bold text-iron-grey mb-12 opacity-60">Supporting Domains</h2>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {SKILLS.supporting.map((skill, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  className="bg-card-bg border border-iron-grey/5 rounded-[2rem] p-8 hover:bg-white hover:border-blue-bell/10 transition-all duration-300"
-                >
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 bg-white rounded-xl shadow-sm text-iron-grey">
-                      <skill.icon size={20} />
+              {skillsData.supporting.map((skill, idx) => {
+                const SkillIcon = resolveIcon(skill.icon);
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="bg-card-bg border border-iron-grey/5 rounded-[2rem] p-8 hover:bg-white hover:border-blue-bell/10 transition-all duration-300"
+                  >
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-3 bg-white rounded-xl shadow-sm text-iron-grey">
+                        <SkillIcon size={20} />
+                      </div>
+                      <h3 className="font-bold text-iron-grey text-xl">{skill.category}</h3>
                     </div>
-                    <h3 className="font-bold text-iron-grey text-xl">{skill.category}</h3>
-                  </div>
-                  <p className="text-iron-grey/50 text-sm mb-6 leading-relaxed">{skill.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {skill.items.map((item, i) => (
-                      <span key={i} className="px-4 py-2 bg-white border border-iron-grey/5 rounded-xl text-xs font-bold text-iron-grey/70">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+                    <p className="text-iron-grey/50 text-sm mb-6 leading-relaxed">{skill.desc}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {skill.items.map((item, i) => (
+                        <span key={i} className="px-4 py-2 bg-white border border-iron-grey/5 rounded-xl text-xs font-bold text-iron-grey/70">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
@@ -212,7 +135,7 @@ export default function Skills() {
                 The modern engineering ecosystem. Currently deepening proficiency in distributed high-frequency data processing and transformation layers.
               </p>
               <div className="flex flex-wrap gap-4">
-                {LEARNING.map((item, i) => (
+                {skillsData.learning.map((item, i) => (
                   <div key={i} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full text-white/80 text-sm font-bold hover:bg-white/10 transition-colors">
                     <Zap size={14} className="text-blue-bell" />
                     {item}

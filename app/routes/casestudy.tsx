@@ -6,179 +6,18 @@ import {
   Lock, 
   Database, 
   Server, 
-  Users, 
   Shield,
   ArrowLeft,
   Zap,
-  Cpu,
   Trophy,
   Activity,
   GitBranch,
   ShieldCheck
 } from "lucide-react";
 import { ReactLenis } from "lenis/react";
-import type { ReactNode } from "react";
+import { getCaseStudy, type CaseStudyData } from "~/data/data";
 
-// --- 1. DATA DEFINITION ---
-
-interface CaseStudyProps {
-  title: string;
-  role: string;
-  timeline: string;
-  stack: string[];
-  color: string;
-  content: {
-    problem: { text: string; constraints: string[] };
-    solution: { overview: string; roles: string[]; workflow: string[] };
-    architecture: { backend: string[]; schemaDetails: string; diagramPlaceholder?: string };
-    auth: { strategy: string; rbac: string; reasoning: string };
-    decisions: { decision: string; why: string; tradeoff: string }[];
-    challenges: { challenge: string; solution: string }[];
-    outcome: { result: string; future: string[] };
-  };
-}
-
-const ALL_CASE_STUDIES: Record<string, CaseStudyProps> = {
-  "travel-with-kb": {
-    title: "Travel With KB",
-    role: "Data Modeling & Backend Architecture",
-    timeline: "Dec 2025 - Present",
-    stack: ["Node.js", "MongoDB", "Aggregation Pipelines", "Data Modeling", "Express"],
-    color: "blue-bell",
-    content: {
-      problem: {
-        text: "The core data challenge was modeling relational-style entities — Users, Tours, Reviews, and Bookings — inside MongoDB without losing the integrity guarantees that relational databases provide by default. The data needed to support analytics without duplicating state.",
-        constraints: [
-          "Enforce referential integrity between Users ↔ Reviews ↔ Tours in NoSQL.",
-          "Design aggregation pipelines to compute derived metrics on reads.",
-          "Ensure every data write goes through server-side validation logic."
-        ]
-      },
-      solution: {
-        overview: "I designed a document schema using Parent Referencing to preserve entity boundaries, then built Mongoose-level validation and virtual computed fields to keep derived metrics accurate without data duplication.",
-        roles: ["User (Browse/Book)", "Admin (Analytics Dashboard)", "Guide (Assigned to Tours)"],
-        workflow: [
-          "Schema designed with referential integrity constraints",
-          "Mongoose pre-save hooks enforce validation before writes",
-          "Aggregation pipeline computes avg ratings at query time",
-          "APIFeatures class applies filtering and pagination"
-        ]
-      },
-      architecture: {
-        backend: [
-          "Mongoose Schemas: Strict typing",
-          "Virtual Fields: Computed averages",
-          "Aggregation Layer: Logic on metrics",
-          "APIFeatures: Reusable query builder"
-        ],
-        schemaDetails: "Tours are the primary entity. Reviews use Parent Referencing rather than embedding — keeping review documents queryable independently and avoiding unbounded array growth. A Mongoose virtual computes ratings on demand.",
-        diagramPlaceholder: ""
-      },
-      auth: {
-        strategy: "JWT via HTTP-Only Cookies",
-        rbac: "Role-gated middleware: restrictTo('admin', 'lead-guide')",
-        reasoning: "Access control is a data integrity concern. Using HTTP-Only cookies prevents XSS-based token theft and ensures only authorized roles can modify records."
-      },
-      decisions: [
-        {
-          decision: "Parent Referencing Over Embedding",
-          why: "Embedding reviews would create unbounded array growth and make pagination impossible.",
-          tradeoff: "Requires .populate() calls which add minor latency — mitigated by selective populating."
-        },
-        {
-          decision: "Validation in the Model Layer",
-          why: "Ensures data is validated before persistence regardless of the specific route trigger.",
-          tradeoff: "Schema complexity increases, but data integrity is guaranteed at the source."
-        }
-      ],
-      challenges: [
-        {
-          challenge: "Computing Aggregate Metrics Without Duplication",
-          solution: "Built a Mongoose post-save hook that recalculates the average rating on the Tour document after any review is created."
-        },
-        {
-          challenge: "Preventing Invalid Writes from Any Source",
-          solution: "All paths go through Mongoose model validation. The HTTP layer is treated as untrusted input."
-        }
-      ],
-      outcome: {
-        result: "A clean, analytics-ready data model where every entity boundary is enforced and aggregate metrics are computed correctly.",
-        future: ["Migrate metrics to dedicated analytics collection", "Add data lineage tracking for audit reporting"]
-      }
-    }
-  },
-  "careerflow": {
-    title: "CareerFlow Platform",
-    role: "Lead Backend Developer",
-    timeline: "2024 - 2025",
-    stack: ["PHP", "MySQL", "RBAC Architecture", "MVC"],
-    color: "dusty-mauve",
-    content: {
-      problem: {
-        text: "The institution required a centralized system to replace paper-based scholarship reviews. The system had to support multiple roles with strict access control and produce auditable data trails.",
-        constraints: [
-          "Multiple user roles with non-overlapping permissions.",
-          "Document uploads must be validated server-side (size/type).",
-          "Automated status transitions must be traceable and logs unmutable."
-        ]
-      },
-      solution: {
-        overview: "I designed a PHP-based workflow system where each application moves through defined states (Draft → Submitted → Under Review → Approved), with role-gated access at every transition.",
-        roles: ["Applicant (Apply/Track)", "Reviewer (Evaluate/Score)", "Admin (Manager Cycles)"],
-        workflow: [
-          "Applicant Creates Profile & Application",
-          "Uploads Required Documents (PDF validation)",
-          "Submits for Review (state locked)",
-          "Reviewer Scores & Decisions",
-          "Admin Finalizes & Reports"
-        ]
-      },
-      architecture: {
-        backend: [
-          "Session Auth with Role Flags",
-          "RBAC Middleware: Gated methods",
-          "File Handler: Server-side validation",
-          "Audit Log: Immutable history"
-        ],
-        schemaDetails: "The core schema uses a normalized relational design: Applications link to Users, Documents, and Reviews. Status transitions are stored in a dedicated AuditLog table for compliance.",
-        diagramPlaceholder: ""
-      },
-      auth: {
-        strategy: "PHP Session Authentication",
-        rbac: "Action-level role checks before every data mutation",
-        reasoning: "Session-based auth was appropriate for a server-rendered institutional app. Each controller method validates the user role."
-      },
-      decisions: [
-        {
-          decision: "Explicit Status State Machine",
-          why: "Each application's lifecycle is modeled as discrete states with defined valid transitions.",
-          tradeoff: "Upfront design cost, but prevents invalid states and simplifies reporting."
-        },
-        {
-          decision: "Server-side Doc Validation",
-          why: "Client-side validation is trivial to bypass; integrity requires server verification.",
-          tradeoff: "Slight latency increase during uploads, but ensures system security."
-        }
-      ],
-      challenges: [
-        {
-          challenge: "Preventing Concurrent Review Conflicts",
-          solution: "Implemented optimistic locking on review records so reviewers cannot overwrite each other's scores."
-        },
-        {
-          challenge: "Generating Accurate Cycle Reports",
-          solution: "Designed the AuditLog table as the source of truth for all status history transitions."
-        }
-      ],
-      outcome: {
-        result: "The platform successfully digitalized the workflow, reducing processing time and providing auditable data for compliance.",
-        future: ["Email notifications on state changes", "PDF generation for approval letters"]
-      }
-    }
-  }
-};
-
-// --- 2. COMPONENTS ---
+// --- COMPONENTS ---
 
 function SectionHeader({ number, title }: { number: string, title: string }) {
   return (
@@ -190,7 +29,7 @@ function SectionHeader({ number, title }: { number: string, title: string }) {
   );
 }
 
-function CaseStudyLayout({ data }: { data: CaseStudyProps }) {
+function CaseStudyLayout({ data }: { data: CaseStudyData }) {
   return (
     <ReactLenis root>
       <div className="bg-white min-h-screen font-sans text-iron-grey selection:bg-blue-bell/20 pt-32 pb-24">
@@ -396,11 +235,11 @@ function CaseStudyLayout({ data }: { data: CaseStudyProps }) {
   );
 }
 
-// --- 3. MAIN EXPORT ---
+// --- MAIN EXPORT ---
 
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
-  const data = slug ? ALL_CASE_STUDIES[slug] : null;
+  const data = slug ? getCaseStudy(slug) : null;
 
   if (!data) {
     return (

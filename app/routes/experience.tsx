@@ -1,66 +1,12 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Briefcase, Network, Monitor, Code2, Calendar, MapPin, Building2, CheckCircle2, ArrowRight, Database, BarChart3, ShieldCheck } from "lucide-react";
+import { MapPin, ShieldCheck, CheckCircle2, ArrowRight, Building2 } from "lucide-react";
 import { ReactLenis } from "lenis/react";
+import { getExperience, resolveIcon } from "~/data/data";
 
-const EXPERIENCE = [
-  {
-    company: "AmaliTech",
-    role: "Software Engineering Intern",
-    location: "Takoradi, Ghana",
-    type: "Engineering",
-    icon: Code2,
-    takeaway: "Code Quality Standards",
-    color: "blue-bell",
-    points: [
-      "Built backend data workflows within a professional software engineering environment, focusing on how application logic impacts data persistence.",
-      "Identified and resolved data production bottlenecks by implementing clean API design and more efficient server-side validation logic.",
-      "Worked within an agile team, participating in code reviews that enforced high standards for maintainable, production-ready code."
-    ]
-  },
-  {
-    company: "Adamus Resources",
-    role: "IT / Technical Intern",
-    location: "Nzema, Ghana",
-    type: "Corporate IT",
-    icon: Building2,
-    takeaway: "High-Stakes Reliability",
-    color: "dusty-mauve",
-    points: [
-      "Supported iron-clad internal systems in a corporate mining environment where downtime resulted in significant operational costs.",
-      "Gained firsthand exposure to the real cost of system failure, reinforcing a data engineering philosophy built on trust and consistency.",
-      "Managed critical data flows between non-technical departments, ensuring cross-functional accuracy across the enterprise."
-    ]
-  },
-  {
-    company: "STCCI",
-    role: "IT / Systems Support",
-    location: "Takoradi, Ghana",
-    type: "Systems",
-    icon: Monitor,
-    takeaway: "Institutional Integrity",
-    color: "lavender",
-    points: [
-      "Assisted with digital records management and the cleanup of inaccurately formatted institutional data sets.",
-      "Experienced how a lack of schema discipline leads to reporting failures — directly informing my commitment to schema-first thinking.",
-      "Automated recurrent data-related workflows to reduce manual entry errors and ensure traceable document lineage."
-    ]
-  },
-  {
-    company: "GPHA",
-    role: "Infrastructure Intern",
-    location: "Takoradi, Ghana",
-    type: "Infrastructure",
-    icon: Network,
-    takeaway: "Infrastructure Scale",
-    color: "iron-grey",
-    points: [
-      "Supported network infrastructure in a high-throughput operational environment for national-scale maritime operations.",
-      "Observed the relationship between physical reliability and data system availability at extreme volumes.",
-      "Reinforced the importance of structured documentation and standards in environments with high technical debt potential."
-    ]
-  }
-];
+const experienceData = getExperience();
+const EXPERIENCE = experienceData.jobs;
+const LESSONS = experienceData.lessons;
 
 export default function Experience() {
   return (
@@ -90,68 +36,65 @@ export default function Experience() {
           <div className="relative space-y-12 mb-32">
             <div className="absolute left-[20px] md:left-[50%] top-0 bottom-0 w-px bg-iron-grey/5 hidden md:block" />
             
-            {EXPERIENCE.map((job, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex flex-col md:flex-row gap-8 items-start 
-                  ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-[14px] md:left-[50%] md:ml-[-6px] top-6 w-3 h-3 rounded-full bg-white border-2 border-blue-bell z-20" />
+            {EXPERIENCE.map((job, index) => {
+              const JobIcon = resolveIcon(job.icon);
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`relative flex flex-col md:flex-row gap-8 items-start 
+                    ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-[14px] md:left-[50%] md:ml-[-6px] top-6 w-3 h-3 rounded-full bg-white border-2 border-blue-bell z-20" />
 
-                <div className="flex-1 w-full pl-12 md:pl-0">
-                  <div className="bento-card group hover:border-blue-bell/10">
-                    <div className="flex items-center justify-between mb-8">
-                       <div className={`p-4 rounded-2xl bg-white shadow-sm text-${job.color}`}>
-                        <job.icon size={24} />
+                  <div className="flex-1 w-full pl-12 md:pl-0">
+                    <div className="bento-card group hover:border-blue-bell/10">
+                      <div className="flex items-center justify-between mb-8">
+                         <div className={`p-4 rounded-2xl bg-white shadow-sm text-${job.color}`}>
+                          <JobIcon size={24} />
+                        </div>
+                        <span className="text-[10px] font-bold text-iron-grey/20 uppercase tracking-[0.2em]">{job.type}</span>
                       </div>
-                      <span className="text-[10px] font-bold text-iron-grey/20 uppercase tracking-[0.2em]">{job.type}</span>
-                    </div>
 
-                    <h2 className="text-2xl font-plus font-bold text-iron-grey mb-1 group-hover:text-blue-bell transition-colors">{job.role}</h2>
-                    <div className="flex flex-wrap items-center gap-4 mb-6">
-                      <span className="text-blue-bell/60 font-bold text-xs uppercase tracking-widest">{job.company}</span>
-                      <span className="text-iron-grey/30 text-xs font-medium flex items-center gap-1">
-                        <MapPin size={12} /> {job.location}
-                      </span>
-                    </div>
+                      <h2 className="text-2xl font-plus font-bold text-iron-grey mb-1 group-hover:text-blue-bell transition-colors">{job.role}</h2>
+                      <div className="flex flex-wrap items-center gap-4 mb-6">
+                        <span className="text-blue-bell/60 font-bold text-xs uppercase tracking-widest">{job.company}</span>
+                        <span className="text-iron-grey/30 text-xs font-medium flex items-center gap-1">
+                          <MapPin size={12} /> {job.location}
+                        </span>
+                      </div>
 
-                    <div className="mb-8 p-3 rounded-xl bg-card-bg border border-iron-grey/5 inline-flex items-center gap-2">
-                       <ShieldCheck size={14} className="text-blue-bell" />
-                       <span className="text-[10px] font-bold text-iron-grey/60 uppercase tracking-widest">Key Takeaway: {job.takeaway}</span>
-                    </div>
+                      <div className="mb-8 p-3 rounded-xl bg-card-bg border border-iron-grey/5 inline-flex items-center gap-2">
+                         <ShieldCheck size={14} className="text-blue-bell" />
+                         <span className="text-[10px] font-bold text-iron-grey/60 uppercase tracking-widest">Key Takeaway: {job.takeaway}</span>
+                      </div>
 
-                    <ul className="space-y-4">
-                      {job.points.map((point, i) => (
-                        <li key={i} className="flex items-start gap-4">
-                          <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-bell/20 shrink-0" />
-                          <p className="text-sm text-iron-grey/60 leading-relaxed font-medium">{point}</p>
-                        </li>
-                      ))}
-                    </ul>
+                      <ul className="space-y-4">
+                        {job.points.map((point, i) => (
+                          <li key={i} className="flex items-start gap-4">
+                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-bell/20 shrink-0" />
+                            <p className="text-sm text-iron-grey/60 leading-relaxed font-medium">{point}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
 
-                <div className="hidden md:block flex-1" />
-              </motion.div>
-            ))}
+                  <div className="hidden md:block flex-1" />
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* --- LESSONS --- */}
           <section className="mb-32">
              <h2 className="text-4xl font-plus font-extrabold text-iron-grey mb-12">Universal <span className="gradient-text">Lessons.</span></h2>
              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {[
-                 "Data quality issues are exponentially more expensive to fix downstream than at the source.",
-                 "End-users depend on data being correct — silent failures in pipelines are the most dangerous.",
-                 "Schema decisions made during the first 10% of a project determine 90% of its future maintenance cost.",
-                 "Infrastructure reliability is a hard prerequisite for every analytical or ML workload.",
-                 "In high-stakes environments, 'it works' is secondary to 'it is audit-ready and traceable.'",
-               ].map((lesson, i) => (
+               {LESSONS.map((lesson, i) => (
                  <div key={i} className="bg-card-bg border border-iron-grey/5 p-8 rounded-[2rem] hover:bg-white hover:border-blue-bell/10 transition-all">
                     <CheckCircle2 size={24} className="text-blue-bell mb-6 opacity-30" />
                     <p className="text-iron-grey/70 font-bold leading-tight">{lesson}</p>
