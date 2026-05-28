@@ -14,27 +14,32 @@ import {
   GitBranch,
   ShieldCheck
 } from "lucide-react";
-import { ReactLenis } from "lenis/react";
 import { getCaseStudy, type CaseStudyData } from "~/data/data";
+
+export function meta({ params }: { params: { slug: string } }) {
+  return [
+    { title: `Case Study | Emmanuel Opoku` },
+    { name: "description", content: "Engineering Case Study" },
+  ];
+}
 
 // --- COMPONENTS ---
 
 function SectionHeader({ number, title }: { number: string, title: string }) {
   return (
     <div className="flex items-center gap-6 mb-12">
-        <span className="text-4xl font-plus font-extrabold text-blue-bell/20">{number}</span>
-        <h2 className="text-3xl font-plus font-extrabold text-iron-grey">{title}</h2>
-        <div className="flex-1 h-px bg-iron-grey/5" />
+        <span className="text-4xl font-plus font-extrabold gradient-text">{number}</span>
+        <h2 className="text-3xl font-plus font-extrabold text-white">{title}</h2>
+        <div className="flex-1 h-px bg-white/[0.06]" />
     </div>
   );
 }
 
 function CaseStudyLayout({ data }: { data: CaseStudyData }) {
   return (
-    <ReactLenis root>
-      <div className="bg-white min-h-screen font-sans text-iron-grey selection:bg-blue-bell/20 pt-32 pb-24">
+      <div className="min-h-screen font-sans text-white pt-32 pb-24 relative noise-overlay">
 
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-6 max-w-5xl relative z-10">
           
           {/* Header */}
           <motion.header 
@@ -47,19 +52,19 @@ function CaseStudyLayout({ data }: { data: CaseStudyData }) {
             </Link>
 
             <div className="space-y-4">
-                <div className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-[0.2em] text-iron-grey/40">
+                <div className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-[0.2em] text-white/30">
                     <span className="text-blue-bell">{data.role}</span>
                     <span>•</span>
                     <span>{data.timeline}</span>
                 </div>
-                <h1 className="font-plus text-5xl md:text-7xl text-iron-grey leading-[0.9] tracking-tight font-extrabold">
+                <h1 className="font-plus text-5xl md:text-7xl text-white leading-[0.9] tracking-tight font-extrabold">
                   {data.title}<span className="text-blue-bell">.</span>
                 </h1>
             </div>
 
             <div className="flex flex-wrap gap-3">
               {data.stack.map(tech => (
-                <span key={tech} className="px-4 py-2 bg-card-bg border border-iron-grey/5 text-iron-grey/60 text-[10px] font-bold uppercase tracking-widest rounded-xl hover:border-blue-bell/20 transition-colors">
+                <span key={tech} className="px-4 py-2 bg-white/[0.03] border border-white/[0.06] text-white/50 text-[10px] font-bold uppercase tracking-widest rounded-xl hover:border-blue-bell/20 transition-colors">
                   {tech}
                 </span>
               ))}
@@ -73,18 +78,18 @@ function CaseStudyLayout({ data }: { data: CaseStudyData }) {
               <SectionHeader number="01" title="The Challenge" />
               <div className="grid md:grid-cols-5 gap-12 items-start">
                   <div className="md:col-span-3 space-y-6">
-                    <p className="text-xl md:text-2xl text-iron-grey/70 leading-relaxed font-medium">
+                    <p className="text-xl md:text-2xl text-white/50 leading-relaxed font-medium">
                         {data.content.problem.text}
                     </p>
                   </div>
-                  <div className="md:col-span-2 bento-card bg-card-bg/50">
+                  <div className="md:col-span-2 bento-card">
                     <div className="flex items-center gap-3 mb-6">
                         <AlertTriangle size={18} className="text-blue-bell" />
-                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-iron-grey/40">Technical Constraints</h4>
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/30">Technical Constraints</h4>
                     </div>
                     <ul className="space-y-4">
                       {data.content.problem.constraints.map((c, i) => (
-                        <li key={i} className="flex gap-4 text-xs font-bold text-iron-grey/60 leading-snug">
+                        <li key={i} className="flex gap-4 text-xs font-bold text-white/50 leading-snug">
                           <CheckCircle size={14} className="shrink-0 text-blue-bell/40" /> {c}
                         </li>
                       ))}
@@ -100,27 +105,27 @@ function CaseStudyLayout({ data }: { data: CaseStudyData }) {
                  <div className="lg:col-span-2 bento-card h-full">
                     <div className="flex items-center gap-3 mb-8">
                         <Server size={20} className="text-blue-bell" />
-                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-iron-grey/40">Backend Services</h4>
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/30">Backend Services</h4>
                     </div>
                     <div className="grid md:grid-cols-2 gap-4 h-full">
                         {data.content.architecture.backend.map((item, i) => (
-                          <div key={i} className="p-6 rounded-[2rem] bg-white border border-iron-grey/5 flex flex-col justify-between group hover:border-blue-bell/10 transition-all">
+                          <div key={i} className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between group hover:border-blue-bell/20 transition-all">
                              <div className="text-blue-bell/20 mb-4"><Zap size={20} /></div>
-                             <span className="text-sm font-bold text-iron-grey/80">{item}</span>
+                             <span className="text-sm font-bold text-white/60">{item}</span>
                           </div>
                         ))}
                     </div>
                  </div>
-                 <div className="bento-card border-none bg-iron-grey text-white">
+                 <div className="bento-card border-white/[0.08]" style={{ background: 'linear-gradient(135deg, rgba(57,160,237,0.06) 0%, rgba(20,20,22,1) 100%)' }}>
                     <div className="flex items-center gap-3 mb-8">
                         <Database size={20} className="text-blue-bell" />
-                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/40">Data Layer</h4>
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/30">Data Layer</h4>
                     </div>
-                    <p className="text-sm text-white/60 leading-relaxed font-medium mb-12">
+                    <p className="text-sm text-white/40 leading-relaxed font-medium mb-12">
                         {data.content.architecture.schemaDetails}
                     </p>
-                    <div className="w-full aspect-square bg-white/5 rounded-[2rem] border border-white/10 flex items-center justify-center p-8 text-center">
-                        <span className="text-[10px] uppercase tracking-widest text-white/20 font-bold">
+                    <div className="w-full aspect-square bg-white/[0.03] rounded-[2rem] border border-white/[0.06] flex items-center justify-center p-8 text-center">
+                        <span className="text-[10px] uppercase tracking-widest text-white/15 font-bold">
                             {data.content.architecture.diagramPlaceholder || "Engineering Diagram Loading..."}
                         </span>
                     </div>
@@ -129,29 +134,29 @@ function CaseStudyLayout({ data }: { data: CaseStudyData }) {
 
                <div className="grid md:grid-cols-2 gap-6">
                   <div className="bento-card">
-                     <h4 className="text-[10px] font-bold uppercase tracking-widest text-iron-grey/40 mb-8">Lifecycle Workflow</h4>
-                     <div className="space-y-8 relative border-l border-iron-grey/5 ml-4">
+                     <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-8">Lifecycle Workflow</h4>
+                     <div className="space-y-8 relative ml-4" style={{ borderLeft: '1px solid rgba(57,160,237,0.2)' }}>
                         {data.content.solution.workflow.map((step, i) => (
                           <div key={i} className="pl-12 relative">
-                            <div className="absolute left-[-5px] top-1 w-2.5 h-2.5 rounded-full bg-white border-2 border-blue-bell z-10" />
-                             <span className="text-sm font-bold text-iron-grey/70">{step}</span>
+                            <div className="absolute left-[-5px] top-1 w-2.5 h-2.5 rounded-full bg-page-bg border-2 border-blue-bell z-10 shadow-lg shadow-blue-bell/30" />
+                             <span className="text-sm font-bold text-white/60">{step}</span>
                           </div>
                         ))}
                       </div>
                   </div>
                   <div className="bento-card">
-                     <h4 className="text-[10px] font-bold uppercase tracking-widest text-iron-grey/40 mb-8">Access Control (RBAC)</h4>
+                     <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-8">Access Control (RBAC)</h4>
                      <div className="space-y-6">
                         {[
                           { title: "Identity Strategy", val: data.content.auth.strategy, icon: Lock },
                           { title: "Enforcement", val: data.content.auth.rbac, icon: ShieldCheck },
                           { title: "Engineering Rationale", val: data.content.auth.reasoning, icon: Shield }
                         ].map((item, i) => (
-                          <div key={i} className="flex gap-4 p-4 rounded-2xl bg-card-bg/50 border border-iron-grey/5">
+                          <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
                              <item.icon className="text-blue-bell shrink-0" size={18} />
                              <div>
-                                <h5 className="text-[10px] font-extrabold uppercase tracking-widest text-iron-grey/30 mb-1">{item.title}</h5>
-                                <p className="text-sm font-bold text-iron-grey/80 leading-snug">{item.val}</p>
+                                <h5 className="text-[10px] font-extrabold uppercase tracking-widest text-white/20 mb-1">{item.title}</h5>
+                                <p className="text-sm font-bold text-white/60 leading-snug">{item.val}</p>
                              </div>
                           </div>
                         ))}
@@ -165,14 +170,14 @@ function CaseStudyLayout({ data }: { data: CaseStudyData }) {
                <SectionHeader number="03" title="Engineering Decisions" />
                <div className="grid md:grid-cols-2 gap-6">
                  {data.content.decisions.map((d, i) => (
-                   <div key={i} className="bento-card group hover:border-blue-bell/10">
-                      <div className="p-3 w-fit rounded-xl bg-white shadow-sm text-blue-bell mb-8 group-hover:bg-blue-bell group-hover:text-white transition-all">
+                   <div key={i} className="bento-card group">
+                      <div className="p-3 w-fit rounded-xl bg-white/[0.05] text-blue-bell mb-8 group-hover:bg-blue-bell/20 transition-all">
                         <GitBranch size={20} />
                       </div>
-                      <h4 className="text-2xl font-plus font-bold text-iron-grey mb-4">{d.decision}</h4>
+                      <h4 className="text-2xl font-plus font-bold text-white mb-4">{d.decision}</h4>
                       <div className="space-y-4">
-                         <p className="text-sm font-medium text-iron-grey/60"><strong className="text-[10px] uppercase tracking-widest text-blue-bell block mb-1">Context:</strong> {d.why}</p>
-                         <p className="text-sm font-medium text-iron-grey/40 italic"><strong className="text-[10px] uppercase tracking-widest text-iron-grey/20 not-italic block mb-1">Tradeoff:</strong> {d.tradeoff}</p>
+                         <p className="text-sm font-medium text-white/45"><strong className="text-[10px] uppercase tracking-widest text-blue-bell/60 block mb-1">Context:</strong> {d.why}</p>
+                         <p className="text-sm font-medium text-white/25 italic"><strong className="text-[10px] uppercase tracking-widest text-white/15 not-italic block mb-1">Tradeoff:</strong> {d.tradeoff}</p>
                       </div>
                    </div>
                  ))}
@@ -184,13 +189,13 @@ function CaseStudyLayout({ data }: { data: CaseStudyData }) {
                <SectionHeader number="04" title="Retrospective" />
                <div className="space-y-6 mb-12">
                  {data.content.challenges.map((c, i) => (
-                    <div key={i} className="p-10 rounded-[2.5rem] bg-card-bg border border-iron-grey/5 flex flex-col md:flex-row gap-8">
-                       <div className="shrink-0 p-4 w-fit h-fit rounded-[1.5rem] bg-white text-blue-bell shadow-sm">
+                    <div key={i} className="bento-card flex flex-col md:flex-row gap-8">
+                       <div className="shrink-0 p-4 w-fit h-fit rounded-[1.5rem] bg-white/[0.05] text-blue-bell">
                           <Activity size={24} />
                        </div>
                        <div className="space-y-4">
-                          <h4 className="text-xs font-bold uppercase tracking-widest text-iron-grey/30">Challenge: {c.challenge}</h4>
-                          <p className="text-lg font-bold text-iron-grey/70 leading-relaxed italic">
+                          <h4 className="text-xs font-bold uppercase tracking-widest text-white/25">Challenge: {c.challenge}</h4>
+                          <p className="text-lg font-bold text-white/50 leading-relaxed italic">
                              " {c.solution} "
                           </p>
                        </div>
@@ -198,18 +203,19 @@ function CaseStudyLayout({ data }: { data: CaseStudyData }) {
                  ))}
                </div>
 
-               <div className="bg-iron-grey text-white rounded-[3rem] p-12 md:p-20 relative overflow-hidden">
-                   <div className="absolute top-0 right-0 p-12 opacity-5 text-white">
+               <div className="rounded-[3rem] p-12 md:p-20 relative overflow-hidden border border-white/[0.06]"
+                 style={{ background: 'linear-gradient(135deg, rgba(57,160,237,0.06) 0%, rgba(20,20,22,1) 50%, rgba(154,122,160,0.06) 100%)' }}>
+                   <div className="absolute top-0 right-0 p-12 opacity-[0.02] text-white">
                         <Trophy size={300} strokeWidth={1} />
                     </div>
                    <div className="relative z-10 max-w-2xl mx-auto text-center space-y-8">
                         <h4 className="text-blue-bell font-bold tracking-widest uppercase text-xs">Conclusion</h4>
-                        <p className="text-2xl md:text-3xl font-plus font-extrabold leading-tight">
+                        <p className="text-2xl md:text-3xl font-plus font-extrabold leading-tight text-white">
                             {data.content.outcome.result}
                         </p>
                         <div className="pt-8 flex flex-wrap justify-center gap-3">
                             {data.content.outcome.future.map((f, i) => (
-                                <span key={i} className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-white/40 uppercase tracking-widest">
+                                <span key={i} className="px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-bold text-white/30 uppercase tracking-widest">
                                     {f}
                                 </span>
                             ))}
@@ -220,18 +226,17 @@ function CaseStudyLayout({ data }: { data: CaseStudyData }) {
 
             {/* Final Navigation */}
             <div className="pt-20 flex justify-between items-center">
-               <Link to="/projects" className="group inline-flex items-center gap-3 text-iron-grey/40 font-bold text-xs uppercase tracking-widest hover:text-blue-bell transition-colors">
+               <Link to="/projects" className="group inline-flex items-center gap-3 text-white/30 font-bold text-xs uppercase tracking-widest hover:text-blue-bell transition-colors">
                   <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> All Projects
                </Link>
-               <Link to="/contact" className="inline-flex items-center gap-4 bg-blue-bell text-white px-8 py-4 rounded-full font-bold hover:bg-iron-grey transition-all shadow-lg shadow-blue-bell/20">
-                  Discuss the Build <Activity size={18} />
+               <Link to="/contact" className="inline-flex items-center gap-4 glow-btn px-8 py-4 rounded-full font-bold">
+                  Let's Talk <Activity size={18} />
                </Link>
             </div>
 
           </main>
         </div>
       </div>
-    </ReactLenis>
   );
 }
 
@@ -243,9 +248,9 @@ export default function CaseStudy() {
 
   if (!data) {
     return (
-      <div className="bg-white min-h-screen font-plus text-iron-grey flex flex-col items-center justify-center gap-8">
+      <div className="min-h-screen font-plus text-white flex flex-col items-center justify-center gap-8">
         <h1 className="text-4xl font-extrabold">Case study not found.</h1>
-        <Link to="/projects" className="inline-flex items-center gap-2 bg-blue-bell text-white px-8 py-4 rounded-full font-bold hover:bg-iron-grey transition-all">
+        <Link to="/projects" className="inline-flex items-center gap-2 glow-btn px-8 py-4 rounded-full font-bold">
           <ArrowLeft size={18} /> Back to Projects
         </Link>
       </div>

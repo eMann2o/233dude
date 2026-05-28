@@ -76,23 +76,23 @@
       "headlineAccent": "performance & trust.",
       "description": "I operate across the full stack of intelligent systems — from designing secure backend APIs, to engineering clean data pipelines.",
       "stats": [
-        { "value": "99.9%", "label": "Uptime Target", "color": "blue-bell" },
+        { "value": "Robust", "label": "Reliability-First", "color": "blue-bell" },
         { "value": "Schema-Ready", "label": "Data Excellence", "color": "dusty-mauve" }
       ]
     },
     "cta": {
-      "headline": "Ready to build\nthe backends of tomorrow?"
+      "headline": "Let's build\nsomething durable."
     }
   },
 
   "skills": {
     "radarChart": [
-      { "subject": "Architecture", "A": 95, "fullMark": 100 },
-      { "subject": "Data Engineering", "A": 90, "fullMark": 100 },
-      { "subject": "Security", "A": 85, "fullMark": 100 },
-      { "subject": "Performance", "A": 80, "fullMark": 100 },
-      { "subject": "Algorithms", "A": 95, "fullMark": 100 },
-      { "subject": "API Design", "A": 92, "fullMark": 100 }
+      { "subject": "Architecture", "A": 85, "fullMark": 100 },
+      { "subject": "Data Engineering", "A": 80, "fullMark": 100 },
+      { "subject": "Security", "A": 75, "fullMark": 100 },
+      { "subject": "Performance", "A": 70, "fullMark": 100 },
+      { "subject": "Algorithms", "A": 80, "fullMark": 100 },
+      { "subject": "API Design", "A": 85, "fullMark": 100 }
     ],
     "primary": [
       {
@@ -167,7 +167,7 @@
         "desc": "MERN stack booking engine with a data-modeled schema (parent referencing, aggregation pipelines for analytics) and a secure, role-gated Express API.",
         "tech": ["Node.js", "MongoDB", "Express", "System Design"],
         "color": "blue-bell",
-        "link": "/projects/travel-with-kb"
+        "link": "/case-studies/travel-with-kb"
       },
       {
         "title": "Scholarship Platform",
@@ -175,7 +175,7 @@
         "desc": "Multi-role workflow engine with a normalized MySQL schema, state-machine status transitions, and audit logging for structured data reporting.",
         "tech": ["PostgreSQL", "Relational Design", "RBAC", "TypeScript"],
         "color": "dusty-mauve",
-        "link": "/projects/scholarship-platform"
+        "link": "/case-studies/scholarship-platform"
       },
       {
         "title": "Learning Management System",
@@ -183,7 +183,7 @@
         "desc": "Full LMS with modular architecture, auto-graded quiz pipelines, and a behavioral analytics tracking layer for aggregated event reporting.",
         "tech": ["MySQL", "Analytics", "System Design", "Node.js"],
         "color": "lavender",
-        "link": "/projects/lms"
+        "link": "/case-studies/lms"
       }
     ],
     "detailed": [
@@ -310,8 +310,8 @@
         }
       }
     },
-    "careerflow": {
-      "title": "CareerFlow Platform",
+    "scholarship-platform": {
+      "title": "Scholarship MIS",
       "role": "Lead Backend Developer",
       "timeline": "2024 - 2025",
       "stack": ["PHP", "MySQL", "RBAC Architecture", "MVC"],
@@ -537,9 +537,9 @@
   },
 
   "contact": {
-    "headerLabel": "Connection Protocols",
+    "headerLabel": "Get in Touch",
     "headline": "Ready for the next",
-    "headlineAccent": "engineering challenge.",
+    "headlineAccent": "technical challenge.",
     "description": "I am focused on roles in <strong>Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.",
     "responseStandards": {
       "title": "Professional Response Standards.",

@@ -1,47 +1,56 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { AlertTriangle, Home, ArrowRight, Terminal } from "lucide-react";
-import { ReactLenis } from "lenis/react";
+import { getPersonal } from "~/data/data";
+
+export function meta() {
+  return [
+    { title: "404 Not Found" }
+  ];
+}
 
 export default function NotFound() {
+  const personal = getPersonal();
   return (
-    <ReactLenis root>
-      <div className="bg-parchment min-h-screen font-sans selection:bg-almond-silk selection:text-camel-dark flex items-center justify-center p-6">
+      <div className="min-h-screen flex items-center justify-center p-6 relative noise-overlay">
         
-        <div className="max-w-2xl w-full text-center">
+        {/* Ambient glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-bell/5 rounded-full blur-[150px]" />
+        
+        <div className="max-w-2xl w-full text-center relative z-10">
           
-          {/* --- Icon Visual --- */}
+          {/* Icon */}
           <motion.div 
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center justify-center p-6 bg-almond-cream/50 rounded-full mb-8 border border-camel/10"
+            className="inline-flex items-center justify-center p-6 bg-white/[0.03] rounded-full mb-8 border border-white/[0.06]"
           >
-            <AlertTriangle size={48} className="text-camel" strokeWidth={1.5} />
+            <AlertTriangle size={48} className="text-dusty-mauve" strokeWidth={1.5} />
           </motion.div>
 
-          {/* --- Headlines --- */}
+          {/* Headlines */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <h1 className="font-serif text-5xl md:text-6xl text-camel-dark mb-6">
+            <h1 className="font-plus font-bold tracking-tight text-5xl md:text-6xl text-white mb-6">
               404 – Page Not Found
             </h1>
-            <p className="text-camel-dark/70 text-lg leading-relaxed mb-8 max-w-lg mx-auto">
-              Well… this route didn’t exist. Unlike my backend systems, which are <strong className="text-camel-dark">secure, validated, and audit-ready</strong>, this page got lost somewhere.
+            <p className="text-white/40 text-lg leading-relaxed mb-8 max-w-lg mx-auto">
+              Well… this route didn't exist. Unlike my backend systems, which are <strong className="text-blue-bell">secure, validated, and audit-ready</strong>, this page got lost somewhere.
             </p>
           </motion.div>
 
-          {/* --- "Pro Tip" Terminal Block --- */}
+          {/* Terminal Block */}
           <motion.div 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-left bg-camel-dark text-parchment p-6 rounded-xl font-mono text-sm mb-10 max-w-lg mx-auto shadow-xl shadow-camel/10 relative overflow-hidden"
+            className="text-left p-6 rounded-xl font-mono text-sm mb-10 max-w-lg mx-auto border border-white/[0.08] bg-white/[0.02]"
+            style={{ boxShadow: '0 0 60px -20px rgba(57, 160, 237, 0.1)' }}
           >
-            {/* Decor dots */}
             <div className="flex gap-2 mb-4 opacity-50">
               <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
               <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
@@ -49,14 +58,14 @@ export default function NotFound() {
             </div>
             
             <div className="flex gap-3">
-              <Terminal size={16} className="mt-1 shrink-0 text-almond-silk" />
-              <p className="opacity-90 leading-relaxed">
-                <span className="text-almond-silk font-bold">Pro tip:</span> In my systems, every request is logged, validated, and traceable. This one… not so much.
+              <Terminal size={16} className="mt-1 shrink-0 text-blue-bell" />
+              <p className="opacity-70 leading-relaxed text-white/70">
+                <span className="text-blue-bell font-bold">Pro tip:</span> In my systems, every request is logged, validated, and traceable. This one… not so much.
               </p>
             </div>
           </motion.div>
 
-          {/* --- Actions --- */}
+          {/* Actions */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -65,30 +74,29 @@ export default function NotFound() {
           >
             <Link 
               to="/" 
-              className="flex items-center gap-2 bg-camel text-parchment px-8 py-3 rounded-lg hover:bg-camel-dark transition-colors font-bold"
+              className="flex items-center gap-2 glow-btn px-8 py-3 rounded-full font-bold"
             >
               <Home size={18} /> Return Home
             </Link>
             <Link 
               to="/projects" 
-              className="flex items-center gap-2 border border-camel/30 text-camel-dark px-8 py-3 rounded-lg hover:bg-white transition-colors font-medium"
+              className="flex items-center gap-2 border border-white/[0.08] text-white/50 px-8 py-3 rounded-full hover:border-white/20 hover:text-white transition-all font-medium"
             >
               Explore Projects <ArrowRight size={18} />
             </Link>
           </motion.div>
 
-          {/* --- Email Link --- */}
+          {/* Email Link */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="mt-12 text-sm text-camel-dark/40"
+            className="mt-12 text-sm text-white/20"
           >
-            Or drop me a line at <a href="mailto:papa16annan@gmail.com" className="text-camel hover:underline">papa16annan@gmail.com</a>
+            Or drop me a line at <a href={`mailto:${personal.email}`} className="text-blue-bell hover:underline">{personal.email}</a>
           </motion.p>
 
         </div>
       </div>
-    </ReactLenis>
   );
 }

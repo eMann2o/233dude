@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import { ReactLenis } from "lenis/react";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -35,10 +36,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Navbar />
-        {children}
-        <ScrollRestoration />
-        <Footer />
+        <ReactLenis root>
+          <Navbar />
+          {children}
+          <ScrollRestoration />
+          <Footer />
+        </ReactLenis>
         <Scripts />
       </body>
     </html>
@@ -66,12 +69,12 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
+    <main className="pt-16 p-4 container mx-auto text-white">
+      <h1 className="text-4xl font-plus font-bold mb-4">{message}</h1>
+      <p className="text-white/50 mb-6">{details}</p>
       {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
+        <pre className="w-full p-4 overflow-x-auto bg-white/[0.03] border border-white/[0.06] rounded-xl text-sm">
+          <code className="text-white/60">{stack}</code>
         </pre>
       )}
     </main>

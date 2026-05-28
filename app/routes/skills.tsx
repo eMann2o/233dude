@@ -1,23 +1,24 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import {
-  CheckCircle2,
-  Cpu,
-  Zap,
-} from "lucide-react";
-import { ReactLenis } from "lenis/react";
+import { CheckCircle2, Cpu, Zap } from "lucide-react";
 import { getSkills, resolveIcon } from "~/data/data";
+import { getTextColor, getBgColor } from "~/src/lib/utils";
+
+export function meta() {
+  return [
+    { title: "Skills | Emmanuel Opoku" },
+    { name: "description", content: "Engineering capability matrix of Emmanuel Opoku" },
+  ];
+}
 
 const skillsData = getSkills();
 
 export default function Skills() {
   return (
-    <ReactLenis root>
-      <div className="bg-white min-h-screen font-sans selection:bg-blue-bell/20 selection:text-iron-grey overflow-hidden pt-32 pb-20">
+      <div className="min-h-screen overflow-hidden pt-32 pb-20 relative noise-overlay">
+        <div className="container mx-auto px-6 max-w-6xl relative z-10">
 
-        <div className="container mx-auto px-6 max-w-6xl">
-
-          {/* --- HEADER --- */}
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -25,20 +26,20 @@ export default function Skills() {
             className="mb-24 space-y-6"
           >
             <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">Technical Depth</span>
-            <h1 className="font-plus text-5xl md:text-7xl text-iron-grey leading-[0.9] tracking-tight font-extrabold max-w-4xl">
+            <h1 className="font-plus text-5xl md:text-7xl text-white leading-[0.9] tracking-tight font-extrabold max-w-4xl">
               The Engineering <br />
               <span className="gradient-text italic">Capability Matrix.</span>
             </h1>
-            <p className="text-iron-grey/60 max-w-2xl text-lg leading-relaxed">
+            <p className="text-white/40 max-w-2xl text-lg leading-relaxed">
               Weighted toward core disciplines of data engineering and backend systems, with a focus on where data is produced and how it serves the enterprise.
             </p>
           </motion.div>
 
-          {/* --- PRIMARY SKILLS --- */}
+          {/* Primary Skills */}
           <div className="mb-24">
             <div className="flex items-center gap-4 mb-12">
-              <div className="w-2 h-2 rounded-full bg-blue-bell animate-pulse" />
-              <h2 className="text-2xl font-plus font-bold text-iron-grey">Core Specializations</h2>
+              <div className="w-2 h-2 rounded-full bg-blue-bell animate-pulse shadow-lg shadow-blue-bell/50" />
+              <h2 className="text-2xl font-plus font-bold text-white">Core Specializations</h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -54,22 +55,22 @@ export default function Skills() {
                     className="bento-card group flex flex-col"
                   >
                     <div className="flex items-start justify-between mb-8">
-                      <div className={`p-4 rounded-2xl bg-${skill.color}/10 text-${skill.color}`}>
+                      <div className={`p-4 rounded-2xl bg-white/[0.05] ${getTextColor(skill.color)}`}>
                         <SkillIcon size={28} />
                       </div>
-                      <span className="text-[10px] font-bold text-iron-grey/20 uppercase tracking-[0.2em]">Primary 0{idx + 1}</span>
+                      <span className="text-[10px] font-bold text-white/15 uppercase tracking-[0.2em]">Primary 0{idx + 1}</span>
                     </div>
 
-                    <h3 className="text-3xl font-plus font-bold text-iron-grey mb-4 group-hover:text-blue-bell transition-colors">{skill.category}</h3>
-                    <p className="text-iron-grey/60 text-base mb-8 leading-relaxed">
+                    <h3 className="text-3xl font-plus font-bold text-white mb-4 group-hover:text-blue-bell transition-colors">{skill.category}</h3>
+                    <p className="text-white/35 text-base mb-8 leading-relaxed">
                       {skill.desc}
                     </p>
 
                     <div className="grid grid-cols-2 gap-4 mt-auto">
                       {skill.items.map((item, i) => (
                         <div key={i} className="flex items-center gap-3">
-                          <CheckCircle2 size={16} className={`text-blue-bell opacity-40`} />
-                          <span className="text-sm font-bold text-iron-grey/80 tracking-tight">{item}</span>
+                          <CheckCircle2 size={16} className="text-blue-bell/30" />
+                          <span className="text-sm font-bold text-white/60 tracking-tight">{item}</span>
                         </div>
                       ))}
                     </div>
@@ -79,9 +80,9 @@ export default function Skills() {
             </div>
           </div>
 
-          {/* --- SUPPORTING SKILLS --- */}
+          {/* Supporting Skills */}
           <div className="mb-24">
-            <h2 className="text-2xl font-plus font-bold text-iron-grey mb-12 opacity-60">Supporting Domains</h2>
+            <h2 className="text-2xl font-plus font-bold text-white/50 mb-12">Supporting Domains</h2>
 
             <div className="grid md:grid-cols-2 gap-6">
               {skillsData.supporting.map((skill, idx) => {
@@ -92,18 +93,18 @@ export default function Skills() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="bg-card-bg border border-iron-grey/5 rounded-[2rem] p-8 hover:bg-white hover:border-blue-bell/10 transition-all duration-300"
+                    className="bento-card"
                   >
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="p-3 bg-white rounded-xl shadow-sm text-iron-grey">
+                      <div className="p-3 bg-white/[0.05] rounded-xl text-white/50">
                         <SkillIcon size={20} />
                       </div>
-                      <h3 className="font-bold text-iron-grey text-xl">{skill.category}</h3>
+                      <h3 className="font-bold text-white text-xl">{skill.category}</h3>
                     </div>
-                    <p className="text-iron-grey/50 text-sm mb-6 leading-relaxed">{skill.desc}</p>
+                    <p className="text-white/30 text-sm mb-6 leading-relaxed">{skill.desc}</p>
                     <div className="flex flex-wrap gap-2">
                       {skill.items.map((item, i) => (
-                        <span key={i} className="px-4 py-2 bg-white border border-iron-grey/5 rounded-xl text-xs font-bold text-iron-grey/70">
+                        <span key={i} className="px-4 py-2 bg-white/[0.03] border border-white/[0.06] rounded-xl text-xs font-bold text-white/50">
                           {item}
                         </span>
                       ))}
@@ -114,29 +115,29 @@ export default function Skills() {
             </div>
           </div>
 
-          {/* --- ACTIVELY LEARNING --- */}
+          {/* Actively Learning */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-iron-grey text-white rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden"
+            className="rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden border border-white/[0.06]"
+            style={{ background: 'linear-gradient(135deg, rgba(57,160,237,0.06) 0%, rgba(20,20,22,1) 50%, rgba(154,122,160,0.06) 100%)' }}
           >
-             {/* Background Pattern */}
-             <div className="absolute top-0 right-0 p-12 opacity-10 text-white">
+             <div className="absolute top-0 right-0 p-12 opacity-[0.03] text-white">
                 <Cpu size={200} strokeWidth={1} />
               </div>
 
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-2 h-2 rounded-full bg-blue-bell animate-pulse" />
-                <h2 className="text-3xl font-plus font-bold">Actively Building Toward</h2>
+                <div className="w-2 h-2 rounded-full bg-blue-bell animate-pulse shadow-lg shadow-blue-bell/50" />
+                <h2 className="text-3xl font-plus font-bold text-white">Actively Building Toward</h2>
               </div>
-              <p className="text-white/60 text-lg mb-12 max-w-xl leading-relaxed">
+              <p className="text-white/40 text-lg mb-12 max-w-xl leading-relaxed">
                 The modern engineering ecosystem. Currently deepening proficiency in distributed high-frequency data processing and transformation layers.
               </p>
               <div className="flex flex-wrap gap-4">
                 {skillsData.learning.map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full text-white/80 text-sm font-bold hover:bg-white/10 transition-colors">
+                  <div key={i} className="flex items-center gap-2 px-6 py-3 bg-white/[0.04] border border-white/[0.08] rounded-full text-white/70 text-sm font-bold hover:bg-blue-bell/10 hover:border-blue-bell/20 transition-colors">
                     <Zap size={14} className="text-blue-bell" />
                     {item}
                   </div>
@@ -147,6 +148,5 @@ export default function Skills() {
 
         </div>
       </div>
-    </ReactLenis>
   );
 }

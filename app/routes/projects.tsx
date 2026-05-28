@@ -1,23 +1,23 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Code2,
-  Database,
-} from "lucide-react";
-import { ReactLenis } from "lenis/react";
+import { ArrowRight, Code2, Database } from "lucide-react";
 import { getDetailedProjects, resolveIcon } from "~/data/data";
+
+export function meta() {
+  return [
+    { title: "Projects | Emmanuel Opoku" },
+    { name: "description", content: "Engineering portfolio of Emmanuel Opoku" },
+  ];
+}
 
 const PROJECTS = getDetailedProjects();
 
 export default function Projects() {
   return (
-    <ReactLenis root>
-      <div className="bg-white min-h-screen font-sans selection:bg-blue-bell/20 selection:text-iron-grey overflow-hidden pt-32 pb-20">
+      <div className="min-h-screen overflow-hidden pt-32 pb-20 relative noise-overlay">
+        <div className="container mx-auto px-6 max-w-6xl relative z-10">
 
-        <div className="container mx-auto px-6 max-w-6xl">
-
-          {/* --- HEADER --- */}
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -25,16 +25,16 @@ export default function Projects() {
             className="mb-24 space-y-6"
           >
             <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">Engineering Portfolio</span>
-            <h1 className="font-plus text-5xl md:text-7xl text-iron-grey leading-[0.9] tracking-tight font-extrabold max-w-4xl">
+            <h1 className="font-plus text-5xl md:text-7xl text-white leading-[0.9] tracking-tight font-extrabold max-w-4xl">
               Systems designed for <br />
               <span className="gradient-text italic">performance & trust.</span>
             </h1>
-            <p className="text-iron-grey/60 max-w-2xl text-lg leading-relaxed">
+            <p className="text-white/40 max-w-2xl text-lg leading-relaxed">
               Documenting architectural decisions, data foundations, and the engineering principles behind every system built for scale.
             </p>
           </motion.div>
 
-          {/* --- PROJECTS GRID --- */}
+          {/* Projects Grid */}
           <div className="grid gap-12">
             {PROJECTS.map((project, index) => (
               <motion.article
@@ -44,7 +44,7 @@ export default function Projects() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`bento-card group h-full !p-0 overflow-hidden flex flex-col md:flex-row
-                  ${project.highlight ? "ring-2 ring-blue-bell/20" : ""}`}
+                  ${project.highlight ? "border-blue-bell/20 shadow-lg shadow-blue-bell/5" : ""}`}
               >
                 {/* Left: Content */}
                 <div className="flex-1 p-8 md:p-12 flex flex-col justify-between">
@@ -52,25 +52,25 @@ export default function Projects() {
                     <div className="flex items-center justify-between mb-8">
                       <div className="flex flex-wrap gap-2">
                         {project.stack.map(tech => (
-                          <span key={tech} className="px-3 py-1 rounded-lg bg-card-bg text-iron-grey/60 text-[10px] font-bold uppercase tracking-wider border border-iron-grey/5">
+                          <span key={tech} className="px-3 py-1 rounded-lg bg-white/[0.04] text-white/40 text-[10px] font-bold uppercase tracking-wider border border-white/[0.06]">
                             {tech}
                           </span>
                         ))}
                       </div>
                       {project.highlight && (
-                        <span className="px-3 py-1 bg-blue-bell/10 text-blue-bell text-[10px] font-bold uppercase tracking-widest rounded-full">
+                        <span className="px-3 py-1 bg-blue-bell/10 text-blue-bell text-[10px] font-bold uppercase tracking-widest rounded-full border border-blue-bell/20">
                           Flagship
                         </span>
                       )}
                     </div>
                     
-                    <h2 className="text-3xl md:text-4xl font-plus font-bold text-iron-grey mb-2 group-hover:text-blue-bell transition-colors">
+                    <h2 className="text-3xl md:text-4xl font-plus font-bold text-white mb-2 group-hover:text-blue-bell transition-colors">
                       {project.title}
                     </h2>
-                    <p className="text-blue-bell/60 font-medium text-sm mb-6">{project.subtitle}</p>
-                    <p className="text-iron-grey/70 text-lg leading-relaxed mb-6">{project.description}</p>
+                    <p className="text-blue-bell/40 font-medium text-sm mb-6">{project.subtitle}</p>
+                    <p className="text-white/40 text-lg leading-relaxed mb-6">{project.description}</p>
                     
-                    <div className="flex items-center gap-2 text-xs font-bold text-iron-grey/40 uppercase tracking-widest mb-8 bg-card-bg p-3 rounded-xl border border-iron-grey/5">
+                    <div className="flex items-center gap-2 text-xs font-bold text-white/25 uppercase tracking-widest mb-8 bg-white/[0.03] p-3 rounded-xl border border-white/[0.06]">
                       <Code2 size={14} className="text-blue-bell" />
                       {project.dataAngle}
                     </div>
@@ -78,18 +78,18 @@ export default function Projects() {
 
                   <Link
                     to={project.links.caseStudy}
-                    className="inline-flex items-center gap-3 bg-iron-grey text-white px-8 py-4 rounded-full hover:bg-blue-bell hover:shadow-xl hover:shadow-blue-bell/20 transition-all font-bold w-fit"
+                    className="inline-flex items-center gap-3 glow-btn px-8 py-4 rounded-full font-bold w-fit"
                   >
                     Read Engineering Study <ArrowRight size={18} />
                   </Link>
                 </div>
 
-                {/* Right: Capabilities (Visual Bento Layer) */}
-                <div className={`md:w-[40%] p-8 md:p-12 border-t md:border-t-0 md:border-l border-iron-grey/5
-                    ${project.color === 'blue-bell' ? 'bg-blue-bell/[0.03]' : 
-                      project.color === 'dusty-mauve' ? 'bg-dusty-mauve/[0.03]' : 'bg-lavender/[0.03]'}`}>
+                {/* Right: Capabilities */}
+                <div className={`md:w-[40%] p-8 md:p-12 border-t md:border-t-0 md:border-l border-white/[0.04]
+                    ${project.color === 'blue-bell' ? 'bg-blue-bell/[0.02]' : 
+                      project.color === 'dusty-mauve' ? 'bg-dusty-mauve/[0.02]' : 'bg-lavender/[0.02]'}`}>
 
-                  <h3 className="text-xs font-bold text-iron-grey/40 uppercase tracking-widest mb-8">
+                  <h3 className="text-xs font-bold text-white/25 uppercase tracking-widest mb-8">
                     Core Engineering
                   </h3>
 
@@ -98,14 +98,14 @@ export default function Projects() {
                       const CapIcon = resolveIcon(cap.icon);
                       return (
                         <div key={i} className="flex items-start gap-4">
-                          <div className="p-3 bg-white rounded-xl shadow-sm text-blue-bell">
+                          <div className="p-3 bg-white/[0.05] rounded-xl text-blue-bell">
                             <CapIcon size={18} />
                           </div>
                           <div>
-                            <p className="text-sm font-bold text-iron-grey">
+                            <p className="text-sm font-bold text-white/80">
                               {cap.text.split(' ')[0]}
                             </p>
-                            <p className="text-xs text-iron-grey/50 leading-relaxed">
+                            <p className="text-xs text-white/30 leading-relaxed">
                               {cap.text.split(' ').slice(1).join(' ')}
                             </p>
                           </div>
@@ -114,23 +114,22 @@ export default function Projects() {
                     })}
                   </div>
 
-                  {/* Decorative Accents */}
-                  <div className="mt-16 opacity-10">
-                    <Database size={100} strokeWidth={1} className="text-iron-grey ml-auto" />
+                  <div className="mt-16 opacity-[0.03]">
+                    <Database size={100} strokeWidth={1} className="text-white ml-auto" />
                   </div>
                 </div>
               </motion.article>
             ))}
           </div>
 
-          <div className="mt-32 text-center py-12 border-t border-iron-grey/5">
-            <p className="text-iron-grey/40 text-sm font-medium">
+          <div className="mt-32 text-center py-12">
+            <div className="section-divider mb-8" />
+            <p className="text-white/20 text-sm font-medium">
               Architectural explorations and distributed systems research available upon request.
             </p>
           </div>
 
         </div>
       </div>
-    </ReactLenis>
   );
 }

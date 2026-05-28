@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* The User's Image 1 Palette */
+  /* The User's Original Palette — Preserved */
   --color-iron-grey: #444545;
   --color-blue-bell: #39A0ED;
   --color-dusty-mauve: #9A7AA0;
   --color-pearl-beige: #E8DDB5;
   --color-lavender: #E3DFFF;
   
-  /* Layout Colors */
-  --color-page-bg: #FFFFFF;
-  --color-card-bg: #F8F9FA;
+  /* Dark Theme Surfaces */
+  --color-page-bg: #0A0A0B;
+  --color-card-bg: #141416;
+  --color-surface: #1A1A1D;
+  --color-border: rgba(255, 255, 255, 0.06);
 
   /* Fonts */
   --font-plus: "Plus Jakarta Sans", sans-serif;
@@ -19,32 +21,173 @@
   
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-pulse-slow: pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-drift: drift 20s ease-in-out infinite;
   
   @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
     100% { transform: translateY(0px); }
   }
+  
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; box-shadow: 0 0 20px rgba(57, 160, 237, 0.2); }
+    50% { opacity: 1; box-shadow: 0 0 40px rgba(57, 160, 237, 0.4); }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -20px) scale(1.05); }
+    50% { transform: translate(-20px, 15px) scale(0.95); }
+    75% { transform: translate(15px, 25px) scale(1.02); }
+  }
 }
 
 @layer base {
   body {
-    @apply bg-page-bg text-iron-grey font-sans antialiased;
+    @apply bg-page-bg text-white font-sans antialiased;
   }
   h1, h2, h3, h4, .font-modern-bold {
     @apply font-plus font-bold tracking-tight;
   }
+  ::selection {
+    background: rgba(57, 160, 237, 0.3);
+    color: white;
+  }
 }
 
+/* === GLASSMORPHIC CARD SYSTEM === */
 .glass-card {
-  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl shadow-iron-grey/5;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 20px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .bento-card {
-  @apply bg-card-bg rounded-[2rem] p-8 border border-iron-grey/5 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-bell/10 hover:-translate-y-1;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 2rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
 }
 
+.bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(57, 160, 237, 0) 40%,
+    rgba(57, 160, 237, 0) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+
+.bento-card:hover {
+  border-color: rgba(57, 160, 237, 0.15);
+  box-shadow: 
+    0 0 0 1px rgba(57, 160, 237, 0.1),
+    0 20px 60px -15px rgba(57, 160, 237, 0.1),
+    0 0 80px -20px rgba(57, 160, 237, 0.05);
+  transform: translateY(-4px);
+}
+
+.bento-card:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(57, 160, 237, 0.3) 0%,
+    rgba(154, 122, 160, 0.2) 50%,
+    rgba(227, 223, 255, 0.1) 100%
+  );
+}
+
+/* === GRADIENT TEXT === */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-bell via-dusty-mauve to-lavender;
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #39A0ED 0%, #9A7AA0 50%, #E3DFFF 100%);
+}
+
+/* === SECTION DIVIDER === */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(57, 160, 237, 0.3) 25%,
+    rgba(154, 122, 160, 0.3) 50%,
+    rgba(227, 223, 255, 0.2) 75%,
+    transparent 100%
+  );
+}
+
+/* === GLOW BUTTON === */
+.glow-btn {
+  position: relative;
+  border: 1px solid rgba(57, 160, 237, 0.3);
+  background: transparent;
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.glow-btn:hover {
+  background: rgba(57, 160, 237, 0.1);
+  border-color: rgba(57, 160, 237, 0.6);
+  box-shadow: 
+    0 0 20px rgba(57, 160, 237, 0.2),
+    0 0 60px rgba(57, 160, 237, 0.1);
+}
+
+/* === AMBIENT ORB === */
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  animation: drift 20s ease-in-out infinite;
+}
+
+/* === NOISE TEXTURE OVERLAY === */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0B;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(57, 160, 237, 0.3);
 }
