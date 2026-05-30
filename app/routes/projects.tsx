@@ -14,7 +14,7 @@ const PROJECTS = getDetailedProjects();
 
 export default function Projects() {
   return (
-      <div className="min-h-screen overflow-hidden pt-32 pb-20 relative noise-overlay">
+      <div className="min-h-screen overflow-hidden pt-32 pb-20 relative">
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
 
           {/* Header */}
@@ -25,11 +25,11 @@ export default function Projects() {
             className="mb-24 space-y-6"
           >
             <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">Engineering Portfolio</span>
-            <h1 className="font-plus text-5xl md:text-7xl text-white leading-[0.9] tracking-tight font-extrabold max-w-4xl">
+            <h1 className="font-plus text-5xl md:text-7xl text-gray-900 leading-[0.9] tracking-tight font-extrabold max-w-4xl">
               Systems designed for <br />
               <span className="gradient-text italic">performance & trust.</span>
             </h1>
-            <p className="text-white/40 max-w-2xl text-lg leading-relaxed">
+            <p className="text-gray-500 max-w-2xl text-lg leading-relaxed">
               Documenting architectural decisions, data foundations, and the engineering principles behind every system built for scale.
             </p>
           </motion.div>
@@ -52,7 +52,7 @@ export default function Projects() {
                     <div className="flex items-center justify-between mb-8">
                       <div className="flex flex-wrap gap-2">
                         {project.stack.map(tech => (
-                          <span key={tech} className="px-3 py-1 rounded-lg bg-white/[0.04] text-white/40 text-[10px] font-bold uppercase tracking-wider border border-white/[0.06]">
+                          <span key={tech} className="px-3 py-1 rounded-lg bg-gray-100 text-gray-500 text-[10px] font-bold uppercase tracking-wider border border-gray-200">
                             {tech}
                           </span>
                         ))}
@@ -64,13 +64,13 @@ export default function Projects() {
                       )}
                     </div>
                     
-                    <h2 className="text-3xl md:text-4xl font-plus font-bold text-white mb-2 group-hover:text-blue-bell transition-colors">
+                    <h2 className="text-3xl md:text-4xl font-plus font-bold text-gray-900 mb-2 group-hover:text-blue-bell transition-colors">
                       {project.title}
                     </h2>
-                    <p className="text-blue-bell/40 font-medium text-sm mb-6">{project.subtitle}</p>
-                    <p className="text-white/40 text-lg leading-relaxed mb-6">{project.description}</p>
+                    <p className="text-blue-bell/50 font-medium text-sm mb-6">{project.subtitle}</p>
+                    <p className="text-gray-500 text-lg leading-relaxed mb-6">{project.description}</p>
                     
-                    <div className="flex items-center gap-2 text-xs font-bold text-white/25 uppercase tracking-widest mb-8 bg-white/[0.03] p-3 rounded-xl border border-white/[0.06]">
+                    <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-8 bg-gray-50 p-3 rounded-xl border border-gray-200">
                       <Code2 size={14} className="text-blue-bell" />
                       {project.dataAngle}
                     </div>
@@ -85,11 +85,11 @@ export default function Projects() {
                 </div>
 
                 {/* Right: Capabilities */}
-                <div className={`md:w-[40%] p-8 md:p-12 border-t md:border-t-0 md:border-l border-white/[0.04]
-                    ${project.color === 'blue-bell' ? 'bg-blue-bell/[0.02]' : 
-                      project.color === 'dusty-mauve' ? 'bg-dusty-mauve/[0.02]' : 'bg-lavender/[0.02]'}`}>
+                <div className={`md:w-[40%] p-8 md:p-12 border-t md:border-t-0 md:border-l border-black/[0.04]
+                    ${project.color === 'blue-bell' ? 'bg-blue-bell/[0.03]' : 
+                      project.color === 'dusty-mauve' ? 'bg-dusty-mauve/[0.03]' : 'bg-lavender/[0.03]'}`}>
 
-                  <h3 className="text-xs font-bold text-white/25 uppercase tracking-widest mb-8">
+                  <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">
                     Core Engineering
                   </h3>
 
@@ -98,14 +98,14 @@ export default function Projects() {
                       const CapIcon = resolveIcon(cap.icon);
                       return (
                         <div key={i} className="flex items-start gap-4">
-                          <div className="p-3 bg-white/[0.05] rounded-xl text-blue-bell">
+                          <div className="p-3 bg-gray-100 rounded-xl text-blue-bell">
                             <CapIcon size={18} />
                           </div>
                           <div>
-                            <p className="text-sm font-bold text-white/80">
+                            <p className="text-sm font-bold text-gray-700">
                               {cap.text.split(' ')[0]}
                             </p>
-                            <p className="text-xs text-white/30 leading-relaxed">
+                            <p className="text-xs text-gray-400 leading-relaxed">
                               {cap.text.split(' ').slice(1).join(' ')}
                             </p>
                           </div>
@@ -114,8 +114,8 @@ export default function Projects() {
                     })}
                   </div>
 
-                  <div className="mt-16 opacity-[0.03]">
-                    <Database size={100} strokeWidth={1} className="text-white ml-auto" />
+                  <div className="mt-16 opacity-[0.04]">
+                    <Database size={100} strokeWidth={1} className="text-gray-900 ml-auto" />
                   </div>
                 </div>
               </motion.article>
@@ -124,7 +124,7 @@ export default function Projects() {
 
           <div className="mt-32 text-center py-12">
             <div className="section-divider mb-8" />
-            <p className="text-white/20 text-sm font-medium">
+            <p className="text-gray-400 text-sm font-medium">
               Architectural explorations and distributed systems research available upon request.
             </p>
           </div>

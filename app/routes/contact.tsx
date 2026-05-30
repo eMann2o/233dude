@@ -27,7 +27,7 @@ export default function Contact() {
   };
 
   return (
-      <div className="min-h-screen overflow-hidden pt-32 pb-20 flex flex-col justify-between relative noise-overlay">
+      <div className="min-h-screen overflow-hidden pt-32 pb-20 flex flex-col justify-between relative">
 
         <div className="container mx-auto px-6 max-w-4xl relative z-10">
           
@@ -39,12 +39,12 @@ export default function Contact() {
             className="text-center mb-20 space-y-6"
           >
             <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">{contact.headerLabel}</span>
-            <h1 className="font-plus text-5xl md:text-7xl text-white leading-[0.9] tracking-tight font-extrabold max-w-3xl mx-auto">
+            <h1 className="font-plus text-5xl md:text-7xl text-gray-900 leading-[0.9] tracking-tight font-extrabold max-w-3xl mx-auto">
               {contact.headline} <br />
               <span className="gradient-text italic">{contact.headlineAccent}</span>
             </h1>
-            <p className="text-white/40 text-xl leading-relaxed max-w-2xl mx-auto font-medium">
-              I am focused on roles in <strong className="text-white/70">Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.
+            <p className="text-gray-500 text-xl leading-relaxed max-w-2xl mx-auto font-medium">
+              I am focused on roles in <strong className="text-gray-700">Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.
             </p>
           </motion.div>
 
@@ -61,15 +61,15 @@ export default function Contact() {
                   <Mail size={28} />
                 </div>
                 <div className="text-left">
-                  <div className="text-[10px] font-bold text-white/25 uppercase tracking-[0.2em] mb-1">Primary Email</div>
-                  <div className="text-white font-plus font-bold text-xl md:text-2xl truncate">{email}</div>
+                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-1">Primary Email</div>
+                  <div className="text-gray-900 font-plus font-bold text-xl md:text-2xl truncate">{email}</div>
                 </div>
               </div>
               
               <div className="flex w-full md:w-auto gap-4 p-2">
                 <button 
                   onClick={handleCopy}
-                  className="flex-1 md:flex-none p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-white/30 hover:text-blue-bell hover:border-blue-bell/30 transition-all relative"
+                  className="flex-1 md:flex-none p-5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-400 hover:text-blue-bell hover:border-blue-bell/30 transition-all relative"
                   title="Copy to clipboard"
                 >
                   <AnimatePresence mode="wait">
@@ -113,12 +113,12 @@ export default function Contact() {
                   transition={{ delay: 0.3 + (idx * 0.1) }}
                   className="bento-card group flex flex-col justify-between"
                 >
-                  <div className={`p-4 w-fit rounded-2xl bg-white/[0.05] ${getTextColor(color)} mb-12`}>
+                  <div className={`p-4 w-fit rounded-2xl bg-gray-100 ${getTextColor(color)} mb-12`}>
                      <LinkIcon size={24} />
                   </div>
                   <div className="space-y-2">
-                     <h3 className="text-xl font-plus font-bold text-white group-hover:text-blue-bell transition-colors">{link.label}</h3>
-                     <div className="flex items-center justify-between text-white/30">
+                     <h3 className="text-xl font-plus font-bold text-gray-900 group-hover:text-blue-bell transition-colors">{link.label}</h3>
+                     <div className="flex items-center justify-between text-gray-400">
                         <span className="text-xs font-medium truncate max-w-[150px]">{link.value}</span>
                         <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                      </div>
@@ -133,20 +133,20 @@ export default function Contact() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="border-t border-white/[0.06] pt-20 grid md:grid-cols-2 gap-12 items-center"
+            className="border-t border-black/[0.06] pt-20 grid md:grid-cols-2 gap-12 items-center"
           >
              <div className="space-y-6">
-                <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/[0.03] rounded-full border border-white/[0.06] text-white/40 text-[10px] font-bold uppercase tracking-widest">
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-50 rounded-full border border-gray-200 text-gray-500 text-[10px] font-bold uppercase tracking-widest">
                    <ShieldCheck size={14} className="text-blue-bell" />
                    <span>Security & Reliability First</span>
                 </div>
-                <h3 className="text-3xl font-plus font-extrabold text-white leading-tight">{contact.responseStandards.title.split('.')[0]}.<br />{contact.responseStandards.title.split('.').slice(1).join('.').trim()}</h3>
+                <h3 className="text-3xl font-plus font-extrabold text-gray-900 leading-tight">{contact.responseStandards.title.split('.')[0]}.<br />{contact.responseStandards.title.split('.').slice(1).join('.').trim()}</h3>
              </div>
              <div className="space-y-6">
-                <p className="text-white/40 text-lg leading-relaxed font-medium">
+                <p className="text-gray-500 text-lg leading-relaxed font-medium">
                   {contact.responseStandards.description}
                 </p>
-                <div className="flex items-center gap-4 text-xs font-bold text-white/15 uppercase tracking-[0.2em]">
+                <div className="flex items-center gap-4 text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">
                    <Globe size={14} /> {contact.responseStandards.availability}
                 </div>
              </div>

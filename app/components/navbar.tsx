@@ -31,13 +31,13 @@ export default function Navbar() {
         transition={TRANSITION}
         className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 transition-all duration-500 ${
           scrolled 
-            ? 'py-4 bg-page-bg/80 backdrop-blur-2xl border-b border-white/[0.06] shadow-lg shadow-black/20' 
+            ? 'py-4 bg-white/80 backdrop-blur-2xl border-b border-black/[0.06] shadow-sm' 
             : 'py-6 bg-transparent'
         }`}
       >
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2 z-50 group">
-          <span className="font-plus text-2xl font-bold tracking-tight leading-none text-white group-hover:text-blue-bell transition-colors duration-300">
+          <span className="font-plus text-2xl font-bold tracking-tight leading-none text-gray-900 group-hover:text-blue-bell transition-colors duration-300">
             {personal.initials}
           </span>
         </Link>
@@ -49,7 +49,7 @@ export default function Navbar() {
             return (
               <Link key={item.name} to={item.path} className="group relative py-2">
                 <span className={`font-plus text-[11px] font-bold uppercase tracking-[0.15em] transition-colors duration-300 ${
-                  isActive ? 'text-blue-bell' : 'text-white/40 group-hover:text-white/80'
+                  isActive ? 'text-blue-bell' : 'text-gray-400 group-hover:text-gray-800'
                 }`}>
                   {item.name}
                 </span>
@@ -67,7 +67,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className={`md:hidden z-50 transition-colors duration-300 text-white`}
+          className={`md:hidden z-50 transition-colors duration-300 ${isOpen ? 'text-gray-900' : 'text-gray-900'}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -82,10 +82,10 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 flex flex-col justify-center items-center"
-            style={{ background: 'linear-gradient(180deg, #0A0A0B 0%, #141416 100%)' }}
+            style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%)' }}
           >
             {/* Ambient glow */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-blue-bell/10 rounded-full blur-[120px]" />
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-blue-bell/5 rounded-full blur-[120px]" />
             
             <div className="relative z-10 flex flex-col gap-6 text-center">
               <Link to="/" className="font-plus text-3xl mb-4 text-blue-bell italic">Home</Link>
@@ -98,7 +98,7 @@ export default function Navbar() {
                 >
                   <Link 
                     to={item.path} 
-                    className="font-plus text-4xl text-white/80 hover:text-blue-bell transition-colors"
+                    className="font-plus text-4xl text-gray-800 hover:text-blue-bell transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -110,7 +110,7 @@ export default function Navbar() {
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
                transition={{ delay: 0.5 }}
-               className="absolute bottom-12 text-[10px] uppercase tracking-[0.2em] text-white/20 font-sans"
+               className="absolute bottom-12 text-[10px] uppercase tracking-[0.2em] text-gray-300 font-sans"
             >
               {personal.name} — {personal.graduationYear}
             </motion.div>
