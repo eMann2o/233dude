@@ -4,8 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { getPersonal, getNavigation } from '~/data/data';
 
-const TRANSITION = { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const };
-
 const personal = getPersonal();
 const navigation = getNavigation();
 const NAV_ITEMS = navigation.items;
@@ -25,39 +23,33 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={TRANSITION}
+      <nav
         className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 transition-all duration-500 ${
           scrolled 
-            ? 'py-4 bg-white/80 backdrop-blur-2xl border-b border-black/[0.06] shadow-sm' 
-            : 'py-6 bg-transparent'
+            ? 'py-4 bg-white/80 backdrop-blur-md border-b border-black/[0.06]' 
+            : 'py-8 bg-transparent'
         }`}
       >
-        {/* Brand */}
-        <Link to="/" className="flex items-center gap-2 z-50 group">
-          <span className="font-plus text-2xl font-bold tracking-tight leading-none text-gray-900 group-hover:text-blue-bell transition-colors duration-300">
+        <Link to="/" className="flex items-center gap-2 z-50 group mix-blend-difference">
+          <span className="font-plus text-xl font-bold tracking-tight text-gray-900">
             {personal.initials}
           </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex gap-8 items-center z-50">
+        <div className="hidden md:flex gap-10 items-center z-50 mix-blend-difference">
           {NAV_ITEMS.map((item) => {
             const isActive = location.pathname === item.path;
             return (
               <Link key={item.name} to={item.path} className="group relative py-2">
-                <span className={`font-plus text-[11px] font-bold uppercase tracking-[0.15em] transition-colors duration-300 ${
-                  isActive ? 'text-blue-bell' : 'text-gray-400 group-hover:text-gray-800'
+                <span className={`font-plus text-xs font-bold uppercase tracking-[0.1em] transition-colors duration-300 ${
+                  isActive ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-900'
                 }`}>
                   {item.name}
                 </span>
                 {isActive && (
                   <motion.div 
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
-                    style={{ background: 'linear-gradient(90deg, #39A0ED, #9A7AA0)' }}
+                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gray-900"
                   />
                 )}
               </Link>
@@ -65,30 +57,24 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Mobile Toggle */}
         <button 
           className={`md:hidden z-50 transition-colors duration-300 ${isOpen ? 'text-gray-900' : 'text-gray-900'}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
-      </motion.nav>
+      </nav>
 
-      {/* Full Screen Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 flex flex-col justify-center items-center"
-            style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%)' }}
+            className="fixed inset-0 z-40 bg-white flex flex-col justify-center items-center"
           >
-            {/* Ambient glow */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-blue-bell/5 rounded-full blur-[120px]" />
-            
-            <div className="relative z-10 flex flex-col gap-6 text-center">
-              <Link to="/" className="font-plus text-3xl mb-4 text-blue-bell italic">Home</Link>
+            <div className="relative z-10 flex flex-col gap-8 text-center w-full px-6">
+              <Link to="/" className="text-gray-400 font-plus text-2xl font-bold hover:text-gray-900 transition-colors">Home</Link>
               {NAV_ITEMS.map((item, i) => (
                 <motion.div
                   key={item.name}
@@ -98,7 +84,7 @@ export default function Navbar() {
                 >
                   <Link 
                     to={item.path} 
-                    className="font-plus text-4xl text-gray-800 hover:text-blue-bell transition-colors"
+                    className="font-plus text-5xl md:text-6xl font-bold text-gray-900 hover:text-blue-500 transition-colors tracking-tight"
                   >
                     {item.name}
                   </Link>
@@ -110,9 +96,9 @@ export default function Navbar() {
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
                transition={{ delay: 0.5 }}
-               className="absolute bottom-12 text-[10px] uppercase tracking-[0.2em] text-gray-300 font-sans"
+               className="absolute bottom-12 text-xs font-bold uppercase tracking-widest text-gray-400 font-sans"
             >
-              {personal.name} — {personal.graduationYear}
+              {personal.name}
             </motion.div>
           </motion.div>
         )}

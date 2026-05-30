@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, ArrowUpRight, Copy, Check, Send, Globe, ShieldCheck } from "lucide-react";
-import { getPersonal, getContact, getContactLinks, resolveIcon } from "~/data/data";
-import { getTextColor } from "~/src/lib/utils";
+import { ArrowUpRight, Copy, Check } from "lucide-react";
+import { getPersonal, getContact, getContactLinks } from "~/data/data";
 
 export function meta() {
   return [
     { title: "Contact | Emmanuel Opoku" },
-    { name: "description", content: "Contact Emmanuel Opoku" },
   ];
 }
 
@@ -27,133 +25,92 @@ export default function Contact() {
   };
 
   return (
-      <div className="min-h-screen overflow-hidden pt-32 pb-20 flex flex-col justify-between relative">
-
-        <div className="container mx-auto px-6 max-w-4xl relative z-10">
+      <div className="min-h-screen bg-white pt-40 pb-20">
+        <div className="max-w-7xl mx-auto px-6">
           
-          {/* Header */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20 space-y-6"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-40"
           >
-            <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">{contact.headerLabel}</span>
-            <h1 className="font-plus text-5xl md:text-7xl text-gray-900 leading-[0.9] tracking-tight font-extrabold max-w-3xl mx-auto">
+            <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-plus font-black text-gray-900 leading-[1] tracking-tighter mb-12">
               {contact.headline} <br />
-              <span className="gradient-text italic">{contact.headlineAccent}</span>
+              <span className="text-gray-300">{contact.headlineAccent}</span>
             </h1>
-            <p className="text-gray-500 text-xl leading-relaxed max-w-2xl mx-auto font-medium">
-              I am focused on roles in <strong className="text-gray-700">Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.
+            <p className="text-2xl text-gray-500 font-medium max-w-3xl leading-relaxed">
+              I am focused on roles in <strong className="text-gray-900">Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.
             </p>
           </motion.div>
 
-          {/* Email Card */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="mb-12"
-          >
-            <div className="bento-card !p-4 flex flex-col md:flex-row items-center gap-4">
-              <div className="flex-1 w-full md:w-auto px-8 py-6 flex items-center gap-6">
-                <div className="p-4 bg-blue-bell/10 rounded-2xl text-blue-bell">
-                  <Mail size={28} />
-                </div>
-                <div className="text-left">
-                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-1">Primary Email</div>
-                  <div className="text-gray-900 font-plus font-bold text-xl md:text-2xl truncate">{email}</div>
-                </div>
-              </div>
-              
-              <div className="flex w-full md:w-auto gap-4 p-2">
+          <div className="divider-clean mb-32" />
+
+          {/* Massive Email Button */}
+          <div className="mb-40">
+             <div className="flex flex-col md:flex-row items-center gap-8">
+                <a 
+                  href={`mailto:${email}`}
+                  className="w-full group"
+                >
+                  <h2 className="text-[clamp(1.5rem,5vw,4.5rem)] font-plus font-black text-gray-900 tracking-tighter group-hover:text-blue-500 transition-colors duration-500 break-all">
+                    {email}
+                  </h2>
+                </a>
+                
                 <button 
                   onClick={handleCopy}
-                  className="flex-1 md:flex-none p-5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-400 hover:text-blue-bell hover:border-blue-bell/30 transition-all relative"
+                  className="shrink-0 p-6 rounded-full border border-gray-200 text-gray-400 hover:text-gray-900 hover:border-gray-900 transition-all"
                   title="Copy to clipboard"
                 >
                   <AnimatePresence mode="wait">
                     {copied ? (
                       <motion.div key="check" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                        <Check size={20} />
+                        <Check size={32} />
                       </motion.div>
                     ) : (
                       <motion.div key="copy" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                        <Copy size={20} />
+                        <Copy size={32} />
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </button>
-                
-                <a 
-                  href={`mailto:${email}`}
-                  className="flex-[2] md:flex-none px-10 py-5 glow-btn rounded-2xl font-bold flex items-center justify-center gap-3 group"
-                >
-                  Send Email <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
+             </div>
+          </div>
 
-          {/* Contact Links Grid */}
-          <div className="grid md:grid-cols-3 gap-6 mb-24">
-            {CONTACT_LINKS.map((link, idx) => {
-              const LinkIcon = resolveIcon(link.icon);
-              const colors = ["blue-bell", "dusty-mauve", "lavender"];
-              const color = colors[idx % colors.length];
-              return (
-                <motion.a 
-                  key={idx}
-                  href={link.href}
-                  target={link.label.includes("CV") ? "_self" : "_blank"}
-                  download={link.label.includes("CV")}
-                  rel="noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + (idx * 0.1) }}
-                  className="bento-card group flex flex-col justify-between"
-                >
-                  <div className={`p-4 w-fit rounded-2xl bg-gray-100 ${getTextColor(color)} mb-12`}>
-                     <LinkIcon size={24} />
-                  </div>
-                  <div className="space-y-2">
-                     <h3 className="text-xl font-plus font-bold text-gray-900 group-hover:text-blue-bell transition-colors">{link.label}</h3>
-                     <div className="flex items-center justify-between text-gray-400">
-                        <span className="text-xs font-medium truncate max-w-[150px]">{link.value}</span>
-                        <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                     </div>
-                  </div>
-                </motion.a>
-              );
-            })}
+          {/* Links Grid */}
+          <div className="grid md:grid-cols-3 gap-12 mb-40">
+            {CONTACT_LINKS.map((link, idx) => (
+              <a 
+                key={idx}
+                href={link.href}
+                target={link.label.includes("CV") ? "_self" : "_blank"}
+                download={link.label.includes("CV")}
+                rel="noreferrer"
+                className="group border-t border-black/[0.06] pt-8 flex justify-between items-start"
+              >
+                <div>
+                   <h3 className="text-3xl font-plus font-bold text-gray-900 mb-2 group-hover:text-blue-500 transition-colors">{link.label}</h3>
+                   <span className="text-sm font-medium text-gray-400 block truncate max-w-[200px]">{link.value}</span>
+                </div>
+                <ArrowUpRight className="text-gray-300 group-hover:text-blue-500 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" size={32} strokeWidth={1.5} />
+              </a>
+            ))}
           </div>
 
           {/* Standards */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="border-t border-black/[0.06] pt-20 grid md:grid-cols-2 gap-12 items-center"
-          >
-             <div className="space-y-6">
-                <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-50 rounded-full border border-gray-200 text-gray-500 text-[10px] font-bold uppercase tracking-widest">
-                   <ShieldCheck size={14} className="text-blue-bell" />
-                   <span>Security & Reliability First</span>
-                </div>
-                <h3 className="text-3xl font-plus font-extrabold text-gray-900 leading-tight">{contact.responseStandards.title.split('.')[0]}.<br />{contact.responseStandards.title.split('.').slice(1).join('.').trim()}</h3>
-             </div>
-             <div className="space-y-6">
-                <p className="text-gray-500 text-lg leading-relaxed font-medium">
-                  {contact.responseStandards.description}
-                </p>
-                <div className="flex items-center gap-4 text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">
-                   <Globe size={14} /> {contact.responseStandards.availability}
-                </div>
-             </div>
-          </motion.div>
+          <section className="bg-gray-50 -mx-6 px-6 lg:px-20 py-32 text-center">
+             <h2 className="text-jumbo text-gray-900 mb-12 max-w-4xl mx-auto">
+                {contact.responseStandards.title}
+             </h2>
+             <p className="text-2xl text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto mb-12">
+                {contact.responseStandards.description}
+             </p>
+             <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">
+                Availability: {contact.responseStandards.availability}
+             </span>
+          </section>
 
         </div>
-
       </div>
   );
 }

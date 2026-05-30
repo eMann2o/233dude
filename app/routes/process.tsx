@@ -1,13 +1,11 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Cpu, Fingerprint, GitMerge, Layers } from "lucide-react";
-import { getProcess, resolveIcon } from "~/data/data";
-import { getTextColor } from "~/src/lib/utils";
+import { ArrowRight } from "lucide-react";
+import { getProcess } from "~/data/data";
 
 export function meta() {
   return [
     { title: "Process | Emmanuel Opoku" },
-    { name: "description", content: "Engineering process of Emmanuel Opoku" },
   ];
 }
 
@@ -15,111 +13,74 @@ const PRINCIPLES = getProcess();
 
 export default function Process() {
   return (
-      <div className="min-h-screen overflow-hidden pt-32 pb-20 relative">
-        <div className="container mx-auto px-6 max-w-6xl relative z-10">
+      <div className="min-h-screen bg-white pt-40 pb-20">
+        <div className="max-w-7xl mx-auto px-6">
 
-          {/* Hero */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-32 max-w-4xl mx-auto space-y-8"
-          >
-            <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">Engineering Philosophy</span>
-            <h1 className="font-plus text-5xl md:text-7xl text-gray-900 leading-[0.9] tracking-tight font-extrabold">
-              Reliable systems scale. <br />
-              <span className="gradient-text italic">Brittle logic compounds.</span>
-            </h1>
-            <p className="text-gray-500 text-xl leading-relaxed max-w-2xl mx-auto">
-              Design before code. Architecture before implementation. I believe that structural decisions are the most impactful part of the engineering lifecycle.
-            </p>
-          </motion.div>
-
-          {/* Principles Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PRINCIPLES.map((item, idx) => {
-              const ItemIcon = resolveIcon(item.icon);
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="bento-card group flex flex-col"
-                >
-                  <div className="flex items-start justify-between mb-8">
-                    <div className={`p-4 rounded-2xl bg-gray-100 ${getTextColor(item.color)}`}>
-                      <ItemIcon size={26} />
-                    </div>
-                    <span className="text-[10px] font-bold text-gray-300 uppercase tracking-[0.2em]">Principle 0{idx + 1}</span>
-                  </div>
-
-                  <div className="flex-1">
-                    <h2 className="text-2xl font-plus font-bold text-gray-900 mb-2 group-hover:text-blue-bell transition-colors">
-                      {item.title}
-                    </h2>
-                    <p className="text-[10px] font-bold text-blue-bell/40 uppercase tracking-widest mb-6 leading-relaxed">
-                      "{item.statement}"
-                    </p>
-                    <p className="text-sm text-gray-500 leading-relaxed font-medium">
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Architectural DNA */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-32 rounded-[3rem] p-12 md:p-24 relative overflow-hidden border border-black/[0.06]"
-            style={{ background: 'linear-gradient(135deg, rgba(57,160,237,0.04) 0%, #FFFFFF 50%, rgba(154,122,160,0.04) 100%)' }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-40"
           >
-             <div className="absolute top-0 right-0 p-12 opacity-[0.03] text-gray-900">
-                <Fingerprint size={400} strokeWidth={1} />
-              </div>
-
-            <div className="relative z-10 grid md:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <span className="text-blue-bell font-bold tracking-widest uppercase text-xs block">Engineering DNA</span>
-                <h2 className="text-4xl md:text-5xl font-plus font-extrabold text-gray-900 leading-tight">Architecture is the <br />first deliverable.</h2>
-                <p className="text-gray-500 text-lg leading-relaxed">
-                  I don't just write and run scripts; I design systems that handle data flows efficiently and survive the complexities of production environments.
-                </p>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-3 glow-btn px-10 py-5 rounded-full font-bold group"
-                >
-                  Start a Conversation <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-
-              <div className="bento-card space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-blue-bell/10 rounded-xl text-blue-bell">
-                    <Cpu size={24} />
-                  </div>
-                  <p className="text-sm font-bold text-gray-600">Systems designed for scale.</p>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-dusty-mauve/10 rounded-xl text-dusty-mauve">
-                    <GitMerge size={24} />
-                  </div>
-                  <p className="text-sm font-bold text-gray-600">Traceable data lineage and documentation.</p>
-                </div>
-                <div className="flex items-center gap-4">
-                   <div className="p-3 bg-lavender/10 rounded-xl text-lavender">
-                    <Layers size={24} />
-                  </div>
-                  <p className="text-sm font-bold text-gray-600">Layered Concerns & separation of logic.</p>
-                </div>
-              </div>
-            </div>
+            <h1 className="text-massive text-gray-900 tracking-tight">
+              Philosophy & <br />
+              <span className="text-gray-300">Process.</span>
+            </h1>
           </motion.div>
+
+          <div className="divider-clean mb-40" />
+
+          {/* Principles */}
+          <div className="space-y-40 mb-40">
+            {PRINCIPLES.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="grid lg:grid-cols-12 gap-12"
+              >
+                 <div className="lg:col-span-5">
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-4">Principle 0{idx + 1}</span>
+                    <h2 className="text-4xl md:text-6xl font-plus font-bold text-gray-900 leading-tight">
+                      {item.title}
+                    </h2>
+                 </div>
+                 <div className="lg:col-span-7 flex flex-col justify-center space-y-8">
+                    <p className="text-3xl font-plus font-bold text-gray-300 leading-tight">
+                      "{item.statement}"
+                    </p>
+                    <p className="text-xl text-gray-500 font-medium leading-relaxed max-w-2xl">
+                      {item.desc}
+                    </p>
+                 </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Architecture block */}
+          <section className="py-40 border-t border-black/[0.06]">
+            <div className="grid lg:grid-cols-2 gap-20">
+               <div>
+                  <h2 className="text-jumbo text-gray-900 mb-8">Architecture is the first deliverable.</h2>
+                  <p className="text-2xl text-gray-500 font-medium leading-relaxed">
+                    I don't just write and run scripts; I design systems that handle data flows efficiently and survive the complexities of production environments.
+                  </p>
+               </div>
+               <div className="flex flex-col justify-center gap-12">
+                  <p className="text-3xl font-bold text-gray-400">Systems designed for scale.</p>
+                  <p className="text-3xl font-bold text-gray-400">Traceable data lineage.</p>
+                  <p className="text-3xl font-bold text-gray-400">Layered separation of logic.</p>
+               </div>
+            </div>
+            
+            <div className="mt-24">
+               <Link to="/contact" className="btn-primary text-lg px-12 py-6">
+                 Start a Conversation <ArrowRight size={20} />
+               </Link>
+            </div>
+          </section>
 
         </div>
       </div>
