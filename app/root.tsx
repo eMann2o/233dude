@@ -14,6 +14,7 @@ import Footer from "./components/footer";
 import { ReactLenis } from "lenis/react";
 
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: "/logo.png", type: "image/png" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",

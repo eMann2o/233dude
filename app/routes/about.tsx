@@ -41,7 +41,7 @@ export default function About() {
               <img 
                 src={personal.profileImage} 
                 alt={personal.name} 
-                className="w-full aspect-[4/5] object-cover grayscale"
+                className="w-full aspect-[4/5] object-cover"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.parentElement!.innerHTML = '<div class="w-full aspect-[4/5] bg-gray-100 flex items-center justify-center text-gray-400 font-bold tracking-widest uppercase">Image Pending</div>';
