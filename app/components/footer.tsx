@@ -30,25 +30,136 @@ export default function Footer() {
 
         <div className="divider-clean mb-12" />
 
-        <div className="grid md:grid-cols-2 gap-12 text-gray-500">
-           <div className="space-y-6">
-              <h4 className="font-plus font-bold text-gray-900">Emmanuel Opoku</h4>
-              <p className="max-w-sm">{navigation.footerTagline}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 text-gray-500">
+           {/* Logo and Tagline */}
+           <div className="lg:col-span-4 space-y-6">
+              <Link to="/" className="inline-block">
+                <span className="font-plus text-2xl font-bold tracking-tight text-gray-900">
+                  {personal.initials}
+                </span>
+              </Link>
+              <p className="max-w-sm text-base leading-relaxed text-gray-500">
+                {navigation.footerTagline}
+              </p>
            </div>
            
-           <div className="grid grid-cols-2 gap-8 md:text-right">
-              <div className="space-y-4 flex flex-col md:items-end">
-                 <h4 className="font-plus font-bold text-gray-900">Connect</h4>
-                 <a href={`mailto:${personal.email}`} className="hover:text-gray-900 transition-colors">{personal.email}</a>
-                 <a href={personal.socialLinks.linkedin.href} target="_blank" rel="noreferrer" className="hover:text-gray-900 transition-colors">LinkedIn</a>
-                 <a href={personal.socialLinks.github.href} target="_blank" rel="noreferrer" className="hover:text-gray-900 transition-colors">GitHub</a>
-              </div>
-              <div className="space-y-4 flex flex-col md:items-end">
-                 <h4 className="font-plus font-bold text-gray-900">Explore</h4>
-                 {LINKS.map(link => (
-                    <Link key={link.name} to={link.path} className="hover:text-gray-900 transition-colors">{link.name}</Link>
-                 ))}
-              </div>
+           {/* Link Groups */}
+           <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-8">
+             {/* Product Column */}
+             <div className="space-y-5">
+               <h4 className="font-plus text-xs font-bold uppercase tracking-[0.15em] text-gray-900">
+                 Product
+               </h4>
+               <ul className="space-y-3 flex flex-col text-sm">
+                 <li>
+                   <Link to="/projects" className="hover:text-gray-900 transition-colors duration-300">
+                     Projects
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="/skills" className="hover:text-gray-900 transition-colors duration-300">
+                     Tech Stack
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="/projects" className="hover:text-gray-900 transition-colors duration-300">
+                     Case Studies
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="/process" className="hover:text-gray-900 transition-colors duration-300">
+                     Architecture
+                   </Link>
+                 </li>
+               </ul>
+             </div>
+
+             {/* Company Column */}
+             <div className="space-y-5">
+               <h4 className="font-plus text-xs font-bold uppercase tracking-[0.15em] text-gray-900">
+                 Company
+               </h4>
+               <ul className="space-y-3 flex flex-col text-sm">
+                 <li>
+                   <Link to="/about" className="hover:text-gray-900 transition-colors duration-300">
+                     About Me
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="/experience" className="hover:text-gray-900 transition-colors duration-300">
+                     Experience
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="/process" className="hover:text-gray-900 transition-colors duration-300">
+                     Philosophy
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="/contact" className="hover:text-gray-900 transition-colors duration-300">
+                     Contact
+                   </Link>
+                 </li>
+               </ul>
+             </div>
+
+             {/* Resources Column */}
+             <div className="space-y-5">
+               <h4 className="font-plus text-xs font-bold uppercase tracking-[0.15em] text-gray-900">
+                 Resources
+               </h4>
+               <ul className="space-y-3 flex flex-col text-sm">
+                 <li>
+                   <a href={personal.socialLinks.github.href} target="_blank" rel="noreferrer" className="hover:text-gray-900 transition-colors duration-300">
+                     GitHub
+                   </a>
+                 </li>
+                 <li>
+                   <a href={personal.socialLinks.linkedin.href} target="_blank" rel="noreferrer" className="hover:text-gray-900 transition-colors duration-300">
+                     LinkedIn
+                   </a>
+                 </li>
+                 <li>
+                   <a href={personal.resumePath} target="_blank" rel="noreferrer" className="hover:text-gray-900 transition-colors duration-300">
+                     Engineering CV
+                   </a>
+                 </li>
+                 <li>
+                   <Link to="/process" className="hover:text-gray-900 transition-colors duration-300">
+                     System Docs
+                   </Link>
+                 </li>
+               </ul>
+             </div>
+
+             {/* Legal Column */}
+             <div className="space-y-5">
+               <h4 className="font-plus text-xs font-bold uppercase tracking-[0.15em] text-gray-900">
+                 Legal
+               </h4>
+               <ul className="space-y-3 flex flex-col text-sm">
+                 <li>
+                   <Link to="#" className="hover:text-gray-900 transition-colors duration-300">
+                     Terms of Service
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="#" className="hover:text-gray-900 transition-colors duration-300">
+                     Privacy Policy
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="/process" className="hover:text-gray-900 transition-colors duration-300">
+                     Security Standards
+                   </Link>
+                 </li>
+                 <li>
+                   <Link to="#" className="hover:text-gray-900 transition-colors duration-300">
+                     MIT License
+                   </Link>
+                 </li>
+               </ul>
+             </div>
            </div>
         </div>
 
