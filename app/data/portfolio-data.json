@@ -35,7 +35,7 @@
   "hero": {
     "headline": "I build systems",
     "headlineAccent": "that power intelligence.",
-    "subheadline": "Engineering robust data infrastructure and scalable backends that bridge the gap between complex logic and seamless user experiences.",
+    "subheadline": "Engineering robust data infrastructure and scalable backends — from serverless APIs and secure RBAC architectures to real-time analytics pipelines and stream-processed data warehousing.",
     "signals": [
       { "icon": "Workflow", "label": "PIPELINES" },
       { "icon": "Shield", "label": "RELIABILITY" },
@@ -48,24 +48,24 @@
       {
         "number": "01",
         "icon": "Server",
-        "title": "Backend Arch",
-        "description": "Designing secure, role-gated APIs and distributed service architectures that prioritize uptime and modularity.",
+        "title": "Backend Architecture",
+        "description": "Designing secure, role-gated APIs with JWT cookie authentication, serverless connection pooling, and distributed media storage via Cloudinary — deployed across Vercel and traditional Node.js environments.",
         "color": "blue-bell",
         "highlight": false
       },
       {
         "number": "02",
         "icon": "Layers",
-        "title": "Relational Logic",
-        "description": "Schema-first development with normalized models, efficient indexing, and integrity-driven data flows.",
+        "title": "Relational & Document Modeling",
+        "description": "Schema-first development with PostgreSQL ENUM constraints and indexing strategies for read-heavy dashboards, alongside MongoDB sub-document denormalization for O(1) read operations.",
         "color": "blue-bell",
         "highlight": true
       },
       {
         "number": "03",
         "icon": "BarChart3",
-        "title": "Data Pipelines",
-        "description": "Engineering ETL workflows that transform raw events into ML-ready datasets with absolute lineage.",
+        "title": "Data Engineering & Analytics",
+        "description": "Building MongoDB aggregation pipelines, PostgreSQL analytical queries with CASE WHEN conditionals, and on-the-fly stream processing with Node.js Archiver for low-memory bulk operations.",
         "color": "lavender",
         "highlight": false
       }
@@ -74,7 +74,7 @@
       "badge": "Architecture First",
       "headline": "Designed for",
       "headlineAccent": "performance & trust.",
-      "description": "I operate across the full stack of intelligent systems — from designing secure backend APIs, to engineering clean data pipelines.",
+      "description": "I operate across the full stack of intelligent systems — from designing secure backend APIs with dual-transport JWT authentication and RBAC middleware, to engineering clean data pipelines with CDC, aggregation frameworks, and stream-based I/O for scalable backends.",
       "stats": [
         { "value": "Robust", "label": "Reliability-First", "color": "blue-bell" },
         { "value": "Schema-Ready", "label": "Data Excellence", "color": "dusty-mauve" }
@@ -98,28 +98,28 @@
       {
         "category": "Backend Architecture",
         "icon": "Terminal",
-        "desc": "Designing secure, scalable, and maintainable server-side logic. Focused on high-performance APIs and distributed systems.",
+        "desc": "Designing secure, scalable, and maintainable server-side systems. Specializing in serverless optimization (Vercel/Lambda), connection pooling for ephemeral environments, and distributed media storage via Cloudinary.",
         "items": [
-          "Node.js & Express.js Mastery",
-          "RESTful API Design & Security",
-          "Authentication (JWT) & RBAC",
-          "Real-Time Systems (WebSockets)",
-          "Logic Layer Separation",
-          "Performance Optimization"
+          "Node.js & Express.js",
+          "RESTful API Design",
+          "JWT & Cookie Auth",
+          "RBAC Middleware",
+          "Serverless Optimization",
+          "Multer & Cloudinary I/O"
         ],
         "color": "blue-bell"
       },
       {
         "category": "Data Engineering",
         "icon": "Database",
-        "desc": "Architecting schemas that produce trusted data. Building pipelines that ensure integrity and downstream reliability.",
+        "desc": "Architecting schemas that produce trusted data. Building aggregation pipelines in MongoDB, complex SQL analytics with PostgreSQL, and stream-based bulk processing for low-memory I/O.",
         "items": [
-          "Relational Modeling (PostgreSQL)",
+          "PostgreSQL (Indexing, ENUMs)",
+          "MongoDB Aggregation Pipelines",
           "Advanced SQL & CTEs",
-          "Data Normalization (3NF)",
-          "NoSQL Patterns (MongoDB)",
-          "ACID Transactions",
-          "ETL/ELT Logic Design"
+          "Stream Processing (Archiver)",
+          "Dynamic Query Building",
+          "ETL/ELT Pipeline Design"
         ],
         "color": "dusty-mauve"
       }
@@ -128,33 +128,39 @@
       {
         "category": "Engineering Concepts",
         "icon": "GitMerge",
-        "desc": "Guided by architectural principles that ensure systems are audit-ready and scalable.",
+        "desc": "Guided by architectural principles ensuring systems are audit-ready, scalable, and fault-tolerant in production.",
         "items": [
           "System Design & Scale",
-          "Clean Architecture",
+          "Clean Architecture & MVC",
           "OOP & SOLID Principles",
-          "Data Flow Mapping"
+          "Event-Driven Patterns",
+          "Change Data Capture (CDC)",
+          "Connection Pooling Strategies"
         ],
         "color": "lavender"
       },
       {
-        "category": "Frontend & Tools",
+        "category": "Frontend & DevOps",
         "icon": "BarChart3",
-        "desc": "Supporting technologies for building end-to-end, production-grade engineers solutions.",
+        "desc": "Supporting technologies for building end-to-end, production-grade engineering solutions across cloud platforms.",
         "items": [
           "React & TypeScript",
           "Modern CSS / Tailwind",
           "Git & CI/CD Tooling",
-          "Vite Ecosystem"
+          "Docker & Containerization",
+          "Vercel & Serverless Deploy",
+          "PHP (Procedural & MVC)"
         ],
         "color": "iron-grey"
       }
     ],
     "learning": [
+      "Apache Kafka & Event Streaming",
       "dbt (data build tool)",
-      "Apache Airflow",
-      "Apache Spark",
-      "Snowflake Patterns",
+      "Apache Airflow / Dagster",
+      "Snowflake & BigQuery",
+      "Kubernetes (EKS/GKE)",
+      "Terraform & IaC",
       "Data Observability"
     ]
   },
@@ -163,80 +169,109 @@
     "featured": [
       {
         "title": "Travel With KB",
-        "role": "Full-Stack System Architecture",
-        "desc": "MERN stack booking engine with a data-modeled schema (parent referencing, aggregation pipelines for analytics) and a secure, role-gated Express API.",
-        "tech": ["Node.js", "MongoDB", "Express", "System Design"],
+        "role": "Serverless Backend & Data Architecture",
+        "desc": "Serverless Node.js/Express API on Vercel with MongoDB connection caching, Cloudinary streaming, JWT cookie auth, and a proposed microservices evolution with Kafka, CDC, and a Snowflake data warehouse.",
+        "tech": ["Node.js", "MongoDB", "Serverless", "Cloudinary"],
         "color": "blue-bell",
         "link": "/case-studies/travel-with-kb"
       },
       {
-        "title": "Scholarship Platform",
-        "role": "Institutional Backend + Data Workflows",
-        "desc": "Multi-role workflow engine with a normalized MySQL schema, state-machine status transitions, and audit logging for structured data reporting.",
-        "tech": ["PostgreSQL", "Relational Design", "RBAC", "TypeScript"],
+        "title": "Tertiary Scholars Aid",
+        "role": "Backend Systems & Stream Processing",
+        "desc": "Node.js/Express/PostgreSQL scholarship platform with ENUM-based state management, explicit indexing strategies, on-the-fly ZIP stream processing, and dynamic parameterized query building.",
+        "tech": ["PostgreSQL", "Node.js", "Stream I/O", "RBAC"],
         "color": "dusty-mauve",
         "link": "/case-studies/scholarship-platform"
       },
       {
-        "title": "Learning Management System",
-        "role": "Analytics-Ready Educational System",
-        "desc": "Full LMS with modular architecture, auto-graded quiz pipelines, and a behavioral analytics tracking layer for aggregated event reporting.",
-        "tech": ["MySQL", "Analytics", "System Design", "Node.js"],
+        "title": "BrightStart LMS",
+        "role": "Architecture Analysis & Modernization",
+        "desc": "Engineering study of a PHP/MySQL LMS identifying BLOB anti-patterns, code duplication, and proposing S3/CDN media migration, unified RBAC, and an MVC framework adoption roadmap.",
+        "tech": ["PHP", "MySQL", "S3/CDN", "System Design"],
         "color": "lavender",
         "link": "/case-studies/lms"
+      },
+      {
+        "title": "Noble Moon Studios",
+        "role": "API Engineering & Media Pipeline",
+        "desc": "RESTful API for art portfolio management with Mongoose sub-document design, MongoDB aggregation analytics, dual-transport JWT auth, and Multer/Cloudinary multipart media processing.",
+        "tech": ["Node.js", "MongoDB", "Cloudinary", "Express"],
+        "color": "iron-grey",
+        "link": "/case-studies/noble-moon"
       }
     ],
     "detailed": [
       {
         "id": "travel-with-kb",
         "title": "Travel With KB",
-        "subtitle": "MERN Architecture • Secure Booking Data Flow",
-        "description": "A comprehensive booking engine with a data-modeled schema (parent referencing, aggregation pipelines) and a secure, role-gated Express API.",
-        "dataAngle": "Parent referencing, aggregation pipelines, secure API design.",
+        "subtitle": "Serverless Architecture • Event-Driven Data Platform",
+        "role": "Serverless Backend & Data Architecture",
+        "description": "A comprehensive serverless booking API built on Node.js/Express and MongoDB, optimized for Vercel with global connection caching. Includes a full architectural proposal for microservices evolution with Kafka event streaming, CDC pipelines, and a Snowflake data warehouse.",
+        "dataAngle": "Serverless connection pooling, Mongoose sub-documents, CDC, event-driven microservices.",
         "capabilities": [
-          { "icon": "GitMerge", "text": "Parent Referencing Schema Design" },
-          { "icon": "BarChart3", "text": "Aggregation Pipelines for Analytics" },
-          { "icon": "Server", "text": "Role-Gated Express API Security" },
-          { "icon": "Database", "text": "Document-Based Data Modeling" }
+          { "icon": "Zap", "text": "Serverless Connection Caching via global object" },
+          { "icon": "Database", "text": "Denormalized Sub-document Schema Design" },
+          { "icon": "Shield", "text": "JWT HTTP-Only Cookie Auth with RBAC" },
+          { "icon": "Workflow", "text": "Proposed CDC & Kafka Event Streaming" }
         ],
-        "stack": ["Node.js", "MongoDB", "Express", "JWT"],
+        "stack": ["Node.js", "MongoDB", "Express", "Vercel", "Cloudinary"],
         "links": { "caseStudy": "/case-studies/travel-with-kb", "github": "#" },
         "highlight": true,
         "color": "blue-bell"
       },
       {
         "id": "scholarship-platform",
-        "title": "Scholarship MIS",
-        "subtitle": "Relational Architecture • Secure Workflows",
-        "description": "A multi-role workflow engine with a normalized MySQL schema, managing thousands of applicant records with secure state-machine status transitions.",
-        "dataAngle": "normalized SQL modeling, RBAC, state machine transitions.",
+        "title": "Tertiary Scholars Aid",
+        "subtitle": "PostgreSQL Architecture • Stream Processing",
+        "role": "Backend Systems & Stream Processing",
+        "description": "A multi-role scholarship management platform built with Node.js/Express and PostgreSQL. Features ENUM-based state management, explicit database indexing, on-the-fly ZIP stream processing via Node.js Archiver, and dynamic parameterized SQL query building with injection-safe pagination.",
+        "dataAngle": "PostgreSQL ENUMs, indexed aggregation, stream-based ZIP generation, dynamic SQL.",
         "capabilities": [
-          { "icon": "Database", "text": "Normalized 3NF Relational Design" },
-          { "icon": "Users", "text": "Complex RBAC (Admin/Applicant)" },
-          { "icon": "FileText", "text": "Audit Logging & Action History" },
-          { "icon": "Shield", "text": "SQL Injection Prevention & Validation" }
+          { "icon": "Database", "text": "PostgreSQL ENUM Constraints & Explicit Indexing" },
+          { "icon": "Workflow", "text": "On-the-Fly Stream Processing (Archiver)" },
+          { "icon": "Shield", "text": "Dynamic Parameterized SQL (Injection-Safe)" },
+          { "icon": "Users", "text": "Multi-Role RBAC (student/admin/superadmin)" }
         ],
-        "stack": ["PostgreSQL", "Express", "TypeScript", "Node.js"],
+        "stack": ["PostgreSQL", "Node.js", "Express", "Cloudinary", "Vercel"],
         "links": { "caseStudy": "/case-studies/scholarship-platform", "github": "#" },
         "highlight": false,
         "color": "dusty-mauve"
       },
       {
         "id": "lms",
-        "title": "Learning Management System",
-        "subtitle": "Event Tracking • Modular System Design",
-        "description": "Full LMS with modular architecture, auto-graded quiz pipelines, and a behavioral analytics tracking layer for aggregated reporting.",
-        "dataAngle": "Event tracking schema, analytics pipelines, modular logic.",
+        "title": "BrightStart LMS",
+        "subtitle": "Legacy Analysis • Cloud Migration Strategy",
+        "role": "Systems Architect & Engineering Analyst",
+        "description": "An engineering study analyzing a PHP/MySQL LMS, identifying critical anti-patterns (BLOB storage, code duplication, statelessness violations) and proposing a modernization roadmap including S3/CDN migration, unified RBAC, MVC refactoring, and Kafka-based analytics pipelines.",
+        "dataAngle": "BLOB anti-pattern analysis, S3/CDN migration, MVC refactoring, event-driven analytics.",
         "capabilities": [
-          { "icon": "Server", "text": "Modular Service Architecture" },
-          { "icon": "Database", "text": "Behavioral Event Tracking Layer" },
-          { "icon": "Cpu", "text": "Auto-Grading Pipeline Logic" },
-          { "icon": "GitMerge", "text": "Scalable Educational Infrastructure" }
+          { "icon": "AlertTriangle", "text": "BLOB Anti-Pattern Identification & Resolution" },
+          { "icon": "Server", "text": "S3/CDN Cloud-Native Media Architecture" },
+          { "icon": "Users", "text": "Unified RBAC Replacing Duplicated Codebases" },
+          { "icon": "Workflow", "text": "Kafka/Redis Event-Driven Analytics Pipeline" }
         ],
-        "stack": ["Node.js", "Express", "MySQL", "Analytics"],
+        "stack": ["PHP", "MySQL", "AWS S3", "CloudFront", "System Design"],
         "links": { "caseStudy": "/case-studies/lms", "github": "#" },
         "highlight": false,
         "color": "lavender"
+      },
+      {
+        "id": "noble-moon",
+        "title": "Noble Moon Studios",
+        "subtitle": "RESTful API • Media Pipeline Engineering",
+        "role": "API Engineer & Data Architect",
+        "description": "A robust RESTful API built with Node.js/Express serving a React/Vite frontend for art portfolio management. Features Mongoose sub-document design for denormalized reads, MongoDB aggregation pipelines for time-series analytics, dual-transport JWT authentication, and Multer/Cloudinary streaming for multipart media processing.",
+        "dataAngle": "Sub-document design, aggregation pipelines, idempotent analytics, multipart media I/O.",
+        "capabilities": [
+          { "icon": "Database", "text": "Mongoose Sub-Document Schema Design" },
+          { "icon": "BarChart3", "text": "MongoDB Aggregation Pipeline Analytics" },
+          { "icon": "Shield", "text": "Dual-Transport JWT (Cookie + Bearer)" },
+          { "icon": "Zap", "text": "Multer/Cloudinary Streaming Media Pipeline" }
+        ],
+        "stack": ["Node.js", "Express", "MongoDB", "Cloudinary", "Vercel"],
+        "links": { "caseStudy": "/case-studies/noble-moon", "github": "#" },
+        "highlight": false,
+        "color": "iron-grey"
       }
     ]
   },
@@ -244,138 +279,309 @@
   "caseStudies": {
     "travel-with-kb": {
       "title": "Travel With KB",
-      "role": "Data Modeling & Backend Architecture",
+      "role": "Serverless Backend & Data Architecture",
       "timeline": "Dec 2025 - Present",
-      "stack": ["Node.js", "MongoDB", "Aggregation Pipelines", "Data Modeling", "Express"],
+      "stack": ["Node.js", "MongoDB", "Express", "Vercel", "Cloudinary", "Mongoose"],
       "color": "blue-bell",
       "content": {
         "problem": {
-          "text": "The core data challenge was modeling relational-style entities — Users, Tours, Reviews, and Bookings — inside MongoDB without losing the integrity guarantees that relational databases provide by default. The data needed to support analytics without duplicating state.",
+          "text": "The platform needed a robust, scalable backend to manage tour offerings, user bookings, customer inquiries, and administrative workflows — optimized for serverless deployment where connection exhaustion and ephemeral disk storage create unique engineering constraints.",
           "constraints": [
-            "Enforce referential integrity between Users ↔ Reviews ↔ Tours in NoSQL.",
-            "Design aggregation pipelines to compute derived metrics on reads.",
-            "Ensure every data write goes through server-side validation logic."
+            "Serverless cold starts risking MongoDB connection exhaustion during traffic spikes.",
+            "Ephemeral local disk in Lambda/Vercel preventing traditional file upload workflows.",
+            "Enforce referential integrity between Users, Tours, Reviews, and Bookings in NoSQL.",
+            "Design aggregation pipelines to compute derived metrics without data duplication.",
+            "Cross-origin cookie authentication between separate API and frontend domains."
           ]
         },
         "solution": {
-          "overview": "I designed a document schema using Parent Referencing to preserve entity boundaries, then built Mongoose-level validation and virtual computed fields to keep derived metrics accurate without data duplication.",
-          "roles": ["User (Browse/Book)", "Admin (Analytics Dashboard)", "Guide (Assigned to Tours)"],
+          "overview": "I designed a serverless-optimized Node.js/Express API with MongoDB connection caching via the global object, Cloudinary direct streaming for media, and a Mongoose schema leveraging sub-document denormalization for O(1) read complexity. The architecture proposal extends this into event-driven microservices.",
+          "roles": ["User (Browse/Book)", "Admin (Analytics Dashboard)", "Superadmin (Force Reset)"],
           "workflow": [
-            "Schema designed with referential integrity constraints",
-            "Mongoose pre-save hooks enforce validation before writes",
-            "Aggregation pipeline computes avg ratings at query time",
-            "APIFeatures class applies filtering and pagination"
+            "Request hits Vercel serverless function via vercel.json rewrite rules",
+            "Global mongoose connection cache checked — reuses existing or creates new",
+            "Express router delegates to domain-specific controllers (Tours, Bookings, Inquiries)",
+            "Mongoose pre-save hooks enforce validation and bcrypt password hashing",
+            "Multer streams multipart uploads directly to Cloudinary (no local disk)",
+            "Booking inquiry progresses through state machine (New → Contacted → Booked → Archived)"
           ]
         },
         "architecture": {
           "backend": [
-            "Mongoose Schemas: Strict typing",
-            "Virtual Fields: Computed averages",
-            "Aggregation Layer: Logic on metrics",
-            "APIFeatures: Reusable query builder"
+            "Serverless Connection Caching: global.mongoose pattern prevents cold-start exhaustion",
+            "Cloudinary Direct Streaming: Multer pipes uploads without ephemeral disk dependency",
+            "Mongoose Sub-Documents: Denormalized itinerary, highlights, and tags for O(1) reads",
+            "Booking State Machine: ENUM status field tracks conversion pipeline (New → Archived)"
           ],
-          "schemaDetails": "Tours are the primary entity. Reviews use Parent Referencing rather than embedding — keeping review documents queryable independently and avoiding unbounded array growth. A Mongoose virtual computes ratings on demand.",
+          "schemaDetails": "Tours use embedded sub-documents for itinerary, highlights, and tags — a denormalization strategy enabling single-query profile fetches. Booking Inquiries implement a status ENUM acting as a lightweight CRM state machine. Users enforce pre-save bcrypt hooks separating security from business logic.",
           "diagramPlaceholder": ""
         },
         "auth": {
-          "strategy": "JWT via HTTP-Only Cookies",
-          "rbac": "Role-gated middleware: restrictTo('admin', 'lead-guide')",
-          "reasoning": "Access control is a data integrity concern. Using HTTP-Only cookies prevents XSS-based token theft and ensures only authorized roles can modify records."
+          "strategy": "JWT via HTTP-Only Cookies (SameSite: None, Secure: true in production)",
+          "rbac": "Middleware chaining: protect() verifies JWT → restrictTo(...roles) enforces clearance",
+          "reasoning": "HTTP-Only cookies prevent XSS token theft. SameSite: None enables cross-origin auth between API and frontend domains. restrictTo() uses functional composition for flexible role hierarchies."
         },
         "decisions": [
           {
-            "decision": "Parent Referencing Over Embedding",
-            "why": "Embedding reviews would create unbounded array growth and make pagination impossible.",
-            "tradeoff": "Requires .populate() calls which add minor latency — mitigated by selective populating."
+            "decision": "Global Connection Caching for Serverless",
+            "why": "Serverless cold starts create rapid new connections that overwhelm MongoDB clusters. Caching via global.mongoose reuses existing connections across invocations.",
+            "tradeoff": "Relies on execution context memory persistence, which varies by provider — but is reliable on Vercel/Lambda."
           },
           {
-            "decision": "Validation in the Model Layer",
-            "why": "Ensures data is validated before persistence regardless of the specific route trigger.",
-            "tradeoff": "Schema complexity increases, but data integrity is guaranteed at the source."
+            "decision": "Cloudinary Direct Streaming Over Local Disk",
+            "why": "Serverless environments have restricted, ephemeral local filesystems. Writing temp files is unreliable and breaks horizontal scaling.",
+            "tradeoff": "Adds Cloudinary as a hard dependency, but eliminates disk I/O concerns entirely."
+          },
+          {
+            "decision": "Sub-Document Denormalization Over $lookup",
+            "why": "Embedding itinerary details within Tour documents enables single-read fetches without expensive JOIN equivalents ($lookup).",
+            "tradeoff": "Update complexity increases for embedded arrays, but the read-heavy access pattern strongly favors this approach."
           }
         ],
         "challenges": [
           {
-            "challenge": "Computing Aggregate Metrics Without Duplication",
-            "solution": "Built a Mongoose post-save hook that recalculates the average rating on the Tour document after any review is created."
+            "challenge": "Cross-Origin Cookie Authentication",
+            "solution": "Configured SameSite: None and Secure: true in production cookies, enabling the API domain to securely set cookies readable by the distinct frontend domain."
           },
           {
-            "challenge": "Preventing Invalid Writes from Any Source",
-            "solution": "All paths go through Mongoose model validation. The HTTP layer is treated as untrusted input."
+            "challenge": "Garbage Collection of Orphaned Cloudinary Assets",
+            "solution": "System parses Cloudinary URLs to extract publicId on entity deletion, ensuring orphaned media assets are properly cleaned up."
           }
         ],
         "outcome": {
-          "result": "A clean, analytics-ready data model where every entity boundary is enforced and aggregate metrics are computed correctly.",
-          "future": ["Migrate metrics to dedicated analytics collection", "Add data lineage tracking for audit reporting"]
+          "result": "A serverless-optimized API with zero local disk dependency, connection-cached MongoDB access, and a state-machine CRM — with a clear architectural roadmap toward event-driven microservices, CDC pipelines, and Snowflake data warehousing.",
+          "future": ["Apache Kafka event broker for service decoupling", "Debezium CDC to Snowflake data warehouse", "Dynamic pricing engine from historical booking data", "Collaborative filtering recommendation system"]
         }
       }
     },
     "scholarship-platform": {
-      "title": "Scholarship MIS",
-      "role": "Lead Backend Developer",
+      "title": "Tertiary Scholars Aid",
+      "role": "Backend Systems Engineer",
       "timeline": "2024 - 2025",
-      "stack": ["PHP", "MySQL", "RBAC Architecture", "MVC"],
+      "stack": ["Node.js", "Express", "PostgreSQL", "Cloudinary", "Vercel", "node-pg-migrate"],
       "color": "dusty-mauve",
       "content": {
         "problem": {
-          "text": "The institution required a centralized system to replace paper-based scholarship reviews. The system had to support multiple roles with strict access control and produce auditable data trails.",
+          "text": "The platform needed to manage scholarship distributions, user authentication, file uploads, and data aggregations across student, admin, and superadmin roles — with PostgreSQL as the relational backbone requiring explicit indexing, ENUM-based state management, and efficient bulk data export without memory exhaustion.",
           "constraints": [
-            "Multiple user roles with non-overlapping permissions.",
-            "Document uploads must be validated server-side (size/type).",
-            "Automated status transitions must be traceable and logs unmutable."
+            "PostgreSQL schema must enforce domain constraints at the database level via custom ENUM types.",
+            "Dashboard aggregations must execute within the database to minimize network transfer.",
+            "Bulk file downloads (ZIP) must not exhaust server memory regardless of archive size.",
+            "Dynamic query building must be injection-safe with parameterized SQL.",
+            "Serverless deployment (Vercel) requires careful connection pool management."
           ]
         },
         "solution": {
-          "overview": "I designed a PHP-based workflow system where each application moves through defined states (Draft → Submitted → Under Review → Approved), with role-gated access at every transition.",
-          "roles": ["Applicant (Apply/Track)", "Reviewer (Evaluate/Score)", "Admin (Manager Cycles)"],
+          "overview": "I engineered a Node.js/Express API backed by PostgreSQL with explicit indexing on high-query columns, ENUM types for state management, and a stream-based ZIP generation pipeline using the Archiver library. Dynamic query building with parameterized SQL prevents injection while supporting complex filtering and pagination.",
+          "roles": ["Student (Apply/Track)", "Admin (Manage Payments)", "Superadmin (Full System Access)"],
           "workflow": [
-            "Applicant Creates Profile & Application",
-            "Uploads Required Documents (PDF validation)",
-            "Submits for Review (state locked)",
-            "Reviewer Scores & Decisions",
-            "Admin Finalizes & Reports"
+            "Student registers and submits scholarship application with file uploads",
+            "Multer streams documents to Cloudinary (hostel fees, school fees, results)",
+            "Admin views dashboard — PostgreSQL COUNT/SUM/CASE WHEN aggregation runs server-side",
+            "Admin triggers bulk receipt download — Archiver streams ZIP directly to HTTP response",
+            "Axios fetches files from Cloudinary with responseType: 'stream', piped into archive",
+            "Dynamic filters applied via parameterized SQL ($1, $2) with whitelist-controlled sorting"
           ]
         },
         "architecture": {
           "backend": [
-            "Session Auth with Role Flags",
-            "RBAC Middleware: Gated methods",
-            "File Handler: Server-side validation",
-            "Audit Log: Immutable history"
+            "PostgreSQL ENUM Types: admin_role, payment_status, stipend_status, student_year, school_cat",
+            "Explicit Indexes: idx_students_email, idx_payment_history_student, idx_results_student",
+            "Stream ZIP Generation: archive.pipe(res) with axios stream appends for low memory",
+            "Dynamic Query Builder: Parameterized WHERE clauses with sortColumnMap whitelist"
           ],
-          "schemaDetails": "The core schema uses a normalized relational design: Applications link to Users, Documents, and Reviews. Status transitions are stored in a dedicated AuditLog table for compliance.",
+          "schemaDetails": "The schema is highly normalized with PostgreSQL-specific features: custom ENUM types enforce domain constraints at the database level, foreign keys with ON DELETE CASCADE maintain referential integrity, and explicit indexes on student_email columns optimize the read-heavy dashboard aggregation queries.",
           "diagramPlaceholder": ""
         },
         "auth": {
-          "strategy": "PHP Session Authentication",
-          "rbac": "Action-level role checks before every data mutation",
-          "reasoning": "Session-based auth was appropriate for a server-rendered institutional app. Each controller method validates the user role."
+          "strategy": "JWT-based stateless authentication",
+          "rbac": "Custom middleware enforces role-based access (student, admin, superadmin)",
+          "reasoning": "Stateless JWTs suit the Vercel serverless deployment model. Role checks are enforced at the middleware level before any data access, ensuring separation of concerns."
         },
         "decisions": [
           {
-            "decision": "Explicit Status State Machine",
-            "why": "Each application's lifecycle is modeled as discrete states with defined valid transitions.",
-            "tradeoff": "Upfront design cost, but prevents invalid states and simplifies reporting."
+            "decision": "On-the-Fly Stream Processing for Bulk Downloads",
+            "why": "Creating temporary ZIP files on disk would consume excessive storage and memory, leading to OOM errors at scale. Streaming directly to the HTTP response keeps memory usage constant.",
+            "tradeoff": "If the stream fails mid-transfer, the client receives a corrupt archive — mitigated by error handling and content-length headers."
           },
           {
-            "decision": "Server-side Doc Validation",
-            "why": "Client-side validation is trivial to bypass; integrity requires server verification.",
-            "tradeoff": "Slight latency increase during uploads, but ensures system security."
+            "decision": "PostgreSQL ENUM Types Over Application-Level Validation",
+            "why": "Enforcing valid states (payment_status, stipend_status) at the database level prevents invalid data from ever being persisted, regardless of which code path writes the data.",
+            "tradeoff": "Schema migrations required for ENUM changes, but data integrity is guaranteed at the lowest level."
+          },
+          {
+            "decision": "Parameterized Dynamic Query Building",
+            "why": "Dashboard filtering requires dynamic WHERE clauses. Using positional parameters ($1, $2) prevents SQL injection while a sortColumnMap whitelist secures ORDER BY clauses.",
+            "tradeoff": "More complex query construction logic, but eliminates injection vectors entirely."
           }
         ],
         "challenges": [
           {
-            "challenge": "Preventing Concurrent Review Conflicts",
-            "solution": "Implemented optimistic locking on review records so reviewers cannot overwrite each other's scores."
+            "challenge": "Low-Memory Bulk File Export at Scale",
+            "solution": "Used the Archiver library to stream the ZIP archive directly to the HTTP response via archive.pipe(res). Files from Cloudinary are fetched with axios responseType: 'stream' and piped into the archive, ensuring constant memory usage regardless of ZIP size."
           },
           {
-            "challenge": "Generating Accurate Cycle Reports",
-            "solution": "Designed the AuditLog table as the source of truth for all status history transitions."
+            "challenge": "Complex Dashboard Aggregation Performance",
+            "solution": "Offloaded all analytical computation to PostgreSQL using COUNT, SUM, and CASE WHEN conditionals in single query passes. UNION ALL merges heterogeneous activity feeds (uploads, payments, announcements) chronologically."
           }
         ],
         "outcome": {
-          "result": "The platform successfully digitalized the workflow, reducing processing time and providing auditable data for compliance.",
-          "future": ["Email notifications on state changes", "PDF generation for approval letters"]
+          "result": "A data-driven scholarship platform with database-level domain constraints, stream-based bulk processing, and injection-safe dynamic queries — deployed on Vercel with connection-pooled PostgreSQL access.",
+          "future": ["Redis caching for dashboard statistics", "PgBouncer external connection pooler", "Cursor-based keyset pagination", "BullMQ background worker for bulk exports", "Unified audit logging middleware"]
+        }
+      }
+    },
+    "lms": {
+      "title": "BrightStart LMS",
+      "role": "Systems Architect & Engineering Analyst",
+      "timeline": "2024",
+      "stack": ["PHP", "MySQL", "System Design", "AWS S3", "CloudFront", "Kafka"],
+      "color": "lavender",
+      "content": {
+        "problem": {
+          "text": "BrightStart LMS is a custom-built PHP/MySQL Learning Management System serving multiple educational roles (Admin, Headteacher, Teacher, District/Regional Directors). The system stores video BLOBs directly in the MySQL database, duplicates codebases across 6 role directories, and writes temporary video files to disk for streaming — creating severe scalability, performance, and maintenance bottlenecks.",
+          "constraints": [
+            "Videos stored as LONGBLOB in MySQL — polluting buffer pools and slowing backups exponentially.",
+            "BLOB retrieval writes temp files to local disk (file_put_contents) — breaking horizontal scalability.",
+            "Identical code duplicated across 6 role directories (/admin, /teacher, /headteacher, /DD, /RD, /SISO).",
+            "No centralized routing — direct file access (addlesson.php) with no MVC or middleware structure.",
+            "High concurrency causes disk thrashing and orphaned temp files from failed cleanup scripts."
+          ]
+        },
+        "solution": {
+          "overview": "I conducted a comprehensive engineering analysis identifying the BLOB anti-pattern, code duplication, and statelessness violations. I proposed a three-phase modernization roadmap: Phase 1 migrates media to S3/CDN with pre-signed URLs, Phase 2 consolidates codebases via unified RBAC, Phase 3 adopts an MVC framework with Kafka-based analytics pipelines.",
+          "roles": ["Admin (Upload/Manage)", "Teacher (View/Track)", "Headteacher/DD/RD/SISO (Monitor)"],
+          "workflow": [
+            "Phase 1: Provision S3 bucket and CDN (CloudFront) for media storage",
+            "Script extracts existing BLOBs from lessons table, uploads to S3, backfills URL columns",
+            "Refactor upload endpoints to stream directly to S3 via SDK/pre-signed POST URLs",
+            "Refactor view endpoints to serve pre-signed S3 URLs with 1-hour expirations",
+            "Phase 2: Merge 6 role directories into unified codebase with session-based RBAC",
+            "Phase 3: Migrate to MVC framework (Laravel/Symfony) with Kafka event streaming"
+          ]
+        },
+        "architecture": {
+          "backend": [
+            "S3 Object Storage: Replace LONGBLOB columns with video_url/file_attachment_url VARCHAR",
+            "CloudFront CDN: HTTP range requests for video scrubbing without touching backend",
+            "Pre-Signed URLs: 1-hour expiration tokens for authorized, hotlink-proof media access",
+            "Unified RBAC: Single front-controller (index.php) with role-checking middleware"
+          ],
+          "schemaDetails": "The proposed schema drops the video and file_attachment LONGBLOB columns entirely, replacing them with VARCHAR URL references to S3 objects. A unified users table with a role column replaces the implicit role management via directory duplication. An event_logs table captures Kafka-ingested user interactions for analytics.",
+          "diagramPlaceholder": ""
+        },
+        "auth": {
+          "strategy": "PHP Session-Based Authentication (current) → JWT Migration (proposed)",
+          "rbac": "Directory-based role separation (current) → Middleware role checks against users.role column (proposed)",
+          "reasoning": "The current system duplicates entire codebases per role. Unifying into a single codebase with RBAC middleware eliminates the maintenance nightmare and security risks of 6 parallel attack surfaces."
+        },
+        "decisions": [
+          {
+            "decision": "S3/CDN Migration Over Database BLOB Storage",
+            "why": "Storing multi-MB/GB video files in MySQL LONGBLOB pollutes buffer pools, causes exponentially slow backups, and makes the database I/O bottleneck for all concurrent queries.",
+            "tradeoff": "Introduces S3 as an infrastructure dependency, but reduces database storage costs by orders of magnitude and enables horizontal scaling."
+          },
+          {
+            "decision": "Pre-Signed URLs Over Direct File Serving",
+            "why": "Eliminates the temp file generation pattern (file_put_contents) that breaks statelessness, exhausts disk, and creates orphaned files on script failure.",
+            "tradeoff": "URLs expire and must be regenerated — but 1-hour windows cover all practical use cases."
+          },
+          {
+            "decision": "Unified RBAC Over Directory Duplication",
+            "why": "Fixing a bug in view_video.php currently requires patching across 6 directories. Duplicated code increases the attack surface and ensures inconsistent feature states.",
+            "tradeoff": "Requires a significant one-time code consolidation effort, but eliminates the maintenance nightmare permanently."
+          }
+        ],
+        "challenges": [
+          {
+            "challenge": "Database Overload From BLOB Anti-Pattern",
+            "solution": "Proposed replacing LONGBLOB columns with S3 URL references, freeing buffer pools for useful index/row data and reducing backup sizes from GB to MB."
+          },
+          {
+            "challenge": "Statelessness Violation From Temp File Generation",
+            "solution": "Proposed pre-signed S3 URLs that redirect clients directly to CDN-cached media, completely eliminating the file_put_contents → disk → video tag workflow."
+          }
+        ],
+        "outcome": {
+          "result": "A comprehensive engineering study documenting critical anti-patterns with a phased modernization roadmap — from S3/CDN media migration through RBAC unification to MVC framework adoption with event-driven analytics capabilities.",
+          "future": ["Kafka/Redis Streams for user interaction event logging", "Snowflake/BigQuery data warehouse for engagement analytics", "Asynchronous video transcoding job queue", "Twig/Blade templating for XSS-safe rendering"]
+        }
+      }
+    },
+    "noble-moon": {
+      "title": "Noble Moon Studios",
+      "role": "API Engineer & Data Architect",
+      "timeline": "2025",
+      "stack": ["Node.js", "Express", "MongoDB", "Mongoose", "Cloudinary", "Vercel"],
+      "color": "iron-grey",
+      "content": {
+        "problem": {
+          "text": "Noble Moon Studios needed a robust RESTful API to serve a modern React/Vite frontend for art portfolio management, commission handling, acquisition tracking, and site analytics. The system needed to handle complex multipart media uploads alongside nested data structures, while providing time-series analytics that resist metric skewing from duplicate visits.",
+          "constraints": [
+            "Complex nested data (specs, process arrays) must be sent as stringified JSON in multipart/form-data payloads.",
+            "Analytics must implement session-window deduplication to prevent inflated visit counts.",
+            "Database indexes must optimize aggregation pipelines that group and filter by time horizons.",
+            "Multiple image fields (heroImage max 1, gallery max 10) require predictable payload structures.",
+            "CORS must support branch preview deployments with dynamic origin pattern evaluation."
+          ]
+        },
+        "solution": {
+          "overview": "I built an MVC-adapted Express API with Mongoose ODM enforcing strict schema definitions via sub-document embedding. The analytics engine implements session-window idempotency for visit deduplication and MongoDB aggregation pipelines for time-series charting. Multipart media handling streams through Multer/Cloudinary with robust JSON parsing fallbacks.",
+          "roles": ["Visitor (Browse/Analytics)", "Admin (CRUD Art/Commissions)", "Dev (Full System Access)"],
+          "workflow": [
+            "Client sends multipart/form-data with heroImage, gallery images, and stringified JSON fields",
+            "Multer middleware (multer-storage-cloudinary) streams images directly to Cloudinary",
+            "artController parseJSON helper safely deserializes specs/process arrays with fallback",
+            "Mongoose sub-document schemas (SpecSchema, ProcessSchema, GallerySchema) validate and embed",
+            "Visit analytics extracts client IP (x-forwarded-for), checks 30-min session window",
+            "Aggregation pipeline: $match (date range) → $group (by day) → $sort (chronological)"
+          ]
+        },
+        "architecture": {
+          "backend": [
+            "Sub-Document Embedding: SpecSchema, ProcessSchema, GallerySchema within ArtSchema",
+            "Session-Window Deduplication: 30-min idempotency check preventing inflated analytics",
+            "MongoDB Aggregation: $match → $group → $sort pipeline offloading compute to database",
+            "Multer Field Config: Explicit field expectations (heroImage:1, gallery:10)"
+          ],
+          "schemaDetails": "The Art model uses discrete sub-schemas (SpecSchema, ProcessSchema, GallerySchema) embedded within ArtSchema — a denormalized approach optimized for read-heavy operations where a single query retrieves an artwork and all its metadata. The Visit model applies indexes on page and createdAt fields to optimize time-series aggregation pipeline performance.",
+          "diagramPlaceholder": ""
+        },
+        "auth": {
+          "strategy": "Dual-Transport JWT: HTTP-Only cookies first, Authorization Bearer header fallback",
+          "rbac": "Custom protect and restrictTo('Admin', 'Dev') middleware for sensitive CRUD operations",
+          "reasoning": "Dual-transport JWT provides flexibility for different client environments (browser cookies vs. mobile headers) while HTTP-Only cookies prevent XSS-based token theft in the primary web client."
+        },
+        "decisions": [
+          {
+            "decision": "Sub-Document Embedding Over Separate Collections",
+            "why": "Art specifications, process steps, and gallery images are always fetched alongside the parent artwork. Embedding eliminates $lookup JOINs and enables single-query retrieval.",
+            "tradeoff": "Array growth must be monitored to stay within MongoDB's 16MB document limit — manageable for art portfolios with bounded gallery sizes."
+          },
+          {
+            "decision": "Session-Window Idempotency for Analytics",
+            "why": "Page refreshes and navigation replays would inflate visit counts without deduplication. A 30-minute session window filters duplicate IPs within the time horizon.",
+            "tradeoff": "Slightly underestimates unique visits when legitimate revisits occur within the window — acceptable for portfolio-level analytics accuracy."
+          },
+          {
+            "decision": "Database-Level Aggregation Over Application-Level Processing",
+            "why": "MongoDB's aggregation framework ($match, $group, $sort) is significantly faster and more memory-efficient than retrieving documents and processing in Node.js.",
+            "tradeoff": "Pipeline logic is expressed in MongoDB query language rather than JavaScript — but the performance gain is substantial for growing datasets."
+          }
+        ],
+        "challenges": [
+          {
+            "challenge": "Parsing Stringified JSON from Multipart Form Data",
+            "solution": "Implemented a robust parseJSON helper with try-catch fallback in the artController, safely deserializing complex nested arrays (specs, process) that must be transmitted as strings in multipart/form-data payloads."
+          },
+          {
+            "challenge": "Preventing Skewed Analytics from Duplicate Visits",
+            "solution": "Built a session-window deduplication check that extracts client IP (preferring x-forwarded-for for load balancers), queries for existing records within a 30-minute window, and short-circuits the insert if a duplicate is found."
+          }
+        ],
+        "outcome": {
+          "result": "A production-ready RESTful API with denormalized read-optimized schemas, idempotent analytics, and streaming media pipelines — delivering O(1) artwork fetches and deduplicated time-series charting data.",
+          "future": ["CDN caching layer for gallery images", "WebSocket real-time commission status updates", "Full-text search via MongoDB Atlas Search", "Rate limiting and API key management"]
         }
       }
     }
@@ -392,9 +598,9 @@
         "takeaway": "Code Quality Standards",
         "color": "blue-bell",
         "points": [
-          "Built backend data workflows within a professional software engineering environment, focusing on how application logic impacts data persistence.",
-          "Identified and resolved data production bottlenecks by implementing clean API design and more efficient server-side validation logic.",
-          "Worked within an agile team, participating in code reviews that enforced high standards for maintainable, production-ready code."
+          "Built backend data workflows within a professional software engineering environment, focusing on how application logic impacts data persistence and downstream analytics reliability.",
+          "Identified and resolved data production bottlenecks by implementing clean API design, server-side validation logic, and parameterized query patterns to prevent injection vectors.",
+          "Worked within an agile team, participating in code reviews that enforced high standards for maintainable, production-ready code with emphasis on SOLID principles and clean architecture."
         ]
       },
       {
@@ -406,9 +612,9 @@
         "takeaway": "High-Stakes Reliability",
         "color": "dusty-mauve",
         "points": [
-          "Supported iron-clad internal systems in a corporate mining environment where downtime resulted in significant operational costs.",
-          "Gained firsthand exposure to the real cost of system failure, reinforcing a data engineering philosophy built on trust and consistency.",
-          "Managed critical data flows between non-technical departments, ensuring cross-functional accuracy across the enterprise."
+          "Supported iron-clad internal systems in a corporate mining environment where downtime resulted in significant operational costs — reinforcing system reliability as a non-negotiable requirement.",
+          "Gained firsthand exposure to the real cost of system failure, informing a data engineering philosophy built on trust, consistency, and audit-ready infrastructure.",
+          "Managed critical data flows between non-technical departments, ensuring cross-functional accuracy and establishing the importance of schema discipline across the enterprise."
         ]
       },
       {
@@ -420,9 +626,9 @@
         "takeaway": "Institutional Integrity",
         "color": "lavender",
         "points": [
-          "Assisted with digital records management and the cleanup of inaccurately formatted institutional data sets.",
-          "Experienced how a lack of schema discipline leads to reporting failures — directly informing my commitment to schema-first thinking.",
-          "Automated recurrent data-related workflows to reduce manual entry errors and ensure traceable document lineage."
+          "Assisted with digital records management and the cleanup of inaccurately formatted institutional datasets — experiencing firsthand how poor schema design creates downstream confusion.",
+          "Developed automated workflows to reduce manual data entry errors, ensuring traceable document lineage and consistent formatting across institutional records.",
+          "This experience directly informed my commitment to schema-first thinking and database-level constraint enforcement."
         ]
       },
       {
@@ -434,18 +640,19 @@
         "takeaway": "Infrastructure Scale",
         "color": "iron-grey",
         "points": [
-          "Supported network infrastructure in a high-throughput operational environment for national-scale maritime operations.",
-          "Observed the relationship between physical reliability and data system availability at extreme volumes.",
-          "Reinforced the importance of structured documentation and standards in environments with high technical debt potential."
+          "Supported network infrastructure in a high-throughput operational environment for national-scale maritime operations at the Ghana Ports and Harbours Authority.",
+          "Observed the critical relationship between physical reliability and data system availability at extreme traffic volumes — understanding that infrastructure is the foundation for all analytical workloads.",
+          "Reinforced the importance of structured documentation and operational standards in environments with high technical debt potential."
         ]
       }
     ],
     "lessons": [
-      "Data quality issues are exponentially more expensive to fix downstream than at the source.",
-      "End-users depend on data being correct — silent failures in pipelines are the most dangerous.",
-      "Schema decisions made during the first 10% of a project determine 90% of its future maintenance cost.",
-      "Infrastructure reliability is a hard prerequisite for every analytical or ML workload.",
-      "In high-stakes environments, 'it works' is secondary to 'it is audit-ready and traceable.'"
+      "Data quality issues are exponentially more expensive to fix downstream than at the source — enforce constraints at the database level.",
+      "End-users depend on data being correct — silent pipeline failures are the most dangerous class of bugs in production systems.",
+      "Schema decisions made during the first 10% of a project determine 90% of its future maintenance cost and analytical capability.",
+      "Infrastructure reliability is a hard prerequisite for every analytical, ML, or real-time workload — there are no shortcuts.",
+      "In high-stakes environments, 'it works' is secondary to 'it is audit-ready, traceable, and reproducible under failure conditions.'",
+      "Stream-based processing patterns (piping, chunking) are essential for building backends that scale without linear memory growth."
     ]
   },
 
@@ -454,37 +661,37 @@
       "university": "Takoradi Technical University",
       "universityYear": "2026",
       "intro": "Undergraduate IT student at <university> (<year>), obsessed with the bridge between raw data and system intelligence.",
-      "description": "I specialize in Backend Development and Data Engineering. My work is dedicated to building the infrastructure that makes complex systems reliable, scalable, and audit-ready. I believe that engineering excellence starts with a deep understanding of the data schema."
+      "description": "I specialize in Backend Development and Data Engineering — from serverless API optimization and PostgreSQL schema design to MongoDB aggregation pipelines and stream-based bulk processing. My work is dedicated to building the infrastructure that makes complex systems reliable, scalable, and audit-ready. I believe that engineering excellence starts with a deep understanding of the data schema and the constraints that protect it."
     },
     "focuses": [
       {
         "icon": "Database",
         "title": "Architecture First",
-        "description": "I focus on the full lifecycle of a system: from initial 3NF schema design to high-performance RESTful APIs. I build systems where security and modularity are baked into the foundation.",
+        "description": "I focus on the full lifecycle of a system: from PostgreSQL ENUM constraints and explicit indexing strategies to serverless connection pooling and JWT cookie authentication. I build systems where security and modularity are baked into the foundation.",
         "color": "blue-bell"
       },
       {
         "icon": "BarChart3",
-        "title": "Data-Centric AI",
-        "description": "I am building toward large-scale data infrastructure inspired by leaders like Anthropic. My goal is to build robust pipelines for the massive datasets required for modern ML.",
+        "title": "Data-Centric Engineering",
+        "description": "I am building toward large-scale data infrastructure — engineering MongoDB aggregation pipelines, stream-based ZIP processing, and dynamic parameterized query builders. My goal is to build robust pipelines for the massive datasets required for modern ML and analytics.",
         "color": "dusty-mauve"
       }
     ],
     "dnaCards": [
       { "icon": "GraduationCap", "text": "2026 Expected Graduation", "sub": "B.Tech. IT @ TTU", "color": "blue-bell" },
-      { "icon": "Database", "text": "System Design Depth", "sub": "Scalability & RBAC Specialist", "color": "dusty-mauve" },
-      { "icon": "Server", "text": "Production Logic", "sub": "Node.js (Express), PHP, SQL", "color": "lavender" }
+      { "icon": "Database", "text": "System Design Depth", "sub": "PostgreSQL, MongoDB, Serverless", "color": "dusty-mauve" },
+      { "icon": "Server", "text": "Production Logic", "sub": "Node.js, Express, PHP, SQL", "color": "lavender" }
     ],
     "exposure": [
-      { "title": "Data Quality", "org": "AmaliTech", "desc": "Witnessed how code quality determines the reliability of data produced by enterprise systems." },
-      { "title": "High-Stakes Logic", "org": "Adamus Resources", "desc": "Learned that in corporate environments, data reliability and system stability are non-negotiable." },
-      { "title": "Institutional Flow", "org": "STCCI", "desc": "Observed how poor schema design creates downstream confusion — reinforcing schema-first thinking." }
+      { "title": "Data Quality", "org": "AmaliTech", "desc": "Witnessed how code quality and clean API design directly determine the reliability of data produced by enterprise systems." },
+      { "title": "High-Stakes Logic", "org": "Adamus Resources", "desc": "Learned that in corporate mining environments, data reliability and system stability are non-negotiable — downtime has real operational costs." },
+      { "title": "Institutional Flow", "org": "STCCI", "desc": "Observed how poor schema design and lack of database constraints create cascading downstream confusion — directly informing my schema-first philosophy." }
     ],
     "principles": [
-      { "icon": "Database", "title": "Schema Before Pipelines", "desc": "Entity relationships and constraints come before a single line of transformation." },
-      { "icon": "FlaskConical", "title": "Quality is a Feature", "desc": "Null handling and integrity are the core deliverables, not an afterthought." },
-      { "icon": "BarChart3", "title": "Downstream Focus", "desc": "Designing for the analysts and scientists who consume the logic I build." },
-      { "icon": "FileText", "title": "Absolute Lineage", "desc": "Every transformation must be explainable. Documentation is as vital as the code." }
+      { "icon": "Database", "title": "Schema Before Pipelines", "desc": "Entity relationships, ENUM constraints, and indexing strategies come before a single line of transformation logic." },
+      { "icon": "FlaskConical", "title": "Quality is a Feature", "desc": "Null handling, type coercion, idempotency checks, and referential integrity are core deliverables — not afterthoughts." },
+      { "icon": "BarChart3", "title": "Downstream Focus", "desc": "Designing for the analysts and scientists who consume the data — documenting grain, semantics, and update frequency." },
+      { "icon": "FileText", "title": "Absolute Lineage", "desc": "Every transformation must be explainable. Documentation is as vital as the code — especially in regulated or audited environments." }
     ],
     "quote": "Good engineering is invisible. Bad engineering is everywhere."
   },
@@ -495,42 +702,42 @@
         "title": "Schema First",
         "icon": "Database",
         "statement": "Data outlives the code that writes it.",
-        "desc": "I start with the data model — defining entities, relationships, and constraints before writing a single line of logic. A well-designed schema simplifies the backend and secures the pipeline.",
+        "desc": "I start with the data model — defining entities, relationships, ENUM constraints, and explicit indexes before writing a single line of logic. A well-designed schema simplifies the backend and secures the pipeline.",
         "color": "blue-bell"
       },
       {
         "title": "Quality as Output",
         "icon": "FlaskConical",
         "statement": "The deliverable is trust, not just data.",
-        "desc": "Null handling, type coercion, and referential integrity are not edge cases. I treat data quality validation as a first-class citizen in every system I build.",
+        "desc": "Null handling, type coercion, session-window deduplication, and referential integrity are not edge cases. I treat data quality validation as a first-class citizen in every system I build.",
         "color": "dusty-mauve"
       },
       {
         "title": "Fail Loudly",
         "icon": "AlertTriangle",
         "statement": "Silent failures are technical debt accumulating.",
-        "desc": "Every pipeline should fail with structured, actionable errors. I build observability and threshold checks into transformations to prevent corrupted data from reaching downstream tables.",
+        "desc": "Every pipeline should fail with structured, actionable errors. I build observability and threshold checks into transformations to prevent corrupted data from reaching downstream tables or analytics dashboards.",
         "color": "lavender"
       },
       {
         "title": "Medallion Layers",
         "icon": "Layers",
         "statement": "Raw, staging, and mart are not suggestions.",
-        "desc": "I follow strict architectural layering: preserving raw source data, cleaning in staging, and producing aggregated, consumer-ready models in the mart layer.",
+        "desc": "I follow strict architectural layering: preserving raw source data, cleaning in staging, and producing aggregated, consumer-ready models in the mart layer. This extends to stream processing where data flows through validation before reaching the response.",
         "color": "iron-grey"
       },
       {
         "title": "Consumer Focus",
         "icon": "BarChart3",
         "statement": "Architecture exists to serve analytics.",
-        "desc": "I design with the end-user in mind — documenting grain, semantics, and update frequency to ensure tables are as usable as they are technically sound.",
+        "desc": "I design with the end-user in mind — documenting grain, semantics, and update frequency to ensure tables are as usable as they are technically sound. Dashboard aggregations should run in SQL, not in application code.",
         "color": "blue-bell"
       },
       {
         "title": "Absolute Lineage",
         "icon": "FileText",
         "statement": "Documentation is as vital as the logic.",
-        "desc": "Code alone isn't enough. I document the 'why' behind every join and filter, ensuring the business context for every pipeline is traceable and reviewable.",
+        "desc": "Code alone isn't enough. I document the 'why' behind every join, filter, and ENUM choice — ensuring the business context for every pipeline decision is traceable and reviewable by future engineers.",
         "color": "dusty-mauve"
       }
     ]
@@ -543,7 +750,7 @@
     "description": "I am focused on roles in <strong>Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.",
     "responseStandards": {
       "title": "Professional Response Standards.",
-      "description": "I prioritize technical clarity and direct communication. For architectural inquiries or engineering opportunities, please include the core problem domain or system constraints.",
+      "description": "I prioritize technical clarity and direct communication. For architectural inquiries or engineering opportunities, please include the core problem domain, system constraints, or stack details.",
       "availability": "Global Availability"
     }
   },

@@ -174,6 +174,7 @@ export interface DetailedProject {
   id: string;
   title: string;
   subtitle: string;
+  role?: string;
   description: string;
   dataAngle: string;
   capabilities: ProjectCapability[];
