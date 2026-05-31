@@ -48,9 +48,9 @@ export default function Skills() {
                   <p className="text-2xl text-gray-500 mb-12 font-medium leading-relaxed max-w-2xl">
                     {skill.desc}
                   </p>
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-x-6 gap-y-3">
                     {skill.items.map((item, i) => (
-                      <span key={i} className="text-3xl md:text-4xl font-bold text-gray-300 hover:text-blue-500 transition-colors cursor-default">
+                      <span key={i} className="text-xs md:text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-blue-500 transition-colors cursor-default">
                         {item}{i < skill.items.length - 1 ? ',' : ''}
                       </span>
                     ))}
@@ -97,10 +97,10 @@ export default function Skills() {
                Actively exploring the edges of <br />
                <span className="text-gray-300">distributed systems.</span>
              </h2>
-             <div className="flex flex-wrap justify-center gap-4">
+             <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
                {skillsData.learning.map((item, i) => (
-                 <span key={i} className="text-2xl md:text-3xl font-bold text-gray-400">
-                   {item}
+                 <span key={i} className="text-xs md:text-sm font-bold uppercase tracking-widest text-gray-400">
+                   {item}{i < skillsData.learning.length - 1 ? ',' : ''}
                  </span>
                ))}
              </div>

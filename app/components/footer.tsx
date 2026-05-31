@@ -106,7 +106,7 @@ export default function Footer() {
              {/* Resources Column */}
              <div className="space-y-5">
                <h4 className="font-plus text-xs font-bold uppercase tracking-[0.15em] text-gray-900">
-                 Resources
+                 Links
                </h4>
                <ul className="space-y-3 flex flex-col text-sm">
                  <li>
@@ -120,42 +120,8 @@ export default function Footer() {
                    </a>
                  </li>
                  <li>
-                   <a href={personal.resumePath} target="_blank" rel="noreferrer" className="hover:text-gray-900 transition-colors duration-300">
-                     Engineering CV
-                   </a>
-                 </li>
-                 <li>
-                   <Link to="/process" className="hover:text-gray-900 transition-colors duration-300">
-                     System Docs
-                   </Link>
-                 </li>
-               </ul>
-             </div>
-
-             {/* Legal Column */}
-             <div className="space-y-5">
-               <h4 className="font-plus text-xs font-bold uppercase tracking-[0.15em] text-gray-900">
-                 Legal
-               </h4>
-               <ul className="space-y-3 flex flex-col text-sm">
-                 <li>
-                   <Link to="#" className="hover:text-gray-900 transition-colors duration-300">
-                     Terms of Service
-                   </Link>
-                 </li>
-                 <li>
-                   <Link to="#" className="hover:text-gray-900 transition-colors duration-300">
-                     Privacy Policy
-                   </Link>
-                 </li>
-                 <li>
-                   <Link to="/process" className="hover:text-gray-900 transition-colors duration-300">
-                     Security Standards
-                   </Link>
-                 </li>
-                 <li>
-                   <Link to="#" className="hover:text-gray-900 transition-colors duration-300">
-                     MIT License
+                   <Link to="mailto:papa16annan@gmail.com" className="hover:text-gray-900 transition-colors duration-300">
+                     Mail
                    </Link>
                  </li>
                </ul>
