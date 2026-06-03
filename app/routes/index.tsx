@@ -34,7 +34,7 @@ export default function Home() {
   const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
   
   return (
-      <div ref={containerRef} className="min-h-screen bg-white">
+      <div ref={containerRef} className="min-h-screen bg-page-bg">
         
         {/* === HERO SECTION === */}
         <section className="relative h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
@@ -49,7 +49,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="text-massive text-gray-900 text-balance">
+              <h1 className="text-massive text-white text-balance">
                 Building the logic <br />
                 <span className="text-gray-400">of tomorrow.</span>
               </h1>
@@ -95,16 +95,16 @@ export default function Home() {
                viewport={{ once: true, margin: "-100px" }}
                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
              >
-                <h2 className="text-huge text-gray-900 mb-8">
+                <h2 className="text-huge text-white mb-8">
                   Core <br />
-                  <span className="text-gray-300">Capabilities</span>
+                  <span className="text-gray-700">Capabilities</span>
                 </h2>
                 <p className="text-2xl text-gray-500 font-medium leading-relaxed max-w-lg">
                   {home.radarSection.description}
                 </p>
              </motion.div>
              
-             <div className="space-y-12 border-l border-black/[0.06] pl-8 md:pl-16">
+             <div className="space-y-12 border-l border-white/[0.06] pl-8 md:pl-16">
                {[
                  { title: "Backend Architecture", desc: "Building scalable APIs, microservices, and secure access systems." },
                  { title: "Data Pipelines", desc: "Extracting, transforming, and loading high-volume data streams." },
@@ -118,7 +118,7 @@ export default function Home() {
                     transition={{ delay: i * 0.1, duration: 0.8 }}
                     className="group cursor-default"
                   >
-                     <h3 className="text-3xl md:text-4xl font-plus font-bold text-gray-300 group-hover:text-gray-900 transition-colors duration-500 tracking-tight mb-3">
+                     <h3 className="text-3xl md:text-4xl font-plus font-bold text-gray-700 group-hover:text-white transition-colors duration-500 tracking-tight mb-3">
                         {cap.title}
                      </h3>
                      <p className="text-lg text-gray-500 font-medium h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 group-hover:mt-4 transition-all duration-500">
@@ -141,7 +141,7 @@ export default function Home() {
              transition={{ duration: 1 }}
              className="mb-24"
           >
-             <h2 className="text-jumbo text-gray-900 max-w-4xl">
+             <h2 className="text-jumbo text-white max-w-4xl">
                Engineering is not just about writing code. It's about designing <span className="text-gray-400">resilient systems.</span>
              </h2>
           </motion.div>
@@ -158,8 +158,8 @@ export default function Home() {
                   transition={{ delay: i * 0.1, duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <Icon size={32} className="text-gray-300 mb-8" />
-                  <h3 className="text-2xl font-bold text-gray-900">{card.title}</h3>
+                  <Icon size={32} className="text-gray-700 mb-8" />
+                  <h3 className="text-2xl font-bold text-white">{card.title}</h3>
                   <p className="text-gray-500 text-lg leading-relaxed">
                     {card.description}
                   </p>
@@ -174,9 +174,9 @@ export default function Home() {
         {/* === FEATURED PROJECTS (List View) === */}
         <section className="py-40 px-6 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-32 gap-8">
-            <h2 className="text-huge text-gray-900">
+            <h2 className="text-huge text-white">
               Selected <br />
-              <span className="text-gray-300">Works</span>
+              <span className="text-gray-700">Works</span>
             </h2>
             <Link to="/projects" className="btn-outline">
               View All Projects
@@ -190,11 +190,11 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group border-b border-black/[0.06] py-12 first:border-t"
+                className="group border-b border-white/[0.06] py-12 first:border-t"
               >
                 <Link to={project.link} className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 w-full">
                   <div className="flex-1">
-                    <h3 className="text-4xl md:text-5xl font-plus font-bold text-gray-900 tracking-tight group-hover:text-blue-500 transition-colors duration-500">
+                    <h3 className="text-4xl md:text-5xl font-plus font-bold text-white tracking-tight group-hover:text-blue-500 transition-colors duration-500">
                       {project.title}
                     </h3>
                   </div>
@@ -210,7 +210,7 @@ export default function Home() {
                       </div>
                   </div>
                   
-                  <div className="shrink-0 hidden lg:block opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 text-gray-900">
+                  <div className="shrink-0 hidden lg:block opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 text-white">
                      <ArrowRight size={40} strokeWidth={1} />
                   </div>
                 </Link>
@@ -228,9 +228,9 @@ export default function Home() {
               transition={{ duration: 1 }}
               className="space-y-12"
             >
-               <h2 className="text-huge text-gray-900">
+               <h2 className="text-huge text-white">
                  Ready to build <br />
-                 <span className="text-gray-300">something robust?</span>
+                 <span className="text-gray-700">something robust?</span>
                </h2>
                <div className="flex flex-wrap justify-center gap-6">
                   <Link to="/contact" className="btn-primary text-lg px-12 py-5">

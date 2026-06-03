@@ -13,7 +13,7 @@ const PRINCIPLES = getProcess();
 
 export default function Process() {
   return (
-      <div className="min-h-screen bg-white pt-40 pb-20">
+      <div className="min-h-screen bg-page-bg pt-40 pb-20">
         <div className="max-w-7xl mx-auto px-6">
 
           <motion.div
@@ -22,9 +22,9 @@ export default function Process() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-40"
           >
-            <h1 className="text-massive text-gray-900 tracking-tight">
+            <h1 className="text-massive text-white tracking-tight">
               Philosophy & <br />
-              <span className="text-gray-300">Process.</span>
+              <span className="text-gray-700">Process.</span>
             </h1>
           </motion.div>
 
@@ -43,12 +43,12 @@ export default function Process() {
               >
                  <div className="lg:col-span-5">
                     <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-4">Principle 0{idx + 1}</span>
-                    <h2 className="text-4xl md:text-6xl font-plus font-bold text-gray-900 leading-tight">
+                    <h2 className="text-4xl md:text-6xl font-plus font-bold text-white leading-tight">
                       {item.title}
                     </h2>
                  </div>
                  <div className="lg:col-span-7 flex flex-col justify-center space-y-8">
-                    <p className="text-3xl font-plus font-bold text-gray-300 leading-tight">
+                    <p className="text-3xl font-plus font-bold text-gray-700 leading-tight">
                       "{item.statement}"
                     </p>
                     <p className="text-xl text-gray-500 font-medium leading-relaxed max-w-2xl">
@@ -60,10 +60,10 @@ export default function Process() {
           </div>
 
           {/* Architecture block */}
-          <section className="py-40 border-t border-black/[0.06]">
+          <section className="py-40 border-t border-white/[0.06]">
             <div className="grid lg:grid-cols-2 gap-20">
                <div>
-                  <h2 className="text-jumbo text-gray-900 mb-8">Architecture is the first deliverable.</h2>
+                  <h2 className="text-jumbo text-white mb-8">Architecture is the first deliverable.</h2>
                   <p className="text-2xl text-gray-500 font-medium leading-relaxed">
                     I don't just write and run scripts; I design systems that handle data flows efficiently and survive the complexities of production environments.
                   </p>

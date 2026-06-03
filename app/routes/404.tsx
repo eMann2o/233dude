@@ -12,7 +12,7 @@ export function meta() {
 export default function NotFound() {
   const personal = getPersonal();
   return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6">
+      <div className="min-h-screen bg-page-bg flex flex-col items-center justify-center p-6">
         
         <div className="max-w-4xl w-full text-center">
           
@@ -24,7 +24,7 @@ export default function NotFound() {
             <h1 className="text-[clamp(5rem,12vw,12rem)] font-plus font-black text-gray-200 leading-[1] tracking-tighter mb-12">
               404
             </h1>
-            <p className="text-3xl md:text-5xl font-plus font-bold text-gray-900 mb-8 tracking-tight">
+            <p className="text-3xl md:text-5xl font-plus font-bold text-white mb-8 tracking-tight">
               Route unresolved.
             </p>
             <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-20 leading-relaxed font-medium">
@@ -38,11 +38,11 @@ export default function NotFound() {
             transition={{ delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-8"
           >
-            <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-blue-500 transition-colors">
+            <Link to="/" className="text-2xl font-bold text-white hover:text-blue-500 transition-colors">
               Return Home
             </Link>
-            <span className="hidden sm:block text-gray-300">/</span>
-            <Link to="/projects" className="text-2xl font-bold text-gray-900 hover:text-blue-500 transition-colors">
+            <span className="hidden sm:block text-gray-700">/</span>
+            <Link to="/projects" className="text-2xl font-bold text-white hover:text-blue-500 transition-colors">
               Explore Projects
             </Link>
           </motion.div>
@@ -53,7 +53,7 @@ export default function NotFound() {
             transition={{ delay: 0.8 }}
             className="mt-32 text-sm font-bold uppercase tracking-widest text-gray-400"
           >
-            Or drop me a line at <a href={`mailto:${personal.email}`} className="hover:text-gray-900 transition-colors">{personal.email}</a>
+            Or drop me a line at <a href={`mailto:${personal.email}`} className="hover:text-white transition-colors">{personal.email}</a>
           </motion.p>
 
         </div>

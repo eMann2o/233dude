@@ -25,7 +25,7 @@ export default function Contact() {
   };
 
   return (
-      <div className="min-h-screen bg-white pt-40 pb-20">
+      <div className="min-h-screen bg-page-bg pt-40 pb-20">
         <div className="max-w-7xl mx-auto px-6">
           
           <motion.div 
@@ -34,12 +34,12 @@ export default function Contact() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-40"
           >
-            <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-plus font-black text-gray-900 leading-[1] tracking-tighter mb-12">
+            <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-plus font-black text-white leading-[1] tracking-tighter mb-12">
               {contact.headline} <br />
-              <span className="text-gray-300">{contact.headlineAccent}</span>
+              <span className="text-gray-700">{contact.headlineAccent}</span>
             </h1>
             <p className="text-2xl text-gray-500 font-medium max-w-3xl leading-relaxed">
-              I am focused on roles in <strong className="text-gray-900">Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.
+              I am focused on roles in <strong className="text-white">Backend Engineering, Data Infrastructure, and Distributed Systems</strong>. Let's discuss how I can contribute to your technical mission.
             </p>
           </motion.div>
 
@@ -52,14 +52,14 @@ export default function Contact() {
                   href={`mailto:${email}`}
                   className="w-full group"
                 >
-                  <h2 className="text-[clamp(1.5rem,5vw,4.5rem)] font-plus font-black text-gray-900 tracking-tighter group-hover:text-blue-500 transition-colors duration-500 break-all">
+                  <h2 className="text-[clamp(1.5rem,5vw,4.5rem)] font-plus font-black text-white tracking-tighter group-hover:text-blue-500 transition-colors duration-500 break-all">
                     {email}
                   </h2>
                 </a>
                 
                 <button 
                   onClick={handleCopy}
-                  className="shrink-0 p-6 rounded-full border border-gray-200 text-gray-400 hover:text-gray-900 hover:border-gray-900 transition-all"
+                  className="shrink-0 p-6 rounded-full border border-gray-200 text-gray-400 hover:text-white hover:border-gray-900 transition-all"
                   title="Copy to clipboard"
                 >
                   <AnimatePresence mode="wait">
@@ -86,20 +86,20 @@ export default function Contact() {
                 target={link.label.includes("CV") ? "_self" : "_blank"}
                 download={link.label.includes("CV")}
                 rel="noreferrer"
-                className="group border-t border-black/[0.06] pt-8 flex justify-between items-start"
+                className="group border-t border-white/[0.06] pt-8 flex justify-between items-start"
               >
                 <div>
-                   <h3 className="text-3xl font-plus font-bold text-gray-900 mb-2 group-hover:text-blue-500 transition-colors">{link.label}</h3>
+                   <h3 className="text-3xl font-plus font-bold text-white mb-2 group-hover:text-blue-500 transition-colors">{link.label}</h3>
                    <span className="text-sm font-medium text-gray-400 block truncate max-w-[200px]">{link.value}</span>
                 </div>
-                <ArrowUpRight className="text-gray-300 group-hover:text-blue-500 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" size={32} strokeWidth={1.5} />
+                <ArrowUpRight className="text-gray-700 group-hover:text-blue-500 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" size={32} strokeWidth={1.5} />
               </a>
             ))}
           </div>
 
           {/* Standards */}
-          <section className="bg-gray-50 -mx-6 px-6 lg:px-20 py-32 text-center">
-             <h2 className="text-jumbo text-gray-900 mb-12 max-w-4xl mx-auto">
+          <section className="bg-[#111111] -mx-6 px-6 lg:px-20 py-32 text-center">
+             <h2 className="text-jumbo text-white mb-12 max-w-4xl mx-auto">
                 {contact.responseStandards.title}
              </h2>
              <p className="text-2xl text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto mb-12">

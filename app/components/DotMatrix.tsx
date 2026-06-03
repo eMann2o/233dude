@@ -35,7 +35,7 @@ export default function DotMatrix() {
     const particles: Particle[] = [];
     const area = w * h;
     // Calculate node count based on screen area to maintain consistent density. Increased per user request.
-    const count = Math.min(Math.floor(area / 4000), 300);
+    const count = Math.min(Math.floor(area / 1500), 800);
 
     for (let i = 0; i < count; i++) {
       particles.push({
@@ -143,7 +143,7 @@ export default function DotMatrix() {
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
             // Use subtle gray for connections
-            ctx.strokeStyle = `rgba(0, 0, 0, ${opacity * 0.15})`;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`;
             ctx.stroke();
           }
         }

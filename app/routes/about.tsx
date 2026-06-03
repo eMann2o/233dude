@@ -15,7 +15,7 @@ const about = getAbout();
 
 export default function About() {
   return (
-      <div className="min-h-screen bg-white pt-40 pb-20">
+      <div className="min-h-screen bg-page-bg pt-40 pb-20">
         <div className="max-w-7xl mx-auto px-6">
 
           {/* Header */}
@@ -25,9 +25,9 @@ export default function About() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-40"
           >
-            <h1 className="text-massive text-gray-900 tracking-tight">
+            <h1 className="text-massive text-white tracking-tight">
               Persona & <br />
-              <span className="text-gray-300">Perspective.</span>
+              <span className="text-gray-700">Perspective.</span>
             </h1>
           </motion.div>
 
@@ -56,7 +56,7 @@ export default function About() {
                  viewport={{ once: true }}
                  transition={{ duration: 0.8 }}
                >
-                 <p className="text-3xl md:text-4xl font-plus font-bold text-gray-900 tracking-tight leading-tight">
+                 <p className="text-3xl md:text-4xl font-plus font-bold text-white tracking-tight leading-tight">
                    Undergraduate IT student at {about.mission.university}, obsessed with the bridge between raw data and system intelligence.
                  </p>
                </motion.div>
@@ -79,9 +79,9 @@ export default function About() {
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
-               className="text-huge text-gray-900 mb-20"
+               className="text-huge text-white mb-20"
              >
-               Real-World <span className="text-gray-300">Exposure</span>
+               Real-World <span className="text-gray-700">Exposure</span>
              </motion.h2>
 
              <div className="space-y-0">
@@ -92,13 +92,13 @@ export default function About() {
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: i * 0.1 }}
-                   className="grid md:grid-cols-12 gap-8 py-16 border-t border-black/[0.06] group"
+                   className="grid md:grid-cols-12 gap-8 py-16 border-t border-white/[0.06] group"
                  >
-                    <div className="md:col-span-2 text-5xl font-plus font-bold text-gray-300 group-hover:text-gray-900 transition-colors">
+                    <div className="md:col-span-2 text-5xl font-plus font-bold text-gray-700 group-hover:text-white transition-colors">
                        0{i + 1}
                     </div>
                     <div className="md:col-span-4">
-                       <h3 className="text-3xl font-bold text-gray-900">{item.title}</h3>
+                       <h3 className="text-3xl font-bold text-white">{item.title}</h3>
                        <p className="text-sm font-bold uppercase tracking-widest text-gray-400 mt-2">{item.org}</p>
                     </div>
                     <div className="md:col-span-6">
@@ -118,7 +118,7 @@ export default function About() {
              viewport={{ once: true }}
              className="text-center max-w-4xl mx-auto py-20"
           >
-             <h2 className="text-4xl md:text-6xl font-plus font-bold text-gray-900 tracking-tight leading-tight mb-12">
+             <h2 className="text-4xl md:text-6xl font-plus font-bold text-white tracking-tight leading-tight mb-12">
                "{about.quote}"
              </h2>
              <Link to="/process" className="btn-outline">

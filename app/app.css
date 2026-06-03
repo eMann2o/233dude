@@ -2,10 +2,10 @@
 
 @theme {
   /* Colors */
-  --color-page-bg: #FFFFFF;
-  --color-text-main: #1A1A1A;
-  --color-text-muted: #6B7280;
-  --color-text-faint: #D1D5DB;
+  --color-page-bg: #0A0A0A;
+  --color-text-main: #FAFAFA;
+  --color-text-muted: #A1A1AA;
+  --color-text-faint: #27272A;
 
   /* Accent Palette */
   --color-dot-blue: #4285F4;
@@ -29,10 +29,10 @@
 
 @layer base {
   body {
-    @apply bg-page-bg text-gray-900 font-sans antialiased selection:bg-blue-200 selection:text-black;
+    @apply bg-page-bg text-gray-100 font-sans antialiased selection:bg-blue-500 selection:text-white;
   }
   h1, h2, h3, h4, .font-heading {
-    @apply font-plus font-bold tracking-tight text-gray-900;
+    @apply font-plus font-bold tracking-tight text-white;
   }
 }
 
@@ -60,7 +60,7 @@
 
 .gradient-text {
   @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(135deg, #1A1A1A 0%, #4285F4 50%, #9A7AA0 100%);
+  background-image: linear-gradient(135deg, #FFFFFF 0%, #4285F4 50%, #9A7AA0 100%);
 }
 
 .gradient-text-light {
@@ -80,16 +80,16 @@
   gap: 0.5rem;
   padding: 1rem 2rem;
   border-radius: 9999px;
-  background-color: #1A1A1A;
-  color: #FFFFFF;
+  background-color: #FAFAFA;
+  color: #0A0A0A;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  background-color: #000000;
+  box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+  background-color: #FFFFFF;
 }
 
 .btn-outline {
@@ -99,20 +99,20 @@
   padding: 1rem 2rem;
   border-radius: 9999px;
   background-color: transparent;
-  color: #1A1A1A;
-  border: 1px solid rgba(0,0,0,0.1);
+  color: #FAFAFA;
+  border: 1px solid rgba(255,255,255,0.1);
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-  border-color: #1A1A1A;
+  border-color: #FAFAFA;
 }
 
 /* === DIVIDERS === */
 .divider-clean {
   height: 1px;
-  background-color: rgba(0,0,0,0.06);
+  background-color: rgba(255,255,255,0.06);
   width: 100%;
 }
 
@@ -124,9 +124,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.3);
 }

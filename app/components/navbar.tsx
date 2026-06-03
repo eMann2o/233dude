@@ -26,12 +26,12 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 transition-all duration-500 ${
           scrolled 
-            ? 'py-4 bg-white/80 backdrop-blur-md border-b border-black/[0.06]' 
+            ? 'py-4 bg-page-bg/80 backdrop-blur-md border-b border-white/[0.06]' 
             : 'py-8 bg-transparent'
         }`}
       >
         <Link to="/" className="flex items-center gap-2 z-50 group mix-blend-difference">
-          <span className="font-plus text-xl font-bold tracking-tight text-gray-900">
+          <span className="font-plus text-xl font-bold tracking-tight text-white">
             {personal.initials}
           </span>
         </Link>
@@ -42,14 +42,14 @@ export default function Navbar() {
             return (
               <Link key={item.name} to={item.path} className="group relative py-2">
                 <span className={`font-plus text-xs font-bold uppercase tracking-[0.1em] transition-colors duration-300 ${
-                  isActive ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-900'
+                  isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'
                 }`}>
                   {item.name}
                 </span>
                 {isActive && (
                   <motion.div 
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gray-900"
+                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-white"
                   />
                 )}
               </Link>
@@ -58,7 +58,7 @@ export default function Navbar() {
         </div>
 
         <button 
-          className={`md:hidden z-50 transition-colors duration-300 ${isOpen ? 'text-gray-900' : 'text-gray-900'}`}
+          className={`md:hidden z-50 transition-colors duration-300 ${isOpen ? 'text-white' : 'text-white'}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -71,10 +71,10 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-white flex flex-col justify-center items-center"
+            className="fixed inset-0 z-40 bg-page-bg flex flex-col justify-center items-center"
           >
             <div className="relative z-10 flex flex-col gap-8 text-center w-full px-6">
-              <Link to="/" className="text-gray-400 font-plus text-2xl font-bold hover:text-gray-900 transition-colors">Home</Link>
+              <Link to="/" className="text-gray-500 font-plus text-2xl font-bold hover:text-white transition-colors">Home</Link>
               {NAV_ITEMS.map((item, i) => (
                 <motion.div
                   key={item.name}
@@ -84,7 +84,7 @@ export default function Navbar() {
                 >
                   <Link 
                     to={item.path} 
-                    className="font-plus text-5xl md:text-6xl font-bold text-gray-900 hover:text-blue-500 transition-colors tracking-tight"
+                    className="font-plus text-5xl md:text-6xl font-bold text-white hover:text-blue-500 transition-colors tracking-tight"
                   >
                     {item.name}
                   </Link>

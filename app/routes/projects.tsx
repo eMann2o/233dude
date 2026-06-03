@@ -13,7 +13,7 @@ const PROJECTS = getDetailedProjects();
 
 export default function Projects() {
   return (
-      <div className="min-h-screen bg-white pt-40 pb-20">
+      <div className="min-h-screen bg-page-bg pt-40 pb-20">
         <div className="max-w-7xl mx-auto px-6">
 
           <motion.div
@@ -22,9 +22,9 @@ export default function Projects() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-32"
           >
-            <h1 className="text-massive text-gray-900 tracking-tight">
+            <h1 className="text-massive text-white tracking-tight">
               Engineering <br />
-              <span className="text-gray-300">Portfolio.</span>
+              <span className="text-gray-700">Portfolio.</span>
             </h1>
           </motion.div>
 
@@ -39,7 +39,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group border-b border-black/[0.06] py-16 lg:py-24"
+                className="group border-b border-white/[0.06] py-16 lg:py-24"
               >
                 <div className="grid lg:grid-cols-12 gap-12 items-start">
                   
@@ -55,7 +55,7 @@ export default function Projects() {
                         </span>
                      </div>
                      <Link to={project.links.caseStudy} className="block w-fit">
-                       <h2 className="text-5xl md:text-7xl font-plus font-bold text-gray-900 tracking-tighter mb-4 group-hover:text-blue-500 transition-colors duration-500">
+                       <h2 className="text-5xl md:text-7xl font-plus font-bold text-white tracking-tighter mb-4 group-hover:text-blue-500 transition-colors duration-500">
                          {project.title}
                        </h2>
                      </Link>
@@ -70,7 +70,7 @@ export default function Projects() {
                   <div className="lg:col-span-4 flex flex-col justify-between h-full space-y-12">
                      <div className="flex flex-wrap gap-2">
                         {project.stack.map(tech => (
-                          <span key={tech} className="text-sm font-bold text-gray-900 border border-gray-200 px-4 py-2 rounded-full">
+                          <span key={tech} className="text-sm font-bold text-white border border-gray-200 px-4 py-2 rounded-full">
                             {tech}
                           </span>
                         ))}
@@ -78,7 +78,7 @@ export default function Projects() {
                      
                      <Link
                        to={project.links.caseStudy}
-                       className="inline-flex items-center gap-4 text-xl font-bold text-gray-900 group-hover:text-blue-500 transition-colors"
+                       className="inline-flex items-center gap-4 text-xl font-bold text-white group-hover:text-blue-500 transition-colors"
                      >
                        Read Architecture Study <ArrowRight className="group-hover:translate-x-2 transition-transform" />
                      </Link>

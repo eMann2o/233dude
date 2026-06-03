@@ -11,7 +11,7 @@ const skillsData = getSkills();
 
 export default function Skills() {
   return (
-      <div className="min-h-screen bg-white pt-40 pb-20">
+      <div className="min-h-screen bg-page-bg pt-40 pb-20">
         <div className="max-w-7xl mx-auto px-6">
 
           <motion.div
@@ -20,9 +20,9 @@ export default function Skills() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-40"
           >
-            <h1 className="text-massive text-gray-900 tracking-tight">
+            <h1 className="text-massive text-white tracking-tight">
               Capability <br />
-              <span className="text-gray-300">Matrix.</span>
+              <span className="text-gray-700">Matrix.</span>
             </h1>
           </motion.div>
 
@@ -40,7 +40,7 @@ export default function Skills() {
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-4">
                     Domain 0{idx + 1}
                   </span>
-                  <h3 className="text-4xl md:text-5xl font-plus font-bold text-gray-900 leading-tight">
+                  <h3 className="text-4xl md:text-5xl font-plus font-bold text-white leading-tight">
                     {skill.category}
                   </h3>
                 </div>
@@ -64,7 +64,7 @@ export default function Skills() {
 
           {/* Supporting Domains */}
           <div className="mb-40">
-             <h2 className="text-huge text-gray-300 mb-20">Supporting Domains</h2>
+             <h2 className="text-huge text-gray-700 mb-20">Supporting Domains</h2>
              <div className="grid md:grid-cols-2 gap-20">
                 {skillsData.supporting.map((skill, idx) => (
                   <motion.div
@@ -73,7 +73,7 @@ export default function Skills() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                   >
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">{skill.category}</h3>
+                    <h3 className="text-2xl font-bold text-white mb-6">{skill.category}</h3>
                     <div className="flex flex-wrap gap-3">
                       {skill.items.map((item, i) => (
                         <span key={i} className="px-5 py-3 border border-gray-200 rounded-full text-sm font-bold text-gray-600">
@@ -93,9 +93,9 @@ export default function Skills() {
             viewport={{ once: true }}
             className="text-center py-32"
           >
-             <h2 className="text-4xl md:text-6xl font-plus font-bold text-gray-900 tracking-tight mb-12">
+             <h2 className="text-4xl md:text-6xl font-plus font-bold text-white tracking-tight mb-12">
                Actively exploring the edges of <br />
-               <span className="text-gray-300">distributed systems.</span>
+               <span className="text-gray-700">distributed systems.</span>
              </h2>
              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
                {skillsData.learning.map((item, i) => (
